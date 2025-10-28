@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../theme/styles.dart';
+
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final String title;
+  // added isCenteredTitle parameter to make title go left if needed
+  final bool? isCenteredTitle;
+  final EdgeInsetsGeometry? padding;
+  final bool automaticallyImplyLeading;
+  const CustomAppBar({
+    super.key,
+    required this.title,
+    this.isCenteredTitle = false,
+    this.padding,
+    this.automaticallyImplyLeading = true,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final canPop = Navigator.canPop(context);
+    return Padding(
+      padding: padding ?? const EdgeInsets.symmetric(horizontal: 4),
+      child: AppBar(
+        leadingWidth: 30,
+        titleSpacing: 8,
+        // added isCenteredTitle usage make the title go left if needed
+        centerTitle: isCenteredTitle ?? true,
+        automaticallyImplyLeading: automaticallyImplyLeading,
+        title: Text(title, style: Styles.medium(context, 20)),
+        leading: automaticallyImplyLeading && canPop
+            ? InkWell(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
+                onTap: () {
+                  context.pop();
+                },
+                child: Icon(Icons.chevron_left, size: 38),
+              )
+            : null,
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+}
