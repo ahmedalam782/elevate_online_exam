@@ -91,5 +91,16 @@ abstract class  LocaleKeys {
   static const global_test_your_knowledge = 'global.test_your_knowledge';
   static const global_online_exam = 'global.online_exam';
   static const global = 'global';
+  static const login_log_in = 'login.log_in';
+  static const login_email_hint = 'login.email_hint';
+  static const login_email_label = 'login.email_label';
+  static const login_password_label = 'login.password_label';
+  static const login_password_hint = 'login.password_hint';
+  static const login_remember_me = 'login.remember_me';
+  static const login_forgot_password = 'login.forgot_password';
+  static const login_log_in_button = 'login.log_in_button';
+  static const login_no_account = 'login.no_account';
+  static const login_sign_up = 'login.sign_up';
+  static const login = 'login';
 
 }
