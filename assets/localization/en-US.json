@@ -92,5 +92,10 @@
         "check_internet": "Check your internet connection and try again.",
         "test_your_knowledge": "Test Your Knowledge",
         "online_exam": "Online Exam"
+    },
+    "forget_password": {
+        "title": "Forget Password",
+        "message": "Please enter your email associated to your account",
+        "input_hint": "Enter your email"
     }
 }

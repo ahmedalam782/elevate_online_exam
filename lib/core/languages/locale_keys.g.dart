@@ -91,5 +91,7 @@ abstract class  LocaleKeys {
   static const global_test_your_knowledge = 'global.test_your_knowledge';
   static const global_online_exam = 'global.online_exam';
   static const global = 'global';
+  static const forget_password_title = 'forget_password.title';
+  static const forget_password = 'forget_password';
 
 }
