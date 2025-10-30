@@ -46,4 +46,6 @@ abstract class CoreInjectableModule {
 
   @lazySingleton
   CancelToken cancelToken() => CancelToken();
+
+  
 }
