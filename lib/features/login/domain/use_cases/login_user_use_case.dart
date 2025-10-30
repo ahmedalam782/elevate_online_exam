@@ -1,0 +1,19 @@
+import 'package:elevate_online_exam/core/config/base_response/result.dart';
+import 'package:elevate_online_exam/features/login/api/api_client/api_client.dart';
+import 'package:elevate_online_exam/features/login/api/datasources/login_remote_data_source_impl.dart';
+import 'package:elevate_online_exam/features/login/data/models/login_request_body.dart';
+import 'package:elevate_online_exam/features/login/data/repositories/login_repository_impl.dart';
+import 'package:elevate_online_exam/features/login/domain/entities/login_response_model.dart';
+import 'package:elevate_online_exam/features/login/domain/repositories/login_repository.dart';
+import 'package:injectable/injectable.dart';
+
+@lazySingleton
+class LoginUserUseCase {
+  final LoginRepository repository;
+
+  LoginUserUseCase({required this.repository});
+
+  Future<Result<LoginResponseModel>> call({required LoginRequestBody body}) {
+    return repository.loginUser(body: body);
+  }
+}

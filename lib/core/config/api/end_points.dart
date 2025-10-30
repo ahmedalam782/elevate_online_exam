@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String baseUrl = "https://ecommerce.routemisr.com/api/v1";
+  static const String baseUrl = "https://exam.elevateegy.com/api/v1";
   // static const String baseImageUrl = "https://ecommerce.routemisr.com/images/";
   static const String refreshToken = "/auth/refresh-token";
   // added login endpoint
