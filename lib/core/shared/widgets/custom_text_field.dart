@@ -55,6 +55,8 @@ class CustomTextFormField extends StatelessWidget {
     this.textCapitalization,
     this.prefixIcon,
     this.labelWidget,
+    this.errorBorder,
+    this.autovalidateMode
   });
   final String? labelText;
   final Widget? labelWidget;
@@ -102,6 +104,10 @@ class CustomTextFormField extends StatelessWidget {
   final InputBorder? enabledBorder;
   final InputBorder? disabledBorder;
   final TextDirection? textDirection;
+  // added error border if needed
+  final InputBorder? errorBorder;
+ // adding autovalidate mode only if needed not on every case
+  final AutovalidateMode? autovalidateMode;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -122,7 +128,8 @@ class CustomTextFormField extends StatelessWidget {
           textDirection: textDirection,
           obscuringCharacter: "*",
           textCapitalization: textCapitalization ?? TextCapitalization.none,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
+          // changing the autovalidateMode to be disabled by default and enable it if needed
+          autovalidateMode: autovalidateMode ?? AutovalidateMode.disabled,
           onSaved: onSaved,
           onEditingComplete: onEditingComplete,
           onTap: onTap,
@@ -195,8 +202,10 @@ class CustomTextFormField extends StatelessWidget {
             floatingLabelBehavior:
                 floatingLabelBehavior ?? FloatingLabelBehavior.auto,
             errorBorder:
-                enabledBorder ??
-                customOutLineBorders(borderColor: AppColors.errorLight),
+            // use errorBorder instead of enabledBorder
+                errorBorder ??
+                // editing the defult error border to be the same as the design in figma
+                customOutLineBorders(borderColor: AppColors.onErrorLight),
             disabledBorder: disabledBorder ?? customOutLineBorders(),
             border: border ?? customOutLineBorders(),
             enabledBorder: enabledBorder ?? customOutLineBorders(),
