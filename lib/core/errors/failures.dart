@@ -65,12 +65,12 @@ class ServerFailure extends Failures {
       );
     } else if (statusCode == 500) {
       return ServerFailure(
-        errorMessage: LocaleKeys.error_api_failure_unknown.tr(),
+        errorMessage: LocaleKeys.error_api_failure_server_error.tr(),
       );
     } else if (statusCode == 403) {
       //    Helper.expiredToken();
       throw ServerFailure(
-        errorMessage: LocaleKeys.error_api_failure_unknown.tr(),
+        errorMessage: LocaleKeys.error_api_failure_expiredToken.tr(),
       );
     } else {
       return ServerFailure(
@@ -96,6 +96,5 @@ List<String> connectionErrorsList = [
   LocaleKeys.error_api_failure_connectionError.tr(),
   LocaleKeys.error_api_failure_connectionTimeout.tr(),
   LocaleKeys.error_api_failure_receiveTimeout.tr(),
-  LocaleKeys.error_api_failure_unknown.tr(),
   LocaleKeys.error_api_failure_sendTimeout.tr(),
 ];
