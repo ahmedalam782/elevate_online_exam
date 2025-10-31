@@ -7,6 +7,7 @@ abstract class  LocaleKeys {
   static const error_api_failure_connectionTimeout = 'error_api_failure.connectionTimeout';
   static const error_api_failure_cancelled = 'error_api_failure.cancelled';
   static const error_api_failure_unknown = 'error_api_failure.unknown';
+  static const error_api_failure_server_error = 'error_api_failure.server_error';
   static const error_api_failure_receiveTimeout = 'error_api_failure.receiveTimeout';
   static const error_api_failure_sendTimeout = 'error_api_failure.sendTimeout';
   static const error_api_failure_unexpected_error = 'error_api_failure.unexpected_error';

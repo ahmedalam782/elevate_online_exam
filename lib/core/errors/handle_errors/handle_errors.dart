@@ -11,7 +11,7 @@ String? handleError(Exception? exception) {
   };
 }
 
-bool? handleNetwork(Exception? exception) {
+bool handleNetwork(Exception? exception) {
   return switch (exception) {
     ServerFailure()
         when connectionErrorsList.contains(exception.errorMessage) =>
