@@ -91,5 +91,22 @@ abstract class  LocaleKeys {
   static const global_test_your_knowledge = 'global.test_your_knowledge';
   static const global_online_exam = 'global.online_exam';
   static const global = 'global';
+  static const signup_sign_up = 'signup.sign_up';
+  static const signup_user_name = 'signup.user_name';
+  static const signup_enter_you_user_name = 'signup.enter_you_user_name';
+  static const signup_first_name = 'signup.first_name';
+  static const signup_enter_first_name = 'signup.enter_first_name';
+  static const signup_last_name = 'signup.last_name';
+  static const signup_enter_last_name = 'signup.enter_last_name';
+  static const signup_email = 'signup.email';
+  static const signup_enter_email = 'signup.enter_email';
+  static const signup_password = 'signup.password';
+  static const signup_enter_password = 'signup.enter_password';
+  static const signup_confirm_password = 'signup.confirm_password';
+  static const signup_phone = 'signup.phone';
+  static const signup_enter_phone_number = 'signup.enter_phone_number';
+  static const signup_already_have_an_account = 'signup.already_have_an_account';
+  static const signup_login = 'signup.login';
+  static const signup = 'signup';
 
 }
