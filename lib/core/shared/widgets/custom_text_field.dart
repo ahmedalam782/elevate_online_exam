@@ -56,8 +56,10 @@ class CustomTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.labelWidget,
     this.errorBorder,
-    this.autovalidateMode
+    this.autovalidateMode,
+    this.errorMaxlines,
   });
+  final int? errorMaxlines;
   final String? labelText;
   final Widget? labelWidget;
   final double? borderRadius;
@@ -106,7 +108,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextDirection? textDirection;
   // added error border if needed
   final InputBorder? errorBorder;
- // adding autovalidate mode only if needed not on every case
+  // adding autovalidate mode only if needed not on every case
   final AutovalidateMode? autovalidateMode;
   @override
   Widget build(BuildContext context) {
@@ -181,7 +183,8 @@ class CustomTextFormField extends StatelessWidget {
             errorStyle: Styles.regular(
               context,
               12,
-            ).copyWith(color: AppColors.errorLight),
+              color: AppColors.onErrorLight,
+            ),
             focusColor: focusBorderColor ?? AppColors.primaryLight,
             suffixIcon: suffixWidget,
             suffixText: suffixText,
@@ -198,11 +201,14 @@ class CustomTextFormField extends StatelessWidget {
                     ),
                   )
                 : prefixWidget,
-            label: labelWidget ?? Text(labelText ?? "", style: Styles.regular(context, 14),),
+            errorMaxLines: errorMaxlines ?? 2,
+            label:
+                labelWidget ??
+                Text(labelText ?? "", style: Styles.regular(context, 14)),
             floatingLabelBehavior:
                 floatingLabelBehavior ?? FloatingLabelBehavior.auto,
             errorBorder:
-            // use errorBorder instead of enabledBorder
+                // use errorBorder instead of enabledBorder
                 errorBorder ??
                 // editing the defult error border to be the same as the design in figma
                 customOutLineBorders(borderColor: AppColors.onErrorLight),

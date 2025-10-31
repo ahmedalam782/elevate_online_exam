@@ -94,6 +94,8 @@ class AppTheme {
         ? LanguageHelper.arabicFontFamily
         : LanguageHelper.englishFontFamily,
     appBarTheme: const AppBarTheme(
+      scrolledUnderElevation: 0,
+
       elevation: 0,
       backgroundColor: AppColors.backgroundLight,
       iconTheme: IconThemeData(color: AppColors.black),
@@ -242,6 +244,7 @@ class AppTheme {
         ? LanguageHelper.arabicFontFamily
         : LanguageHelper.englishFontFamily,
     appBarTheme: const AppBarTheme(
+      scrolledUnderElevation: 0,
       elevation: 0,
       backgroundColor: AppColors.backgroundDark,
       iconTheme: IconThemeData(color: AppColors.white),
