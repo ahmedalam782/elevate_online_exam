@@ -1,5 +1,4 @@
-
-class UserModel {
+class LoginUserModel {
   String? id;
   String? userName;
   String? firstName;
@@ -10,7 +9,7 @@ class UserModel {
   bool? isVerified;
   String? createdAt;
 
-  UserModel({
+  LoginUserModel({
     this.id,
     this.userName,
     this.firstName,

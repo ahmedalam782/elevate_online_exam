@@ -5,7 +5,7 @@ import 'package:elevate_online_exam/features/login/domain/entities/login_respons
 import 'package:elevate_online_exam/features/login/domain/repositories/login_repository.dart';
 import 'package:injectable/injectable.dart';
 
-@lazySingleton
+@LazySingleton(as: LoginRepository)
 class LoginRepositoryImpl implements LoginRepository {
   LoginRemoteDataSourceContract remoteDataSource;
   LoginRepositoryImpl({required this.remoteDataSource});
@@ -18,9 +18,9 @@ class LoginRepositoryImpl implements LoginRepository {
     switch (result) {
       case Success(data: final data):
         final response = data?.toEntity();
-        return Success(data: response);
+        return Success<LoginResponseModel>(data: response);
       case Error(exception: final exception):
-        return Error(exception: exception);
+        return Error<LoginResponseModel>(exception: exception);
     }
   }
 }

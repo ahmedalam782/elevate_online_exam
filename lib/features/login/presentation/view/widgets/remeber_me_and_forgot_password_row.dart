@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
+import 'package:elevate_online_exam/core/routes/routes.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class RemeberMeAndForgotPasswordRow extends StatefulWidget {
   RemeberMeAndForgotPasswordRow({super.key});
@@ -40,22 +42,17 @@ class _RemeberMeAndForgotPasswordRowState
                 ),
               ),
               SizedBox(width: 8),
-              Text(
-                LocaleKeys.login_remember_me.tr(),
-              ),
+              Text(LocaleKeys.login_remember_me.tr()),
             ],
           ),
           GestureDetector(
             onTap: () {
-              // todo: implement navigation to forgot password screen
-              // Handle forgot password tap
               // You can navigate to the forgot password screen here
+              context.goNamed(Routes.forgetPassword);
             },
             child: Text(
               LocaleKeys.login_forgot_password.tr(),
-              style: TextStyle(
-                decoration: TextDecoration.underline,
-              ),
+              style: TextStyle(decoration: TextDecoration.underline),
             ),
           ),
         ],

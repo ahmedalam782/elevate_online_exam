@@ -6,7 +6,7 @@ part of 'user_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-UserDto _$UserDtoFromJson(Map<String, dynamic> json) => UserDto(
+LoginUserDto _$LoginUserDtoFromJson(Map<String, dynamic> json) => LoginUserDto(
   id: json['_id'] as String?,
   userName: json['username'] as String?,
   firstName: json['firstName'] as String?,
@@ -18,14 +18,15 @@ UserDto _$UserDtoFromJson(Map<String, dynamic> json) => UserDto(
   createdAt: json['createdAt'] as String?,
 );
 
-Map<String, dynamic> _$UserDtoToJson(UserDto instance) => <String, dynamic>{
-  '_id': instance.id,
-  'username': instance.userName,
-  'firstName': instance.firstName,
-  'lastName': instance.lastName,
-  'email': instance.email,
-  'phone': instance.phone,
-  'role': instance.role,
-  'isVerified': instance.isVerified,
-  'createdAt': instance.createdAt,
-};
+Map<String, dynamic> _$LoginUserDtoToJson(LoginUserDto instance) =>
+    <String, dynamic>{
+      '_id': instance.id,
+      'username': instance.userName,
+      'firstName': instance.firstName,
+      'lastName': instance.lastName,
+      'email': instance.email,
+      'phone': instance.phone,
+      'role': instance.role,
+      'isVerified': instance.isVerified,
+      'createdAt': instance.createdAt,
+    };

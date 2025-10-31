@@ -15,6 +15,19 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
+import '../../../features/login/api/api_client/api_client.dart' as _i886;
+import '../../../features/login/api/datasources/login_remote_data_source_impl.dart'
+    as _i791;
+import '../../../features/login/data/datasources/login_remote_data_source_contract.dart'
+    as _i354;
+import '../../../features/login/data/repositories/login_repository_impl.dart'
+    as _i928;
+import '../../../features/login/domain/repositories/login_repository.dart'
+    as _i1053;
+import '../../../features/login/domain/use_cases/login_user_use_case.dart'
+    as _i571;
+import '../../../features/login/presentation/view_model/cubit/login_cubit.dart'
+    as _i199;
 import '../../helper/user_helper/user_helper.dart' as _i23;
 import '../api/app_interceptor.dart' as _i449;
 import 'register_module.dart' as _i291;
@@ -44,11 +57,30 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i558.FlutterSecureStorage>(),
       ),
     );
+    gh.lazySingleton<_i886.LoginApiClient>(
+      () => _i886.LoginApiClient(gh<_i361.Dio>()),
+    );
+    gh.lazySingleton<_i354.LoginRemoteDataSourceContract>(
+      () => _i791.LoginRemoteDataSourceImpl(
+        apiClient: gh<_i886.LoginApiClient>(),
+      ),
+    );
+    gh.lazySingleton<_i1053.LoginRepository>(
+      () => _i928.LoginRepositoryImpl(
+        remoteDataSource: gh<_i354.LoginRemoteDataSourceContract>(),
+      ),
+    );
     gh.singleton<_i449.AppInterceptors>(
       () => _i449.AppInterceptors(
         dio: gh<_i361.Dio>(),
         fss: gh<_i558.FlutterSecureStorage>(),
       ),
+    );
+    gh.lazySingleton<_i571.LoginUserUseCase>(
+      () => _i571.LoginUserUseCase(repository: gh<_i1053.LoginRepository>()),
+    );
+    gh.factory<_i199.LoginCubit>(
+      () => _i199.LoginCubit(gh<_i571.LoginUserUseCase>()),
     );
     return this;
   }

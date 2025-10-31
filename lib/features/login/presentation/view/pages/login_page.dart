@@ -1,9 +1,12 @@
 import 'package:easy_localization/easy_localization.dart' as ez;
+import 'package:elevate_online_exam/core/config/di/injectable_config.dart';
 import 'package:elevate_online_exam/core/languages/lang.dart';
 import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_app_bar.dart';
 import 'package:elevate_online_exam/features/login/presentation/view/widgets/login_body.dart';
+import 'package:elevate_online_exam/features/login/presentation/view_model/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginPage extends StatelessWidget {
@@ -21,7 +24,10 @@ class LoginPage extends StatelessWidget {
           title: LocaleKeys.login_log_in.tr(),
           isCenteredTitle: false,
         ),
-        body: LoginBody(),
+        body: BlocProvider<LoginCubit>(
+          create: (context) => getIt<LoginCubit>(),
+          child: LoginBody(),
+        ),
       ),
     );
   }

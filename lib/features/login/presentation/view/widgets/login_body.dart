@@ -6,8 +6,10 @@ import 'package:elevate_online_exam/core/theme/app_colors.dart';
 import 'package:elevate_online_exam/features/login/presentation/view/widgets/dont_have_account.dart';
 import 'package:elevate_online_exam/features/login/presentation/view/widgets/email_and_password_form.dart';
 import 'package:elevate_online_exam/features/login/presentation/view/widgets/remeber_me_and_forgot_password_row.dart';
+import 'package:elevate_online_exam/features/login/presentation/view_model/cubit/login_cubit.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginBody extends StatelessWidget {
@@ -37,6 +39,7 @@ class LoginBody extends StatelessWidget {
               backGroundColor: AppColors.prime,
               onTap: () {
                 //todo: implement login functionality
+                context.read<LoginCubit>().validateThenLogin();
               },
             ),
           ),

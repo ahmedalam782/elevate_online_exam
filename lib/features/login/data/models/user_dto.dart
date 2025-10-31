@@ -1,8 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_dto.g.dart';
+
 @JsonSerializable()
-class UserDto {
+class LoginUserDto {
   @JsonKey(name: "_id")
   String? id;
   @JsonKey(name: "username")
@@ -15,7 +16,7 @@ class UserDto {
   bool? isVerified;
   String? createdAt;
 
-  UserDto({
+  LoginUserDto({
     this.id,
     this.userName,
     this.firstName,
@@ -27,5 +28,6 @@ class UserDto {
     this.createdAt,
   });
 
-  factory UserDto.fromJson(Map<String, dynamic> json) => _$UserDtoFromJson(json);
+  factory LoginUserDto.fromJson(Map<String, dynamic> json) =>
+      _$LoginUserDtoFromJson(json);
 }
