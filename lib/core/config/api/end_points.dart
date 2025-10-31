@@ -1,6 +1,6 @@
 class EndPoints {
-  // updating the base url
   static const String baseUrl = "https://exam.elevateegy.com/api/v1";
+  // static const String baseImageUrl = "https://exam.elevateegy.com/images/";
   static const String refreshToken = "/auth/refresh-token";
 }
 
