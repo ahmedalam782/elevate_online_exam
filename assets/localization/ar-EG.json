@@ -110,7 +110,8 @@
         "phone":"الهاتف",
         "enter_phone_number":"أدخل رقم الهاتف",
         "already_have_an_account":"بالفعل تمتلك حساب؟",
-        "login":"تسجيل الدخول"
+        "login":"تسجيل الدخول",
+        "account_created_successfully":"تم إنشاء الحساب بنجاح"
 
         
 

@@ -2,6 +2,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_online_exam/core/config/base_state/base_state.dart';
 import 'package:elevate_online_exam/core/config/di/injectable_config.dart';
+import 'package:elevate_online_exam/core/errors/failures.dart';
 import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_button.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_text_field.dart';
@@ -59,37 +60,48 @@ class _SignupBodyState extends State<SignupBody> {
 
                   hintText: LocaleKeys.signup_enter_you_user_name.tr(),
                   labelWidget: Text(LocaleKeys.signup_user_name.tr()),
+                  validator: Validations.validateName,
                 ),
                 SizedBox(height: 24.h),
                 Row(
                   children: [
                     Expanded(
-                      child: CustomTextFormField(
-                        controller: viewModel.firstNameController,
+                      child: SizedBox(
+                        height: 75.h,
+                        child: CustomTextFormField(
+                          controller: viewModel.firstNameController,
+                          validator: Validations.validateName,
 
-                        maxLine: 1,
-                        fillColor: AppColors.backgroundLight,
-                        hintText: LocaleKeys.signup_enter_first_name.tr(),
-                        labelWidget: Text(LocaleKeys.signup_first_name.tr()),
+                          maxLine: 1,
+                          fillColor: AppColors.backgroundLight,
+                          hintText: LocaleKeys.signup_enter_first_name.tr(),
+                          labelWidget: Text(LocaleKeys.signup_first_name.tr()),
+                        ),
                       ),
                     ),
-                    SizedBox(width: 16.w),
+                    SizedBox(width: 16),
                     Expanded(
-                      child: CustomTextFormField(
-                        controller: viewModel.lastNameController,
+                      child: SizedBox(
+                        height: 75.h,
 
-                        fillColor: AppColors.backgroundLight,
-                        maxLine: 1,
+                        child: CustomTextFormField(
+                          controller: viewModel.lastNameController,
+                          validator: Validations.validateName,
 
-                        hintText: LocaleKeys.signup_enter_last_name.tr(),
-                        labelWidget: Text(LocaleKeys.signup_last_name.tr()),
+                          fillColor: AppColors.backgroundLight,
+                          maxLine: 1,
+
+                          hintText: LocaleKeys.signup_enter_last_name.tr(),
+                          labelWidget: Text(LocaleKeys.signup_last_name.tr()),
+                        ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 24.h),
+                // SizedBox(height: 6.h),
                 CustomTextFormField(
                   controller: viewModel.emailController,
+                  validator: Validations.validateEmail,
 
                   fillColor: AppColors.backgroundLight,
 
@@ -100,40 +112,82 @@ class _SignupBodyState extends State<SignupBody> {
                 Row(
                   children: [
                     Expanded(
-                      child: CustomTextFormField(
-                        controller: viewModel.passwordController,
+                      child: SizedBox(
+                        height: 75.h,
+                        child: BlocBuilder<SignupCubit, SignupStates>(
+                          // buildWhen: (prev, current) {
+                          //   return prev.isPasswordVisible !=
+                          //       current.isPasswordVisible;
+                          // },
+                          builder: (context, state) {
+                            return CustomTextFormField(
+                              // isObscureText: ,
+                              validator: Validations.validatePassword,
+                              suffixWidget: InkWell(
+                                onTap: () {
+                                  viewModel.doIntent(TogglePassword());
+                                },
+                                child: state.isPasswordVisible == false
+                                    ? Icon(Icons.visibility_off_outlined)
+                                    : Icon(Icons.visibility_outlined),
+                              ),
+                              isObscureText: !state.isPasswordVisible,
+                              maxLine: 1,
 
-                        fillColor: AppColors.backgroundLight,
+                              controller: viewModel.passwordController,
 
-                        hintText: LocaleKeys.signup_password.tr(),
-                        labelWidget: Text(
-                          LocaleKeys.signup_enter_password.tr(),
+                              fillColor: AppColors.backgroundLight,
+
+                              hintText: LocaleKeys.signup_password.tr(),
+                              labelWidget: Text(
+                                LocaleKeys.signup_enter_password.tr(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ),
                     SizedBox(width: 16.w),
                     Expanded(
-                      child: CustomTextFormField(
-                        controller: viewModel.confirmPasswordController,
+                      child: SizedBox(
+                        height: 75.h,
 
-                        fillColor: AppColors.backgroundLight,
+                        child: BlocBuilder<SignupCubit, SignupStates>(
+                          builder: (context, state) {
+                            return CustomTextFormField(
+                              maxLine: 1,
+                              controller: viewModel.confirmPasswordController,
+                              suffixWidget: InkWell(
+                                onTap: () {
+                                  viewModel.doIntent(ToggleConfirmPassword());
+                                },
+                                child: state.isConfirmPasswordVisible == false
+                                    ? Icon(Icons.visibility_off_outlined)
+                                    : Icon(Icons.visibility_outlined),
+                              ),
+                              isObscureText: !state.isConfirmPasswordVisible,
+                              fillColor: AppColors.backgroundLight,
 
-                        hintText: LocaleKeys.signup_confirm_password.tr(),
-                        labelWidget: Text(
-                          LocaleKeys.signup_confirm_password.tr(),
+                              hintText: LocaleKeys.signup_confirm_password.tr(),
+                              labelWidget: Text(
+                                LocaleKeys.signup_confirm_password.tr(),
+                              ),
+                              validator: (value) {
+                                return Validations.validatePasswordVerification(
+                                  value,
+                                  viewModel.passwordController.text,
+                                );
+                              },
+                            );
+                          },
                         ),
-                        validator: (value) {
-                          return Validations.validatePasswordVerification(
-                            value,
-                            viewModel.passwordController.text,
-                          );
-                        },
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 24.h),
+                SizedBox(height: 6.h),
                 CustomTextFormField(
+                  maxLength: 11,
                   controller: viewModel.phoneController,
 
                   fillColor: AppColors.backgroundLight,
@@ -145,14 +199,45 @@ class _SignupBodyState extends State<SignupBody> {
                 ),
                 SizedBox(height: 48.h),
                 BlocConsumer<SignupCubit, SignupStates>(
+                  // buildWhen: (),
+                  //  TODO: MOHAMMED
+                  // CAN BE ENHANCED USING buildWhen
+                  // buildWhen: (previous, current) {
+                  //   if(previous.state == StateType .initial &&  )
+                  // },
                   listener: (context, state) {
                     if (state.state == StateType.error) {
+                      final exe = state.exception;
+                      if (exe is Failures) {
+                        CustomToast(
+                          context: context,
+                          description: exe.errorMessage,
+                          // header: ,
+                          type: ToastificationType.error,
+                        ).showAlertToast(
+                          // mainColor: Colors.red,
+                          backgroundColor: AppColors.errorDark,
+                          message: exe.errorMessage,
+                        );
+                      }
+                    }
+                    if (state.state == StateType.success) {
+                      //  TODO: MOHAMMED
+                      // NAVIGATE TO HOME SCREEN
+
                       CustomToast(
                         context: context,
-                        description: state.exception.toString(),
+                        description: LocaleKeys
+                            .signup_account_created_successfully
+                            .tr(),
                         // header: ,
-                        type: ToastificationType.error,
-                      ).showToast();
+                        type: ToastificationType.success,
+                      ).showAlertToast(
+                        // mainColor: Colors.red,
+                        backgroundColor: AppColors.primeAccent,
+                        message: LocaleKeys.signup_account_created_successfully
+                            .tr(),
+                      );
                     }
                   },
                   builder: (context, state) {

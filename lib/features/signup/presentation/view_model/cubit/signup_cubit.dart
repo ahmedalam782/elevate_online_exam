@@ -1,5 +1,6 @@
 import 'package:elevate_online_exam/core/config/base_response/result.dart';
 import 'package:elevate_online_exam/core/config/base_state/base_state.dart';
+import 'package:elevate_online_exam/core/errors/failures.dart';
 import 'package:elevate_online_exam/features/signup/domain/models/signup_post_entity.dart';
 import 'package:elevate_online_exam/features/signup/domain/models/user_entity.dart';
 import 'package:elevate_online_exam/features/signup/domain/usecases/signup_user_usecase.dart';
@@ -15,14 +16,29 @@ class SignupCubit extends Cubit<SignupStates> {
 
   SignupCubit({required SignupUserUsecase signupUserCase})
     : _signupUserUsecase = signupUserCase,
-      super(SignupStates.all(state: StateType.initial));
+      super(
+        SignupStates.all(
+          state: StateType.initial,
+          isConfirmPasswordVisible: false,
+          isPasswordVisible: false,
+        ),
+      );
 
-  Future<void> doIntent(SignupEvents homeEvent) async {
-    switch (homeEvent) {
-      case SignupUserEvent():
-        _signup();
-    }
-  }
+  Future<void> doIntent(SignupEvents event) async => switch (event) {
+    SignupUserEvent() => _signup(),
+    TogglePassword() => _togglePasswordVisibility(),
+    ToggleConfirmPassword() => _toggleConfirmPasswordVisibility(),
+  };
+
+  SignupPostEntity get _signupModel => SignupPostEntity(
+    username: userNameController.text,
+    firstName: firstNameController.text,
+    lastName: lastNameController.text,
+    email: emailController.text,
+    password: passwordController.text,
+    rePassword: confirmPasswordController.text,
+    phone: phoneController.text,
+  );
 
   final userNameController = TextEditingController();
   final firstNameController = TextEditingController();
@@ -34,51 +50,39 @@ class SignupCubit extends Cubit<SignupStates> {
 
   Future<void> _signup() async {
     // I WANT THE CHANGE HERE
-    _filleSignupModel();
-    emit(
-      SignupStates.all(
-        state: StateType.loading,
-      ).copyWith(state: StateType.loading),
-    );
-    final response = await _signupUserUsecase.call(_filleSignupModel());
+
+    emit(state.copyWith(state: StateType.loading));
+    final response = await _signupUserUsecase.call(_signupModel);
     switch (response) {
       case Success<UserEntity>():
-        emit(
-          SignupStates.all(
-            state: StateType.success,
-          ).copyWith(state: StateType.success, data: response.data),
-        );
+        emit(state.copyWith(state: StateType.success, data: response.data));
 
       case Error<UserEntity>():
         emit(
-          SignupStates.all(
-            state: StateType.error,
-          ).copyWith(state: StateType.error, exception: response.exception),
+          state.copyWith(state: StateType.error, exception: response.exception),
         );
     }
   }
 
-  SignupPostEntity _filleSignupModel() {
-    return SignupPostEntity(
-      username: userNameController.text,
-      firstName: firstNameController.text,
-      lastName: lastNameController.text,
-      email: emailController.text,
-      password: passwordController.text,
-      rePassword: confirmPasswordController.text,
-      phone: phoneController.text,
-    );
-  }
+  void _togglePasswordVisibility() =>
+      emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));
 
+  void _toggleConfirmPasswordVisibility() => emit(
+    state.copyWith(isConfirmPasswordVisible: !state.isConfirmPasswordVisible),
+  );
   @override
   Future<void> close() {
-    userNameController.dispose();
-    firstNameController.dispose();
-    lastNameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    confirmPasswordController.dispose();
-    phoneController.dispose();
+    for (final controller in [
+      userNameController,
+      firstNameController,
+      lastNameController,
+      emailController,
+      passwordController,
+      confirmPasswordController,
+      phoneController,
+    ]) {
+      controller.dispose();
+    }
     return super.close();
   }
 }

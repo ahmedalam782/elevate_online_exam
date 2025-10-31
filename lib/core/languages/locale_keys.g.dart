@@ -108,6 +108,7 @@ abstract class  LocaleKeys {
   static const signup_enter_phone_number = 'signup.enter_phone_number';
   static const signup_already_have_an_account = 'signup.already_have_an_account';
   static const signup_login = 'signup.login';
+  static const signup_account_created_successfully = 'signup.account_created_successfully';
   static const signup = 'signup';
 
 }
