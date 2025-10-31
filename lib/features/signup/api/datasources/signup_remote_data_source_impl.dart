@@ -1,6 +1,7 @@
 // TODO: api SignupRemoteDataSourceImpl
 
 import 'package:dio/dio.dart';
+import 'package:elevate_online_exam/core/config/api/api_executer.dart';
 import 'package:elevate_online_exam/core/config/base_response/result.dart';
 import 'package:elevate_online_exam/features/signup/api/api_client/sigup_api_client.dart';
 import 'package:elevate_online_exam/features/signup/data/datasources/signup_remote_data_source.dart';
@@ -18,13 +19,9 @@ class SigupRemoteDataSourceImpl implements SignupRemoteDataSourceContract {
   Future<Result<SignupResponse>> signupUser(
     SignupPostDto signupPostModel,
   ) async {
-    try {
+    return await executeApi<SignupResponse>(() async {
       final response = await homeApiClient.signupUser(signupPostModel);
-      return Success<SignupResponse>(data: response);
-    } on DioException catch (e) {
-      return Error<SignupResponse>(exception: e as Exception);
-    } catch (e) {
-      return Error<SignupResponse>(exception: e as Exception);
-    }
+      return response;
+    });
   }
 }

@@ -13,6 +13,6 @@ abstract class SigupApiClient {
   @factoryMethod
   factory SigupApiClient(Dio dio) = _SigupApiClient;
 
-  @POST(EndPoints.signupToken)
+  @POST(EndPoints.signupEndpoint)
   Future<SignupResponse> signupUser(@Body() SignupPostDto sigupModel);
 }
