@@ -7,7 +7,7 @@ class BaseState<T> {
   final Exception? exception;
 
   // removing the normal constructor
-  BaseState({this.state = StateType.initial, this.data, this.exception});
+  
 
 
   // create custom constructors for each state type to make it more readable and simplify the code inside the cubit
