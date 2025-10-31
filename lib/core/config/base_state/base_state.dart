@@ -7,8 +7,6 @@ class BaseState<T> {
   final Exception? exception;
 
   // removing the normal constructor
-  
-
 
   // create custom constructors for each state type to make it more readable and simplify the code inside the cubit
   /* for example instead of :
@@ -40,8 +38,12 @@ class BaseState<T> {
       exception = null;
 
   const BaseState.error(this.exception) : state = StateType.error, data = null;
+  const BaseState.all({
+    required this.exception,
+    required this.data,
+    required this.state,
+  });
 
-  
   // added when method to make the code more readable in the UI
   R when<R>({
     required R Function(T data) success,
