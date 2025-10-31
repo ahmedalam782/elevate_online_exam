@@ -12,7 +12,7 @@ part of 'sigup_api_client.dart';
 
 class _SigupApiClient implements SigupApiClient {
   _SigupApiClient(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://ecommerce.routemisr.com/api/v1';
+    baseUrl ??= 'https://exam.elevateegy.com/api/v1';
   }
 
   final Dio _dio;
@@ -32,7 +32,7 @@ class _SigupApiClient implements SigupApiClient {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/auth/refresh-token',
+            '/auth/signup',
             queryParameters: queryParameters,
             data: _data,
           )

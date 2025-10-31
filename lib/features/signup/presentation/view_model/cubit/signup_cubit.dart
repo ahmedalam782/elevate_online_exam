@@ -15,7 +15,7 @@ class SignupCubit extends Cubit<SignupStates> {
 
   SignupCubit({required SignupUserUsecase signupUserCase})
     : _signupUserUsecase = signupUserCase,
-      super(SignupStates());
+      super(SignupStates.all(state: StateType.initial));
 
   Future<void> doIntent(SignupEvents homeEvent) async {
     switch (homeEvent) {
@@ -35,23 +35,25 @@ class SignupCubit extends Cubit<SignupStates> {
   Future<void> _signup() async {
     // I WANT THE CHANGE HERE
     _filleSignupModel();
-    emit(SignupStates().copyWith(state: StateType.loading));
+    emit(
+      SignupStates.all(
+        state: StateType.loading,
+      ).copyWith(state: StateType.loading),
+    );
     final response = await _signupUserUsecase.call(_filleSignupModel());
     switch (response) {
       case Success<UserEntity>():
         emit(
-          SignupStates().copyWith(
+          SignupStates.all(
             state: StateType.success,
-            data: response.data,
-          ),
+          ).copyWith(state: StateType.success, data: response.data),
         );
 
       case Error<UserEntity>():
         emit(
-          SignupStates().copyWith(
+          SignupStates.all(
             state: StateType.error,
-            exception: response.exception,
-          ),
+          ).copyWith(state: StateType.error, exception: response.exception),
         );
     }
   }
