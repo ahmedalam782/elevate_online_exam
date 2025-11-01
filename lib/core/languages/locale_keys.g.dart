@@ -93,6 +93,20 @@ abstract class  LocaleKeys {
   static const global_online_exam = 'global.online_exam';
   static const global = 'global';
   static const forget_password_title = 'forget_password.title';
+  static const forget_password_message = 'forget_password.message';
+  static const forget_password_email_hint = 'forget_password.email_hint';
+  static const forget_password_email_label = 'forget_password.email_label';
+  static const forget_password_continue = 'forget_password.continue';
+  static const forget_password_email_verification = 'forget_password.email_verification';
+  static const forget_password_email_verification_message = 'forget_password.email_verification_message';
+  static const forget_password_did_not_receive_code = 'forget_password.did_not_receive_code';
+  static const forget_password_resend_code = 'forget_password.resend_code';
+  static const forget_password_invalid_code = 'forget_password.invalid_code';
+  static const forget_password_reset_password = 'forget_password.reset_password';
+  static const forget_password_password_requirements = 'forget_password.password_requirements';
+  static const forget_password_new_password = 'forget_password.new_password';
+  static const forget_password_enter_your_password = 'forget_password.enter_your_password';
+  static const forget_password_confirm_password = 'forget_password.confirm_password';
   static const forget_password = 'forget_password';
 
 }

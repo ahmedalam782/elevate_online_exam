@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../theme/app_colors.dart';
@@ -60,6 +61,10 @@ class CustomPinInput extends StatelessWidget {
         closeKeyboardWhenCompleted: closeKeyboardWhenCompleted,
         isCursorAnimationEnabled: true,
         keyboardType: TextInputType.number,
+        inputFormatters: [
+          // FilteringTextInputFormatter.digitsOnly,
+          FilteringTextInputFormatter.digitsOnly,
+        ],
       ),
     );
   }
@@ -67,12 +72,10 @@ class CustomPinInput extends StatelessWidget {
   static PinTheme defaultPinTheme(BuildContext context) => PinTheme(
     width: 48,
     height: 48,
-    textStyle: Styles.semiBold(
-      context,
-      24,
-    ).copyWith(color: AppColors.primaryLight),
+    textStyle: Styles.semiBold(context, 18, color: AppColors.onBackgroundLight),
     decoration: BoxDecoration(
-      color: AppColors.grayCF,
+      color: AppColors.blueDF,
+      border: Border.all(color: AppColors.blueDF, width: 1),
       borderRadius: BorderRadius.circular(8),
       boxShadow: [
         BoxShadow(
@@ -87,8 +90,8 @@ class CustomPinInput extends StatelessWidget {
   static PinTheme focusedPinTheme(BuildContext context) =>
       defaultPinTheme(context).copyWith(
         decoration: BoxDecoration(
-          color: AppColors.primaryLight,
-          border: Border.all(color: AppColors.primaryLight, width: 2),
+          color: AppColors.blueDF,
+          border: Border.all(color: AppColors.primaryLight, width: 1),
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
@@ -104,8 +107,7 @@ class CustomPinInput extends StatelessWidget {
       defaultPinTheme(context).copyWith(
         decoration: BoxDecoration(
           border: Border.all(color: AppColors.primaryLight, width: 1),
-          color: AppColors.primaryLight,
-
+          color: AppColors.blueDF,
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
@@ -119,9 +121,10 @@ class CustomPinInput extends StatelessWidget {
       );
   static PinTheme errorPinTheme(BuildContext context) =>
       defaultPinTheme(context).copyWith(
+        textStyle: Styles.semiBold(context, 18, color: AppColors.onErrorLight),
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.errorLight, width: 2),
-          color: AppColors.errorLight.withValues(alpha: 0.1),
+          border: Border.all(color: AppColors.onErrorLight, width: 1),
+          color: AppColors.white,
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(

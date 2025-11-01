@@ -148,7 +148,7 @@ class CustomTextFormField extends StatelessWidget {
           textInputAction: textInputAction,
           initialValue: initialValue,
           controller: controller,
-          maxLines: maxLine,
+          maxLines: maxLine ?? 1,
           textAlign: textAlign ?? TextAlign.start,
           keyboardType: textInputType,
           inputFormatters: textInputType == TextInputType.phone
