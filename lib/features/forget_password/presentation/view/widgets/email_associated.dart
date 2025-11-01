@@ -1,7 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_online_exam/core/errors/handle_errors/handle_errors.dart';
+import 'package:elevate_online_exam/core/shared/widgets/custom_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:toastification/toastification.dart';
 
+import '../../../../../core/config/base_state/base_state.dart';
 import '../../../../../core/languages/locale_keys.g.dart';
 import '../../../../../core/shared/widgets/custom_button.dart';
 import '../../../../../core/shared/widgets/custom_text_field.dart';
@@ -65,16 +69,40 @@ class EmailAssociated extends StatelessWidget {
             },
           ),
           SizedBox(height: 24),
-          BlocBuilder<ForgetPasswordCubit, ForgetPasswordStates>(
+          BlocConsumer<ForgetPasswordCubit, ForgetPasswordStates>(
             builder: (context, state) {
               return CustomButton(
+                isLoading:
+                    state.sendCodeToEmailState!.state == StateType.loading,
                 title: LocaleKeys.forget_password_continue.tr(),
                 onTap: state.formValidChangedState!.isValid
                     ? () {
-                        forgetPasswordCubit.doIndented(NextPageEvent());
+                        forgetPasswordCubit.doIndented(
+                          SendCodeToEmailEvent(),
+                        );
                       }
                     : null,
               );
+            },
+            listener: (context, state) {
+              if (state.sendCodeToEmailState!.state == StateType.success) {
+                CustomToast(
+                  context: context,
+                  header: LocaleKeys.forget_password_email_sent_message.tr(),
+                  type: ToastificationType.success,
+                ).showToast();
+              } else if (state.sendCodeToEmailState!.state == StateType.error) {
+                bool hasNetworkError = handleNetwork(
+                  state.sendCodeToEmailState!.exception!,
+                );
+                CustomToast(
+                  context: context,
+                  header: hasNetworkError
+                      ? LocaleKeys.global_check_internet.tr()
+                      : handleError(state.sendCodeToEmailState!.exception!),
+                  type: ToastificationType.error,
+                ).showToast();
+              }
             },
           ),
         ],

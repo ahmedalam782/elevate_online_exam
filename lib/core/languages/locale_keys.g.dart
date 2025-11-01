@@ -107,6 +107,9 @@ abstract class  LocaleKeys {
   static const forget_password_new_password = 'forget_password.new_password';
   static const forget_password_enter_your_password = 'forget_password.enter_your_password';
   static const forget_password_confirm_password = 'forget_password.confirm_password';
+  static const forget_password_email_sent_message = 'forget_password.email_sent_message';
+  static const forget_password_code_correct = 'forget_password.code_correct';
+  static const forget_password_password_reset_success = 'forget_password.password_reset_success';
   static const forget_password = 'forget_password';
 
 }

@@ -3,9 +3,15 @@ import 'package:elevate_online_exam/core/shared/widgets/custom_text_field.dart';
 import 'package:elevate_online_exam/features/forget_password/presentation/view_model/cubit/forget_password_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:toastification/toastification.dart';
 
+import '../../../../../core/config/base_state/base_state.dart';
+import '../../../../../core/errors/handle_errors/handle_errors.dart';
 import '../../../../../core/languages/locale_keys.g.dart';
+import '../../../../../core/routes/routes.dart';
 import '../../../../../core/shared/widgets/custom_button.dart';
+import '../../../../../core/shared/widgets/custom_toast.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/styles.dart';
 import '../../../../../core/validations/validations.dart';
@@ -135,16 +141,39 @@ class ResetPassword extends StatelessWidget {
             },
           ),
           SizedBox(height: 32),
-          BlocBuilder<ForgetPasswordCubit, ForgetPasswordStates>(
+          BlocConsumer<ForgetPasswordCubit, ForgetPasswordStates>(
             builder: (context, state) {
               return CustomButton(
+                isLoading: state.resetPasswordState!.state == StateType.loading,
                 title: LocaleKeys.forget_password_continue.tr(),
                 onTap: state.formValidChangedState!.isValid
                     ? () {
-                        // Implement reset password logic
+                        forgetPasswordCubit.doIndented(ResetPasswordEvent());
                       }
                     : null,
               );
+            },
+            listener: (context, state) {
+              if (state.resetPasswordState!.state == StateType.success) {
+                CustomToast(
+                  context: context,
+                  header: LocaleKeys.forget_password_password_reset_success
+                      .tr(),
+                  type: ToastificationType.success,
+                ).showToast();
+                context.go(Routes.login);
+              } else if (state.resetPasswordState!.state == StateType.error) {
+                bool hasNetworkError = handleNetwork(
+                  state.resetPasswordState!.exception!,
+                );
+                CustomToast(
+                  context: context,
+                  header: hasNetworkError
+                      ? LocaleKeys.global_check_internet.tr()
+                      : handleError(state.resetPasswordState!.exception!),
+                  type: ToastificationType.error,
+                ).showToast();
+              }
             },
           ),
         ],

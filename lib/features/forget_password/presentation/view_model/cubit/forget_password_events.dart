@@ -19,5 +19,18 @@ final class FormValidChangedEvent extends ForgetPasswordEvents {
 
 final class NextPageEvent extends ForgetPasswordEvents {}
 
+class SendCodeToEmailEvent extends ForgetPasswordEvents {
+  SendCodeToEmailEvent();
+}
 
+class VerifyCodeEvent extends ForgetPasswordEvents {
+  VerifyCodeEvent();
+}
 
+class ResetPasswordEvent extends ForgetPasswordEvents {
+  ResetPasswordEvent();
+}
+
+class ResendCodeToEmailEvent extends ForgetPasswordEvents {
+  ResendCodeToEmailEvent();
+}

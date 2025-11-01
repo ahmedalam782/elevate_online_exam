@@ -1,3 +1,4 @@
+import 'package:elevate_online_exam/core/config/base_state/base_state.dart';
 import 'package:equatable/equatable.dart';
 
 class ForgetPasswordStates extends Equatable {
@@ -5,6 +6,10 @@ class ForgetPasswordStates extends Equatable {
   final PageChangedState? pageChangedState;
   final ObscureTextChangedState? obscureNewPasswordTextChangedState;
   final ObscureTextChangedState? obscureConfirmNewPasswordTextChangedState;
+  final SendCodeToEmailState? sendCodeToEmailState;
+  final ResendCodeToEmailState? resendCodeToEmailState;
+  final VerifyCodeState? verifyCodeState;
+  final ResetPasswordState? resetPasswordState;
 
   const ForgetPasswordStates({
     this.formValidChangedState = const FormValidChangedState(isValid: false),
@@ -12,6 +17,10 @@ class ForgetPasswordStates extends Equatable {
     this.obscureNewPasswordTextChangedState = const ObscureTextChangedState(
       isObscure: true,
     ),
+    this.sendCodeToEmailState = const SendCodeToEmailState(),
+    this.verifyCodeState = const VerifyCodeState(),
+    this.resetPasswordState = const ResetPasswordState(),
+    this.resendCodeToEmailState = const ResendCodeToEmailState(),
     this.obscureConfirmNewPasswordTextChangedState =
         const ObscureTextChangedState(isObscure: true),
   });
@@ -21,6 +30,10 @@ class ForgetPasswordStates extends Equatable {
     PageChangedState? pageChangedState,
     ObscureTextChangedState? obscureNewPasswordTextChangedState,
     ObscureTextChangedState? obscureConfirmNewPasswordTextChangedState,
+    SendCodeToEmailState? sendCodeToEmailState,
+    VerifyCodeState? verifyCodeState,
+    ResetPasswordState? resetPasswordState,
+    ResendCodeToEmailState? resendCodeToEmailState,
   }) {
     return ForgetPasswordStates(
       formValidChangedState:
@@ -32,6 +45,11 @@ class ForgetPasswordStates extends Equatable {
       obscureConfirmNewPasswordTextChangedState:
           obscureConfirmNewPasswordTextChangedState ??
           this.obscureConfirmNewPasswordTextChangedState,
+      sendCodeToEmailState: sendCodeToEmailState ?? this.sendCodeToEmailState,
+      verifyCodeState: verifyCodeState ?? this.verifyCodeState,
+      resetPasswordState: resetPasswordState ?? this.resetPasswordState,
+      resendCodeToEmailState:
+          resendCodeToEmailState ?? this.resendCodeToEmailState,
     );
   }
 
@@ -41,11 +59,15 @@ class ForgetPasswordStates extends Equatable {
     pageChangedState,
     obscureNewPasswordTextChangedState,
     obscureConfirmNewPasswordTextChangedState,
+    sendCodeToEmailState,
+    verifyCodeState,
+    resetPasswordState,
+    resendCodeToEmailState,
   ];
 
   @override
   String toString() {
-    return "ForgetPasswordStates(formValidChangedState: $formValidChangedState , pageChangedState: $pageChangedState, obscureNewPasswordTextChangedState: $obscureNewPasswordTextChangedState, obscureConfirmNewPasswordTextChangedState: $obscureConfirmNewPasswordTextChangedState)";
+    return "ForgetPasswordStates(formValidChangedState: $formValidChangedState , pageChangedState: $pageChangedState, obscureNewPasswordTextChangedState: $obscureNewPasswordTextChangedState, obscureConfirmNewPasswordTextChangedState: $obscureConfirmNewPasswordTextChangedState , sendCodeToEmailState: $sendCodeToEmailState, verifyCodeState: $verifyCodeState, resetPasswordState: $resetPasswordState, resendCodeToEmailState: $resendCodeToEmailState)";
   }
 }
 
@@ -89,4 +111,20 @@ class ObscureTextChangedState extends Equatable {
   String toString() {
     return "ObscureTextChangedState(isObscure: $isObscure)";
   }
+}
+
+class SendCodeToEmailState extends BaseState {
+  const SendCodeToEmailState({super.state, super.data, super.exception});
+}
+
+class ResendCodeToEmailState extends BaseState {
+  const ResendCodeToEmailState({super.state, super.data, super.exception});
+}
+
+class VerifyCodeState extends BaseState {
+  const VerifyCodeState({super.state, super.data, super.exception});
+}
+
+class ResetPasswordState extends BaseState {
+  const ResetPasswordState({super.state, super.data, super.exception});
 }
