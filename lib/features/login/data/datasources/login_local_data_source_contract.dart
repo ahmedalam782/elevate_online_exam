@@ -1,1 +1,4 @@
-// TODO: data LoginLocalDataSourceImpl
+
+class LoginLocalDataSourceContract {
+  Future<void> saveToken(String token);
+}

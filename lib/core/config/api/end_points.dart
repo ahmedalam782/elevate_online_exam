@@ -3,7 +3,7 @@ class EndPoints {
   // static const String baseImageUrl = "https://exam.elevateegy.com/images/";
   static const String refreshToken = "/auth/refresh-token";
   // added login endpoint
-  static const String login = "/auth/login";
+  static const String login = "/auth/signin";
 }
 
 class Apikeys {

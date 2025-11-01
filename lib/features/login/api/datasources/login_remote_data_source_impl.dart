@@ -15,15 +15,16 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSourceContract {
   @override
   Future<Result<LoginResponse>> loginUser({
     required LoginRequestBody body,
+    required bool rememberMe,
   }) async {
     try {
       final response = await apiClient.loginUser(body);
       return Success<LoginResponse>(data: response);
-    }
-    on DioException catch (dioException) {
-      return Error<LoginResponse>(exception: ServerFailure.fromDioException(dioException: dioException));
-    }
-     catch (e) {
+    } on DioException catch (dioException) {
+      return Error<LoginResponse>(
+        exception: ServerFailure.fromDioException(dioException: dioException),
+      );
+    } catch (e) {
       return Error<LoginResponse>(exception: e as Exception);
     }
   }

@@ -8,13 +8,13 @@ part of 'login_response.dart';
 
 LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
     LoginResponse(
-        message: json['message'] as String?,
-        token: json['token'] as String?,
-        code: (json['code'] as num?)?.toInt(),
-      )
-      ..user = json['user'] == null
+      message: json['message'] as String?,
+      token: json['token'] as String?,
+      code: (json['code'] as num?)?.toInt(),
+      user: json['user'] == null
           ? null
-          : LoginUserDto.fromJson(json['user'] as Map<String, dynamic>);
+          : LoginUserDto.fromJson(json['user'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
     <String, dynamic>{

@@ -10,7 +10,7 @@ class LoginResponse {
   String? token;
   LoginUserDto? user;
   int? code;
-  LoginResponse({this.message, this.token, this.code});
+  LoginResponse({this.message, this.token, this.code,this.user});
   factory LoginResponse.fromJson(Map<String, dynamic> json) =>
       _$LoginResponseFromJson(json);
 

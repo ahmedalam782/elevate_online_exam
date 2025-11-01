@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_online_exam/core/helper/parsing_helper/parsing_helper.dart';
 
 import '../languages/locale_keys.g.dart';
 
@@ -59,17 +60,20 @@ class ServerFailure extends Failures {
         statusCode == 409 ||
         statusCode == 424 ||
         statusCode == 404) {
-      return ServerFailure(
-        errorMessage:
-            response['message'] ?? LocaleKeys.error_api_failure_unknown.tr(),
-      );
+          //used the parsing helper to see if the error message is string or map
+          // because only response['message'] , going to fail if the response is string only 
+      final errorData = ParsingHelper.parseErrorResponse(response);
+      final message = errorData['message'];
+      return ServerFailure(errorMessage: message);
     } else if (statusCode == 500) {
       return ServerFailure(
         errorMessage: LocaleKeys.error_api_failure_server_error.tr(),
       );
     } else if (statusCode == 403) {
       //    Helper.expiredToken();
-      throw ServerFailure(
+
+      // return the server failure instead of throw it 
+      return ServerFailure(
         errorMessage: LocaleKeys.error_api_failure_expiredToken.tr(),
       );
     } else {

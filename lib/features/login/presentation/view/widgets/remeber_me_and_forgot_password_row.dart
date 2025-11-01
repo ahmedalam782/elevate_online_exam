@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/routes/routes.dart';
+import 'package:elevate_online_exam/features/login/presentation/view_model/cubit/login_cubit.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
@@ -33,10 +35,10 @@ class _RemeberMeAndForgotPasswordRowState
                 height: 20,
                 child: Checkbox(
                   materialTapTargetSize: MaterialTapTargetSize.padded,
-                  value: isChecked,
+                  value: context.read<LoginCubit>().isRememberMe,
                   onChanged: (value) {
                     setState(() {
-                      isChecked = value ?? false;
+                      context.read<LoginCubit>().isRememberMe = value ?? false;
                     });
                   },
                 ),
@@ -48,7 +50,7 @@ class _RemeberMeAndForgotPasswordRowState
           GestureDetector(
             onTap: () {
               // You can navigate to the forgot password screen here
-              context.goNamed(Routes.forgetPassword);
+              context.pushNamed(Routes.forgetPassword);
             },
             child: Text(
               LocaleKeys.login_forgot_password.tr(),

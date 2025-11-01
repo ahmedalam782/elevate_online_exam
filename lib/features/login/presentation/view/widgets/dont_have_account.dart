@@ -23,7 +23,7 @@ class DontHaveAccount extends StatelessWidget {
             ),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                context.goNamed( Routes.register);
+                context.pushNamed(Routes.register);
               },
           ),
         ],

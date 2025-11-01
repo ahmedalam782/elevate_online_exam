@@ -10,7 +10,10 @@ class LoginUserUseCase {
 
   LoginUserUseCase({required this.repository});
 
-  Future<Result<LoginResponseModel>> call({required LoginRequestBody body}) {
-    return repository.loginUser(body: body);
+  Future<Result<LoginResponseModel>> call({
+    required LoginRequestBody body,
+    required bool rememberMe,
+  }) {
+    return repository.loginUser(body: body, rememberMe: rememberMe);
   }
 }
