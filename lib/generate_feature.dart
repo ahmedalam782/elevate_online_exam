@@ -50,7 +50,7 @@ void main(List<String> args) {
     final widgetDir = Directory('${baseDir.path}/$layer/view/widgets');
     final repositoryDir = Directory('${baseDir.path}/$layer/repositories');
     if (apiClientDir.existsSync()) {
-      File('${apiClientDir.path}/api_client.dart').writeAsStringSync(
+      File('${apiClientDir.path}/${featureName}_api_client.dart').writeAsStringSync(
         '// TODO: $layer ${_capitalize(featureName)}ApiClient\n',
       );
       if (layer == 'api' || layer == 'data') {
