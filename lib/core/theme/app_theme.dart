@@ -18,7 +18,7 @@ class AppTheme {
       onSecondary: AppColors.onSecondaryLight,
       surface: AppColors.surfaceLight,
       onSurface: AppColors.onSurfaceLight,
-      error: AppColors.errorLight,
+      error: AppColors.onErrorLight,
       onError: AppColors.onErrorLight,
     ),
     textTheme: TextTheme(
