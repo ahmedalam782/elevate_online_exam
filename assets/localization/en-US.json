@@ -93,5 +93,10 @@
         "check_internet": "Check your internet connection and try again.",
         "test_your_knowledge": "Test Your Knowledge",
         "online_exam": "Online Exam"
+    },
+    "app_layout": {
+        "explore": "Explore",
+        "result": "Result",
+        "profile": "Profile"
     }
 }

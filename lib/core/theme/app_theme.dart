@@ -165,6 +165,22 @@ class AppTheme {
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: AppColors.surfaceLight,
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.surfaceLight,
+      selectedItemColor: AppColors.primaryLight,
+      unselectedItemColor: AppColors.primaryLight,
+      elevation: 0,
+      selectedLabelStyle: Styles.medium(
+        context,
+        12,
+        color: AppColors.primaryLight,
+      ),
+      unselectedLabelStyle: Styles.medium(
+        context,
+        12,
+        color: AppColors.primaryLight,
+      ),
+    ),
   );
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
@@ -313,6 +329,22 @@ class AppTheme {
     ),
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: AppColors.surfaceDark,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.secondaryDark,
+      selectedItemColor: AppColors.primaryDark,
+      unselectedItemColor: AppColors.onSecondaryDark,
+      elevation: 0,
+      selectedLabelStyle: Styles.medium(
+        context,
+        12,
+        color: AppColors.primaryDark,
+      ),
+      unselectedLabelStyle: Styles.medium(
+        context,
+        12,
+        color: AppColors.primaryDark,
+      ),
     ),
   );
 }

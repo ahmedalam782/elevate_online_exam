@@ -92,5 +92,9 @@ abstract class  LocaleKeys {
   static const global_test_your_knowledge = 'global.test_your_knowledge';
   static const global_online_exam = 'global.online_exam';
   static const global = 'global';
+  static const app_layout_explore = 'app_layout.explore';
+  static const app_layout_result = 'app_layout.result';
+  static const app_layout_profile = 'app_layout.profile';
+  static const app_layout = 'app_layout';
 
 }

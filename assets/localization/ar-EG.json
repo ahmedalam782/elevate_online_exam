@@ -93,5 +93,10 @@
         "check_internet": "تحقق من اتصالك بالإنترنت وحاول مرة أخرى.",
         "test_your_knowledge": "اختبر معرفتك",
         "online_exam": "الامتحان عبر الإنترنت"
+    },
+    "app_layout": {
+        "explore": "استكشاف",
+        "result": "النتيجة",
+        "profile": "الملف الشخصي"
     }
 }

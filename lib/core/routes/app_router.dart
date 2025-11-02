@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/app_layout/presentation/view/pages/app_layout_page.dart';
 import '../../features/splash/presentation/view/pages/splash_page.dart';
 import 'routes.dart';
 
@@ -15,7 +16,13 @@ final GoRouter router = GoRouter(
       page: (state, context) =>
           SplashPage(key: ValueKey(context.locale.languageCode.toString())),
     ),
+
     // TODO: Add more routes here
+    _customAnimatedGoRoute(
+      route: Routes.appLayout,
+      page: (state, context) =>
+          AppLayoutPage(key: ValueKey(context.locale.languageCode.toString())),
+    ),
   ],
 );
 
