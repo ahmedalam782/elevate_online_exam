@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_button.dart';
 import 'package:elevate_online_exam/core/theme/app_colors.dart';
+import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:elevate_online_exam/features/login/presentation/view/widgets/dont_have_account.dart';
 import 'package:elevate_online_exam/features/login/presentation/view/widgets/email_and_password_form.dart';
 import 'package:elevate_online_exam/features/login/presentation/view/widgets/login_block_listner.dart';
@@ -11,7 +12,6 @@ import 'package:elevate_online_exam/features/login/presentation/view_model/cubit
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class LoginBody extends StatelessWidget {
   const LoginBody({super.key});
@@ -33,6 +33,7 @@ class LoginBody extends StatelessWidget {
             constraints: BoxConstraints(maxWidth: 500),
             child: CustomButton(
               title: LocaleKeys.login_log_in_button.tr(),
+              titleStyle: Styles.medium(context, 16, color: AppColors.white),
               radius: 100.r,
               isGradient: false,
               backGroundColor: AppColors.prime,

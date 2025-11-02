@@ -8,11 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:toastification/toastification.dart';
 
-
 class LoginBlocListener extends StatelessWidget {
-  const LoginBlocListener({
-    super.key,
-  });
+  const LoginBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +17,8 @@ class LoginBlocListener extends StatelessWidget {
       listener: (context, state) {
         state.loginState.when(
           success: (data) {
-            context.goNamed(Routes.home);
+            print("success");
+            context.go(Routes.home);
           },
           loading: () {
             CircularProgressIndicator();

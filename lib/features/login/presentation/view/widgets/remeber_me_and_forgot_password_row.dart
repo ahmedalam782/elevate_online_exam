@@ -1,15 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/routes/routes.dart';
+import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:elevate_online_exam/features/login/presentation/view_model/cubit/login_cubit.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class RemeberMeAndForgotPasswordRow extends StatefulWidget {
-  RemeberMeAndForgotPasswordRow({super.key});
+  const RemeberMeAndForgotPasswordRow({super.key});
 
   @override
   State<RemeberMeAndForgotPasswordRow> createState() =>
@@ -44,17 +44,24 @@ class _RemeberMeAndForgotPasswordRowState
                 ),
               ),
               SizedBox(width: 8),
-              Text(LocaleKeys.login_remember_me.tr()),
+              Text(
+                LocaleKeys.login_remember_me.tr(),
+                style: Styles.regular(context, 13, color: Color(0xff0F0F0F)),
+              ),
             ],
           ),
           GestureDetector(
             onTap: () {
               // You can navigate to the forgot password screen here
-              context.pushNamed(Routes.forgetPassword);
+              context.push(Routes.forgetPassword);
             },
             child: Text(
               LocaleKeys.login_forgot_password.tr(),
-              style: TextStyle(decoration: TextDecoration.underline),
+              style: Styles.regular(
+                context,
+                12,
+                color: Color(0xff0C1015),
+              ).copyWith(decoration: TextDecoration.underline),
             ),
           ),
         ],

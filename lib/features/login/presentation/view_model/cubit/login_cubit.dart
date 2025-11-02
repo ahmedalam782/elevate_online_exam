@@ -45,4 +45,17 @@ class LoginCubit extends Cubit<LoginStates> {
       }
     }
   }
+
+  void _clearControllers() {
+    emailController.clear();
+    passwordController.clear();
+  }
+
+  @override
+  Future<void> close() {
+    _clearControllers();
+    emailController.dispose();
+    passwordController.dispose();
+    return super.close();
+  }
 }
