@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_online_exam/core/theme/app_icons.dart';
-import 'package:elevate_online_exam/features/app_layout/presentation/view_model/cubit/icon_bottom_nav_container.dart';
+import 'package:elevate_online_exam/features/app_layout/presentation/view/widgets/icon_bottom_nav_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,6 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../core/languages/locale_keys.g.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../view_model/cubit/app_layout_cubit.dart';
+import '../../view_model/cubit/app_layout_events.dart';
 import '../../view_model/cubit/app_layout_states.dart';
 
 class BottomNavBar extends StatelessWidget {
@@ -59,7 +60,7 @@ class BottomNavBar extends StatelessWidget {
           ],
           currentIndex: state.changeIndexState?.currentIndex ?? 0,
           onTap: (index) {
-            appLayoutCubit.changeIndex(index);
+            appLayoutCubit.doIndented(ChangeIndexEvent(index));
           },
         );
       },

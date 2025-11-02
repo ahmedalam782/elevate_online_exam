@@ -97,6 +97,9 @@
     "app_layout": {
         "explore": "استكشاف",
         "result": "النتيجة",
-        "profile": "الملف الشخصي"
+        "profile": "الملف الشخصي",
+        "Survey": "استبيان",
+        "Results": "نتايج"
+       
     }
 }

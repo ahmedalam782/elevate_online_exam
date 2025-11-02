@@ -95,6 +95,8 @@ abstract class  LocaleKeys {
   static const app_layout_explore = 'app_layout.explore';
   static const app_layout_result = 'app_layout.result';
   static const app_layout_profile = 'app_layout.profile';
+  static const app_layout_Survey = 'app_layout.Survey';
+  static const app_layout_Results = 'app_layout.Results';
   static const app_layout = 'app_layout';
 
 }

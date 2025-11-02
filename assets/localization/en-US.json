@@ -97,6 +97,8 @@
     "app_layout": {
         "explore": "Explore",
         "result": "Result",
-        "profile": "Profile"
+        "profile": "Profile",
+        "Survey": "Survey",
+        "Results": "Results"
     }
 }
