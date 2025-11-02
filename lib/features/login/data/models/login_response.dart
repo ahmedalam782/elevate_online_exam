@@ -1,6 +1,6 @@
 import 'package:elevate_online_exam/features/login/data/models/user_dto.dart';
-import 'package:elevate_online_exam/features/login/domain/entities/login_response_model.dart';
-import 'package:elevate_online_exam/features/login/domain/entities/user_model.dart';
+import 'package:elevate_online_exam/features/login/domain/entities/login_response_entity.dart';
+import 'package:elevate_online_exam/features/login/domain/entities/user_model_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'login_response.g.dart';
 
@@ -19,7 +19,7 @@ class LoginResponse {
       message: message,
       token: token,
       code: code,
-      user: LoginUserModel(
+      user: LoginUserEntity(
         id: user?.id,
         userName: user?.userName,
         firstName: user?.firstName,

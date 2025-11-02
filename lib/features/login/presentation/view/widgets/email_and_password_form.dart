@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_text_field.dart';
 import 'package:elevate_online_exam/core/theme/app_colors.dart';
+import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:elevate_online_exam/core/validations/validations.dart';
 import 'package:elevate_online_exam/features/login/presentation/view_model/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,7 @@ class EmailAndPasswordForm extends StatelessWidget {
               return null;
             },
             hintText: LocaleKeys.login_email_hint.tr(),
+            hintStyle: Styles.regular(context, 14, color: AppColors.grayA6),
             fillColor: AppColors.backgroundLight,
             labelWidget: Text(LocaleKeys.login_email_label.tr()),
             textInputType: TextInputType.emailAddress,
@@ -38,6 +40,8 @@ class EmailAndPasswordForm extends StatelessWidget {
             controller: context.read<LoginCubit>().passwordController,
             validator: (value) => Validations.validatePassword(value),
             hintText: LocaleKeys.login_password_hint.tr(),
+            hintStyle: Styles.regular(context, 14, color: AppColors.grayA6),
+            
             fillColor: AppColors.backgroundLight,
             labelWidget: Text(LocaleKeys.login_password_label.tr()),
             isObscureText: true,

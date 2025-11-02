@@ -1,4 +1,4 @@
-class LoginUserModel {
+class LoginUserEntity {
   String? id;
   String? userName;
   String? firstName;
@@ -9,7 +9,7 @@ class LoginUserModel {
   bool? isVerified;
   String? createdAt;
 
-  LoginUserModel({
+  LoginUserEntity({
     this.id,
     this.userName,
     this.firstName,

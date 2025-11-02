@@ -17,7 +17,7 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
     as _i161;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
-import '../../../features/login/api/api_client/api_client.dart' as _i886;
+import '../../../features/login/api/api_client/login_api_client.dart' as _i865;
 import '../../../features/login/api/datasources/login_local_data_source_impl.dart'
     as _i910;
 import '../../../features/login/api/datasources/login_remote_data_source_impl.dart'
@@ -66,13 +66,8 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i558.FlutterSecureStorage>(),
       ),
     );
-    gh.lazySingleton<_i886.LoginApiClient>(
-      () => _i886.LoginApiClient(gh<_i361.Dio>()),
-    );
-    gh.lazySingleton<_i354.LoginRemoteDataSourceContract>(
-      () => _i791.LoginRemoteDataSourceImpl(
-        apiClient: gh<_i886.LoginApiClient>(),
-      ),
+    gh.lazySingleton<_i865.LoginApiClient>(
+      () => _i865.LoginApiClient(gh<_i361.Dio>()),
     );
     gh.singleton<_i449.AppInterceptors>(
       () => _i449.AppInterceptors(
@@ -83,6 +78,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i224.LoginLocalDataSourceContract>(
       () => _i910.LoginLocalDataSourceImpl(
         secureStorage: gh<_i558.FlutterSecureStorage>(),
+      ),
+    );
+    gh.lazySingleton<_i354.LoginRemoteDataSourceContract>(
+      () => _i791.LoginRemoteDataSourceImpl(
+        apiClient: gh<_i865.LoginApiClient>(),
       ),
     );
     gh.lazySingleton<_i1053.LoginRepository>(

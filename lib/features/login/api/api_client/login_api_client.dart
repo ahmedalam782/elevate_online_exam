@@ -5,7 +5,7 @@ import 'package:elevate_online_exam/features/login/data/models/login_response.da
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
-part 'api_client.g.dart';
+part 'login_api_client.g.dart';
 
 @lazySingleton
 @RestApi(baseUrl: EndPoints.baseUrl)

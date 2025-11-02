@@ -3,7 +3,7 @@ import 'package:elevate_online_exam/core/helper/session_token/session_token.dart
 import 'package:elevate_online_exam/features/login/data/datasources/login_local_data_source_contract.dart';
 import 'package:elevate_online_exam/features/login/data/datasources/login_remote_data_source_contract.dart';
 import 'package:elevate_online_exam/features/login/data/models/login_request_body.dart';
-import 'package:elevate_online_exam/features/login/domain/entities/login_response_model.dart';
+import 'package:elevate_online_exam/features/login/domain/entities/login_response_entity.dart';
 import 'package:elevate_online_exam/features/login/domain/repositories/login_repository.dart';
 import 'package:injectable/injectable.dart';
 
