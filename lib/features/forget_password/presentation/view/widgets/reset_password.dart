@@ -26,7 +26,7 @@ class ResetPassword extends StatelessWidget {
     final ForgetPasswordCubit forgetPasswordCubit = context
         .read<ForgetPasswordCubit>();
     return Form(
-      key: forgetPasswordCubit.resetFormKey,
+      key: forgetPasswordCubit.resetPasswordFormKey,
       child: Column(
         children: [
           Padding(
@@ -79,14 +79,10 @@ class ResetPassword extends StatelessWidget {
                   ),
                 ),
                 onChanged: (_) {
-                  forgetPasswordCubit.doIndented(
-                    FormValidChangedEvent(forgetPasswordCubit.resetFormKey),
-                  );
+                  forgetPasswordCubit.doIndented(ResetFormValidChangedEvent());
                 },
                 onFieldSubmitted: (_) {
-                  forgetPasswordCubit.doIndented(
-                    FormValidChangedEvent(forgetPasswordCubit.resetFormKey),
-                  );
+                  forgetPasswordCubit.doIndented(CodeFormValidChangedEvent());
                 },
               );
             },
@@ -128,14 +124,10 @@ class ResetPassword extends StatelessWidget {
                   ),
                 ),
                 onChanged: (_) {
-                  forgetPasswordCubit.doIndented(
-                    FormValidChangedEvent(forgetPasswordCubit.resetFormKey),
-                  );
+                  forgetPasswordCubit.doIndented(ResetFormValidChangedEvent());
                 },
                 onFieldSubmitted: (_) {
-                  forgetPasswordCubit.doIndented(
-                    FormValidChangedEvent(forgetPasswordCubit.resetFormKey),
-                  );
+                  forgetPasswordCubit.doIndented(ResetFormValidChangedEvent());
                 },
               );
             },
@@ -146,7 +138,7 @@ class ResetPassword extends StatelessWidget {
               return CustomButton(
                 isLoading: state.resetPasswordState!.state == StateType.loading,
                 title: LocaleKeys.forget_password_continue.tr(),
-                onTap: state.formValidChangedState!.isValid
+                onTap: state.resetPasswordFormValidChangedState!.isValid
                     ? () {
                         forgetPasswordCubit.doIndented(ResetPasswordEvent());
                       }

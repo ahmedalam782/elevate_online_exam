@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 sealed class ForgetPasswordEvents {}
 
 final class ObscureTextChangedEvent extends ForgetPasswordEvents {
@@ -7,14 +5,16 @@ final class ObscureTextChangedEvent extends ForgetPasswordEvents {
   ObscureTextChangedEvent(this.fieldKey);
 }
 
-final class PageChangedEvent extends ForgetPasswordEvents {
-  final int currentPage;
-  PageChangedEvent(this.currentPage);
+final class EmailFormValidChangedEvent extends ForgetPasswordEvents {
+  EmailFormValidChangedEvent();
 }
 
-final class FormValidChangedEvent extends ForgetPasswordEvents {
-  final GlobalKey<FormState> formKey;
-  FormValidChangedEvent(this.formKey);
+final class CodeFormValidChangedEvent extends ForgetPasswordEvents {
+  CodeFormValidChangedEvent();
+}
+
+final class ResetFormValidChangedEvent extends ForgetPasswordEvents {
+  ResetFormValidChangedEvent();
 }
 
 final class NextPageEvent extends ForgetPasswordEvents {}

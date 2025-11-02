@@ -37,7 +37,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordStates> {
   // ! Form Keys
   final GlobalKey<FormState> emailFormKey = GlobalKey<FormState>();
   final GlobalKey<FormState> codeFormKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> resetFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> resetPasswordFormKey = GlobalKey<FormState>();
 
   // ! Page View
   List<Widget> children = [EmailAssociated(), CodeVerify(), ResetPassword()];
@@ -54,11 +54,14 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordStates> {
   // ! Events Handler
   void doIndented(ForgetPasswordEvents event) {
     switch (event) {
-      case FormValidChangedEvent():
-        _formValidChanged(event.formKey);
+      case EmailFormValidChangedEvent():
+        _emailFormValidChanged();
         break;
-      case PageChangedEvent():
-        _pageChanged(event.currentPage);
+      case CodeFormValidChangedEvent():
+        _codeFormValidChanged();
+        break;
+      case ResetFormValidChangedEvent():
+        _resetPasswordFormValidChanged();
         break;
       case NextPageEvent():
         _nextPage();
@@ -81,36 +84,62 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordStates> {
     }
   }
 
-  // ! Form Valid Changed
-  void _formValidChanged(GlobalKey<FormState> formKey) {
-    bool isValid = formKey.currentState?.validate() ?? false;
+  // ! Form email Valid Changed
+  void _emailFormValidChanged() {
+    bool isValid = emailFormKey.currentState?.validate() ?? false;
+    if (!isValid) {
+      emit(
+        state.copyWith(
+          sendCodeToEmailState: const SendCodeToEmailState(
+            state: StateType.initial,
+          ),
+        ),
+      );
+    }
     emit(
       state.copyWith(
-        formValidChangedState: FormValidChangedState(isValid: isValid),
+        emailFormValidChangedState: FormValidChangedState(isValid: isValid),
       ),
     );
-    if (!isValid && formKey == codeFormKey) {
+  }
+
+  // ! Form Code Valid Changed
+  void _codeFormValidChanged() {
+    bool isValid = codeFormKey.currentState?.validate() ?? false;
+    if (!isValid) {
       emit(
         state.copyWith(
           verifyCodeState: const VerifyCodeState(state: StateType.initial),
-        ),
-      );
-      emit(
-        state.copyWith(
           resendCodeToEmailState: const ResendCodeToEmailState(
             state: StateType.initial,
           ),
         ),
       );
     }
-  }
-
-  // ! Page Changed
-  void _pageChanged(int index) {
-    currentPage = index;
     emit(
       state.copyWith(
-        pageChangedState: PageChangedState(currentPage: currentPage),
+        codeFormValidChangedState: FormValidChangedState(isValid: isValid),
+      ),
+    );
+  }
+
+  // ! Form Reset Valid Changed
+  void _resetPasswordFormValidChanged() {
+    bool isValid = resetPasswordFormKey.currentState?.validate() ?? false;
+    if (!isValid) {
+      emit(
+        state.copyWith(
+          resetPasswordState: const ResetPasswordState(
+            state: StateType.initial,
+          ),
+        ),
+      );
+    }
+    emit(
+      state.copyWith(
+        resetPasswordFormValidChangedState: FormValidChangedState(
+          isValid: isValid,
+        ),
       ),
     );
   }
@@ -125,9 +154,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordStates> {
         curve: Curves.easeInOut,
       );
       emit(
-        state.copyWith(
-          pageChangedState: PageChangedState(currentPage: currentPage),
-        ),
+        state.copyWith(nextPageState: NextPageState(currentPage: currentPage)),
       );
     }
   }

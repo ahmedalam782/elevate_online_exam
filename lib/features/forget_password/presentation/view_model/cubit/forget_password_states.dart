@@ -2,18 +2,18 @@ import 'package:elevate_online_exam/core/config/base_state/base_state.dart';
 import 'package:equatable/equatable.dart';
 
 class ForgetPasswordStates extends Equatable {
-  final FormValidChangedState? formValidChangedState;
-  final PageChangedState? pageChangedState;
+  final FormValidChangedState? emailFormValidChangedState;
+  final FormValidChangedState? codeFormValidChangedState;
+  final FormValidChangedState? resetPasswordFormValidChangedState;
   final ObscureTextChangedState? obscureNewPasswordTextChangedState;
   final ObscureTextChangedState? obscureConfirmNewPasswordTextChangedState;
   final SendCodeToEmailState? sendCodeToEmailState;
   final ResendCodeToEmailState? resendCodeToEmailState;
   final VerifyCodeState? verifyCodeState;
   final ResetPasswordState? resetPasswordState;
+  final NextPageState? nextPageState;
 
   const ForgetPasswordStates({
-    this.formValidChangedState = const FormValidChangedState(isValid: false),
-    this.pageChangedState = const PageChangedState(currentPage: 0),
     this.obscureNewPasswordTextChangedState = const ObscureTextChangedState(
       isObscure: true,
     ),
@@ -23,22 +23,37 @@ class ForgetPasswordStates extends Equatable {
     this.resendCodeToEmailState = const ResendCodeToEmailState(),
     this.obscureConfirmNewPasswordTextChangedState =
         const ObscureTextChangedState(isObscure: true),
+    this.nextPageState = const NextPageState(currentPage: 0),
+    this.emailFormValidChangedState = const FormValidChangedState(
+      isValid: false,
+    ),
+    this.codeFormValidChangedState = const FormValidChangedState(
+      isValid: false,
+    ),
+    this.resetPasswordFormValidChangedState = const FormValidChangedState(
+      isValid: false,
+    ),
   });
 
   ForgetPasswordStates copyWith({
-    FormValidChangedState? formValidChangedState,
-    PageChangedState? pageChangedState,
     ObscureTextChangedState? obscureNewPasswordTextChangedState,
     ObscureTextChangedState? obscureConfirmNewPasswordTextChangedState,
     SendCodeToEmailState? sendCodeToEmailState,
     VerifyCodeState? verifyCodeState,
     ResetPasswordState? resetPasswordState,
     ResendCodeToEmailState? resendCodeToEmailState,
+    NextPageState? nextPageState,
+    FormValidChangedState? emailFormValidChangedState,
+    FormValidChangedState? codeFormValidChangedState,
+    FormValidChangedState? resetPasswordFormValidChangedState,
   }) {
     return ForgetPasswordStates(
-      formValidChangedState:
-          formValidChangedState ?? this.formValidChangedState,
-      pageChangedState: pageChangedState ?? this.pageChangedState,
+      emailFormValidChangedState:
+          emailFormValidChangedState ?? this.emailFormValidChangedState,
+      codeFormValidChangedState:
+          codeFormValidChangedState ?? this.codeFormValidChangedState,
+      resetPasswordFormValidChangedState:
+          resetPasswordFormValidChangedState ?? this.resetPasswordFormValidChangedState,
       obscureNewPasswordTextChangedState:
           obscureNewPasswordTextChangedState ??
           this.obscureNewPasswordTextChangedState,
@@ -50,24 +65,27 @@ class ForgetPasswordStates extends Equatable {
       resetPasswordState: resetPasswordState ?? this.resetPasswordState,
       resendCodeToEmailState:
           resendCodeToEmailState ?? this.resendCodeToEmailState,
+      nextPageState: nextPageState ?? this.nextPageState,
     );
   }
 
   @override
   List<Object?> get props => [
-    formValidChangedState,
-    pageChangedState,
+    emailFormValidChangedState,
+    codeFormValidChangedState,
+    resetPasswordFormValidChangedState,
     obscureNewPasswordTextChangedState,
     obscureConfirmNewPasswordTextChangedState,
     sendCodeToEmailState,
     verifyCodeState,
     resetPasswordState,
     resendCodeToEmailState,
+    nextPageState,
   ];
 
   @override
   String toString() {
-    return "ForgetPasswordStates(formValidChangedState: $formValidChangedState , pageChangedState: $pageChangedState, obscureNewPasswordTextChangedState: $obscureNewPasswordTextChangedState, obscureConfirmNewPasswordTextChangedState: $obscureConfirmNewPasswordTextChangedState , sendCodeToEmailState: $sendCodeToEmailState, verifyCodeState: $verifyCodeState, resetPasswordState: $resetPasswordState, resendCodeToEmailState: $resendCodeToEmailState)";
+    return "ForgetPasswordStates( emailFormValidChangedState: $emailFormValidChangedState, codeFormValidChangedState: $codeFormValidChangedState, resetFormValidChangedState: $resetPasswordFormValidChangedState, obscureNewPasswordTextChangedState: $obscureNewPasswordTextChangedState, obscureConfirmNewPasswordTextChangedState: $obscureConfirmNewPasswordTextChangedState , sendCodeToEmailState: $sendCodeToEmailState, verifyCodeState: $verifyCodeState, resetPasswordState: $resetPasswordState, resendCodeToEmailState: $resendCodeToEmailState , nextPageState: $nextPageState)";
   }
 }
 
@@ -85,17 +103,17 @@ class FormValidChangedState extends Equatable {
   }
 }
 
-class PageChangedState extends Equatable {
+class NextPageState extends Equatable {
   final int currentPage;
 
-  const PageChangedState({required this.currentPage});
+  const NextPageState({required this.currentPage});
 
   @override
   List<Object?> get props => [currentPage];
 
   @override
   String toString() {
-    return "PageChangedState(currentPage: $currentPage)";
+    return "NextPageState(currentPage: $currentPage)";
   }
 }
 

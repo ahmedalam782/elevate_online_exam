@@ -3,6 +3,7 @@ import 'package:elevate_online_exam/core/validations/validations.dart';
 import 'package:elevate_online_exam/features/forget_password/presentation/view_model/cubit/forget_password_events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:toastification/toastification.dart';
 
 import '../../../../../core/config/base_state/base_state.dart';
@@ -15,6 +16,7 @@ import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/styles.dart';
 import '../../view_model/cubit/forget_password_cubit.dart';
 import '../../view_model/cubit/forget_password_states.dart';
+import 'show_loading_dialog.dart';
 
 class CodeVerify extends StatelessWidget {
   const CodeVerify({super.key});
@@ -76,17 +78,13 @@ class CodeVerify extends StatelessWidget {
               controller: forgetPasswordCubit.codeController,
               validator: (value) => Validations.validatePin(value, 6),
               onChange: (_) {
-                forgetPasswordCubit.doIndented(
-                  FormValidChangedEvent(forgetPasswordCubit.codeFormKey),
-                );
+                forgetPasswordCubit.doIndented(CodeFormValidChangedEvent());
                 if (forgetPasswordCubit.codeFormKey.currentState!.validate()) {
                   forgetPasswordCubit.doIndented(VerifyCodeEvent());
                 }
               },
               onSubmitted: (_) {
-                forgetPasswordCubit.doIndented(
-                  FormValidChangedEvent(forgetPasswordCubit.codeFormKey),
-                );
+                forgetPasswordCubit.doIndented(CodeFormValidChangedEvent());
                 if (forgetPasswordCubit.codeFormKey.currentState!.validate()) {
                   forgetPasswordCubit.doIndented(VerifyCodeEvent());
                 }

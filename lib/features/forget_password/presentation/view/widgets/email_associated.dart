@@ -58,14 +58,10 @@ class EmailAssociated extends StatelessWidget {
             validator: Validations.validateEmail,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             onChanged: (_) {
-              forgetPasswordCubit.doIndented(
-                FormValidChangedEvent(forgetPasswordCubit.emailFormKey),
-              );
+              forgetPasswordCubit.doIndented(EmailFormValidChangedEvent());
             },
             onFieldSubmitted: (_) {
-              forgetPasswordCubit.doIndented(
-                FormValidChangedEvent(forgetPasswordCubit.emailFormKey),
-              );
+              forgetPasswordCubit.doIndented(EmailFormValidChangedEvent());
             },
           ),
           SizedBox(height: 24),
@@ -75,11 +71,9 @@ class EmailAssociated extends StatelessWidget {
                 isLoading:
                     state.sendCodeToEmailState!.state == StateType.loading,
                 title: LocaleKeys.forget_password_continue.tr(),
-                onTap: state.formValidChangedState!.isValid
+                onTap: state.emailFormValidChangedState!.isValid
                     ? () {
-                        forgetPasswordCubit.doIndented(
-                          SendCodeToEmailEvent(),
-                        );
+                        forgetPasswordCubit.doIndented(SendCodeToEmailEvent());
                       }
                     : null,
               );
