@@ -1,11 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elevate_online_exam/core/validations/validations.dart';
-import 'package:elevate_online_exam/features/forget_password/presentation/view_model/cubit/forget_password_events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:toastification/toastification.dart';
-
 import '../../../../../core/config/base_state/base_state.dart';
 import '../../../../../core/errors/handle_errors/handle_errors.dart';
 import '../../../../../core/languages/locale_keys.g.dart';
@@ -14,9 +11,11 @@ import '../../../../../core/shared/widgets/custom_toast.dart';
 import '../../../../../core/shared/widgets/resend_timer_widget.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/styles.dart';
+import '../../../../../core/validations/validations.dart';
 import '../../view_model/cubit/forget_password_cubit.dart';
+import '../../view_model/cubit/forget_password_events.dart';
 import '../../view_model/cubit/forget_password_states.dart';
-import 'show_loading_dialog.dart';
+import '../../../../../core/shared/widgets/show_loading_dialog.dart';
 
 class CodeVerify extends StatelessWidget {
   const CodeVerify({super.key});
@@ -53,14 +52,25 @@ class CodeVerify extends StatelessWidget {
           ),
           SizedBox(height: 32),
           BlocListener<ForgetPasswordCubit, ForgetPasswordStates>(
+            listenWhen: (previous, current) =>
+                previous.verifyCodeState?.state !=
+                current.verifyCodeState?.state,
             listener: (context, state) {
-              if (state.verifyCodeState!.state == StateType.success) {
+              if (state.verifyCodeState!.state == StateType.loading) {
+                showDialogLoading(context);
+              } else if (state.verifyCodeState!.state == StateType.success) {
+                if (context.canPop()) {
+                  context.pop();
+                }
                 CustomToast(
                   context: context,
                   header: LocaleKeys.forget_password_code_correct.tr(),
                   type: ToastificationType.success,
                 ).showToast();
               } else if (state.verifyCodeState!.state == StateType.error) {
+                if (context.canPop()) {
+                  context.pop();
+                }
                 bool hasNetworkError = handleNetwork(
                   state.verifyCodeState!.exception!,
                 );

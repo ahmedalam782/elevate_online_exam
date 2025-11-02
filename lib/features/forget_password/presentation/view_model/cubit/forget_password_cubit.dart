@@ -56,31 +56,22 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordStates> {
     switch (event) {
       case EmailFormValidChangedEvent():
         _emailFormValidChanged();
-        break;
       case CodeFormValidChangedEvent():
         _codeFormValidChanged();
-        break;
       case ResetFormValidChangedEvent():
         _resetPasswordFormValidChanged();
-        break;
       case NextPageEvent():
         _nextPage();
-        break;
       case ObscureTextChangedEvent():
         _obscureTextChanged(event.fieldKey);
-        break;
       case SendCodeToEmailEvent():
         _forgetPassword();
-        break;
       case ResendCodeToEmailEvent():
         resendCode();
-        break;
       case VerifyCodeEvent():
         _verifyResetCode();
-        break;
       case ResetPasswordEvent():
         _resetPassword();
-        break;
     }
   }
 
@@ -111,6 +102,9 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordStates> {
         state.copyWith(
           verifyCodeState: const VerifyCodeState(state: StateType.initial),
           resendCodeToEmailState: const ResendCodeToEmailState(
+            state: StateType.initial,
+          ),
+          sendCodeToEmailState: const SendCodeToEmailState(
             state: StateType.initial,
           ),
         ),

@@ -53,7 +53,8 @@ class ForgetPasswordStates extends Equatable {
       codeFormValidChangedState:
           codeFormValidChangedState ?? this.codeFormValidChangedState,
       resetPasswordFormValidChangedState:
-          resetPasswordFormValidChangedState ?? this.resetPasswordFormValidChangedState,
+          resetPasswordFormValidChangedState ??
+          this.resetPasswordFormValidChangedState,
       obscureNewPasswordTextChangedState:
           obscureNewPasswordTextChangedState ??
           this.obscureNewPasswordTextChangedState,
@@ -82,11 +83,6 @@ class ForgetPasswordStates extends Equatable {
     resendCodeToEmailState,
     nextPageState,
   ];
-
-  @override
-  String toString() {
-    return "ForgetPasswordStates( emailFormValidChangedState: $emailFormValidChangedState, codeFormValidChangedState: $codeFormValidChangedState, resetFormValidChangedState: $resetPasswordFormValidChangedState, obscureNewPasswordTextChangedState: $obscureNewPasswordTextChangedState, obscureConfirmNewPasswordTextChangedState: $obscureConfirmNewPasswordTextChangedState , sendCodeToEmailState: $sendCodeToEmailState, verifyCodeState: $verifyCodeState, resetPasswordState: $resetPasswordState, resendCodeToEmailState: $resendCodeToEmailState , nextPageState: $nextPageState)";
-  }
 }
 
 class FormValidChangedState extends Equatable {
@@ -133,16 +129,32 @@ class ObscureTextChangedState extends Equatable {
 
 class SendCodeToEmailState extends BaseState {
   const SendCodeToEmailState({super.state, super.data, super.exception});
+  @override
+  String toString() {
+    return "SendCodeToEmailState(state: $state, data: $data, exception: $exception)";
+  }
 }
 
 class ResendCodeToEmailState extends BaseState {
   const ResendCodeToEmailState({super.state, super.data, super.exception});
+  @override
+  String toString() {
+    return "ResendCodeToEmailState(state: $state, data: $data, exception: $exception)";
+  }
 }
 
 class VerifyCodeState extends BaseState {
   const VerifyCodeState({super.state, super.data, super.exception});
+  @override
+  String toString() {
+    return "VerifyCodeState(state: $state, data: $data, exception: $exception)";
+  }
 }
 
 class ResetPasswordState extends BaseState {
   const ResetPasswordState({super.state, super.data, super.exception});
+  @override
+  String toString() {
+    return "ResetPasswordState(state: $state, data: $data, exception: $exception)";
+  }
 }
