@@ -109,7 +109,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   void _navigateToNextScreen() {
     Timer(const Duration(milliseconds: 1800), () {
       if (mounted) {
-        context.go(Routes.login);
+        context.go(Routes.appLayout);
       }
     });
   }
