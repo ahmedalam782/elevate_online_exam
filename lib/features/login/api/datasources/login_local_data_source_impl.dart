@@ -12,7 +12,7 @@ class LoginLocalDataSourceImpl implements LoginLocalDataSourceContract {
   @override
   Future<void> saveToken(String token) async {
     try {
-      await secureStorage.delete(key: Apikeys.accessToken);
+      await secureStorage.write(key: Apikeys.accessToken, value: token);
     } catch (e) {
       // if couldn't save the token in secure storage, save it in SessionToken Singleton for one time use
       SessionToken().token = token;
