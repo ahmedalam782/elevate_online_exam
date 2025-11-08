@@ -100,5 +100,38 @@
         "profile": "Profile",
         "Survey": "Survey",
         "Results": "Results"
+    },
+     "signup":{
+        "sign_up":"Sign Up",
+        "user_name":"User name",
+        "enter_you_user_name":"Enter your user name",
+        "first_name":"First Name",
+        "enter_first_name":"Enter First Name",
+        "last_name":"Last Name",
+        "enter_last_name":"Enter Last Name",
+        "email":"Email",
+        "enter_email":"Enter Email",
+        "password":"Password",
+        "enter_password":"Enter Password",
+        "confirm_password":"Confirm Password",
+        "phone":"Phone",
+        "enter_phone_number":"Enter Phone Number",
+        "already_have_an_account":"Already have an account?",
+        "login":"Login",
+        "account_created_successfully":"Account created successfully"
+
+    }
+    ,
+     "login": {
+        "log_in": "Login",
+        "email_hint": "Enter your email",
+        "email_label": "Email",
+        "password_label": "Password",
+        "password_hint": "Enter your password",
+        "remember_me": "Remember Me",
+        "forgot_password": "Forgot Password?",
+        "log_in_button": "Login",
+        "no_account": "Don't have an account? ",
+        "sign_up": "Sign Up"
     }
 }

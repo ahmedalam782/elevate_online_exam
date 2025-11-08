@@ -98,5 +98,34 @@ abstract class  LocaleKeys {
   static const app_layout_Survey = 'app_layout.Survey';
   static const app_layout_Results = 'app_layout.Results';
   static const app_layout = 'app_layout';
+  static const signup_sign_up = 'signup.sign_up';
+  static const signup_user_name = 'signup.user_name';
+  static const signup_enter_you_user_name = 'signup.enter_you_user_name';
+  static const signup_first_name = 'signup.first_name';
+  static const signup_enter_first_name = 'signup.enter_first_name';
+  static const signup_last_name = 'signup.last_name';
+  static const signup_enter_last_name = 'signup.enter_last_name';
+  static const signup_email = 'signup.email';
+  static const signup_enter_email = 'signup.enter_email';
+  static const signup_password = 'signup.password';
+  static const signup_enter_password = 'signup.enter_password';
+  static const signup_confirm_password = 'signup.confirm_password';
+  static const signup_phone = 'signup.phone';
+  static const signup_enter_phone_number = 'signup.enter_phone_number';
+  static const signup_already_have_an_account = 'signup.already_have_an_account';
+  static const signup_login = 'signup.login';
+  static const signup_account_created_successfully = 'signup.account_created_successfully';
+  static const signup = 'signup';
+  static const login_log_in = 'login.log_in';
+  static const login_email_hint = 'login.email_hint';
+  static const login_email_label = 'login.email_label';
+  static const login_password_label = 'login.password_label';
+  static const login_password_hint = 'login.password_hint';
+  static const login_remember_me = 'login.remember_me';
+  static const login_forgot_password = 'login.forgot_password';
+  static const login_log_in_button = 'login.log_in_button';
+  static const login_no_account = 'login.no_account';
+  static const login_sign_up = 'login.sign_up';
+  static const login = 'login';
 
 }

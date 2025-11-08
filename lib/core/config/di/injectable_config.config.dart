@@ -19,6 +19,40 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../../features/app_layout/presentation/view_model/cubit/app_layout_cubit.dart'
     as _i334;
+import '../../../features/login/api/api_client/login_api_client.dart' as _i865;
+import '../../../features/login/api/datasources/login_local_data_source_impl.dart'
+    as _i910;
+import '../../../features/login/api/datasources/login_remote_data_source_impl.dart'
+    as _i791;
+import '../../../features/login/data/datasources/login_local_data_source_contract.dart'
+    as _i224;
+import '../../../features/login/data/datasources/login_remote_data_source_contract.dart'
+    as _i354;
+import '../../../features/login/data/repositories/login_repository_impl.dart'
+    as _i928;
+import '../../../features/login/domain/repositories/login_repository.dart'
+    as _i1053;
+import '../../../features/login/domain/use_cases/login_user_use_case.dart'
+    as _i571;
+import '../../../features/login/presentation/view_model/cubit/login_cubit.dart'
+    as _i199;
+import '../../../features/signup/api/api_client/sigup_api_client.dart' as _i873;
+import '../../../features/signup/api/datasources/signup_local_data_source_impl.dart'
+    as _i471;
+import '../../../features/signup/api/datasources/signup_remote_data_source_impl.dart'
+    as _i500;
+import '../../../features/signup/data/datasources/signup_local_data_source.dart'
+    as _i229;
+import '../../../features/signup/data/datasources/signup_remote_data_source.dart'
+    as _i739;
+import '../../../features/signup/data/repositories/signup_repository_impl.dart'
+    as _i527;
+import '../../../features/signup/domain/repositories/signup_repository_contract.dart'
+    as _i1062;
+import '../../../features/signup/domain/usecases/signup_user_usecase.dart'
+    as _i1042;
+import '../../../features/signup/presentation/view_model/cubit/signup_cubit.dart'
+    as _i662;
 import '../../helper/user_helper/user_helper.dart' as _i23;
 import '../api/app_interceptor.dart' as _i449;
 import 'register_module.dart' as _i291;
@@ -52,11 +86,62 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i558.FlutterSecureStorage>(),
       ),
     );
+    gh.lazySingleton<_i865.LoginApiClient>(
+      () => _i865.LoginApiClient(gh<_i361.Dio>()),
+    );
+    gh.factory<_i873.SigupApiClient>(
+      () => _i873.SigupApiClient(gh<_i361.Dio>()),
+    );
+    gh.factory<_i739.SignupRemoteDataSourceContract>(
+      () => _i500.SigupRemoteDataSourceImpl(
+        homeApiClient: gh<_i873.SigupApiClient>(),
+      ),
+    );
+    gh.factory<_i229.SignupLocalDataSourceContract>(
+      () => _i471.SignupLocalDataSourceImpl(
+        fss: gh<_i558.FlutterSecureStorage>(),
+      ),
+    );
     gh.singleton<_i449.AppInterceptors>(
       () => _i449.AppInterceptors(
         dio: gh<_i361.Dio>(),
         fss: gh<_i558.FlutterSecureStorage>(),
       ),
+    );
+    gh.lazySingleton<_i224.LoginLocalDataSourceContract>(
+      () => _i910.LoginLocalDataSourceImpl(
+        secureStorage: gh<_i558.FlutterSecureStorage>(),
+      ),
+    );
+    gh.lazySingleton<_i354.LoginRemoteDataSourceContract>(
+      () => _i791.LoginRemoteDataSourceImpl(
+        apiClient: gh<_i865.LoginApiClient>(),
+      ),
+    );
+    gh.factory<_i1062.SignupRepositoryContract>(
+      () => _i527.SignupRepositoryImpl(
+        remoteDataSource: gh<_i739.SignupRemoteDataSourceContract>(),
+        localDataSource: gh<_i229.SignupLocalDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i1042.SignupUserUsecase>(
+      () =>
+          _i1042.SignupUserUsecase(repo: gh<_i1062.SignupRepositoryContract>()),
+    );
+    gh.lazySingleton<_i1053.LoginRepository>(
+      () => _i928.LoginRepositoryImpl(
+        remoteDataSource: gh<_i354.LoginRemoteDataSourceContract>(),
+        localDataSource: gh<_i224.LoginLocalDataSourceContract>(),
+      ),
+    );
+    gh.lazySingleton<_i571.LoginUserUseCase>(
+      () => _i571.LoginUserUseCase(repository: gh<_i1053.LoginRepository>()),
+    );
+    gh.factory<_i662.SignupCubit>(
+      () => _i662.SignupCubit(signupUserCase: gh<_i1042.SignupUserUsecase>()),
+    );
+    gh.factory<_i199.LoginCubit>(
+      () => _i199.LoginCubit(gh<_i571.LoginUserUseCase>()),
     );
     return this;
   }

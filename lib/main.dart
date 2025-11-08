@@ -17,8 +17,8 @@ void main() async {
   runApp(
     EasyLocalization(
       supportedLocales: [arabicLocale, englishLocale],
-      fallbackLocale: englishLocale,
-      startLocale: englishLocale,
+      fallbackLocale: arabicLocale,
+      startLocale: arabicLocale,
       path: assetsLocalization,
       child: const OnlineExam(),
     ),
