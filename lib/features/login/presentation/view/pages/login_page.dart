@@ -14,20 +14,15 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isArabic = context.locale.languageCode == arabicLocale.languageCode;
-    context.setLocale(englishLocale);
-    return Directionality(
-      textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
-      child: Scaffold(
-        appBar: CustomAppBar(
-          padding: EdgeInsets.only(left: 16.w, right: 16.w),
-          title: LocaleKeys.login_log_in.tr(),
-          isCenteredTitle: false,
-        ),
-        body: BlocProvider<LoginCubit>(
-          create: (context) => getIt<LoginCubit>(),
-          child: LoginBody(),
-        ),
+    return Scaffold(
+      appBar: CustomAppBar(
+        padding: EdgeInsets.only(left: 16.w, right: 16.w),
+        title: LocaleKeys.login_log_in.tr(),
+        isCenteredTitle: false,
+      ),
+      body: BlocProvider<LoginCubit>(
+        create: (context) => getIt<LoginCubit>(),
+        child: LoginBody(),
       ),
     );
   }

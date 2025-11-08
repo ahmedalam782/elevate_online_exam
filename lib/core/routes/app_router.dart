@@ -11,7 +11,7 @@ import 'routes.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 final GoRouter router = GoRouter(
-  initialLocation: Routes.register,
+  initialLocation: Routes.splash,
   navigatorKey: navigatorKey,
   routes: [
     _customAnimatedGoRoute(
@@ -32,9 +32,13 @@ final GoRouter router = GoRouter(
           AppLayoutPage(key: ValueKey(context.locale.languageCode.toString())),
     ),
 
-    _customAnimatedGoRoute(route: Routes.forgetPassword, page:(state, context) =>
-          ForgetPasswordPage(key: ValueKey(context.locale.languageCode.toString())), ),
-    // login route 
+    _customAnimatedGoRoute(
+      route: Routes.forgetPassword,
+      page: (state, context) => ForgetPasswordPage(
+        key: ValueKey(context.locale.languageCode.toString()),
+      ),
+    ),
+    // login route
     // login route
     _customAnimatedGoRoute(
       route: Routes.login,

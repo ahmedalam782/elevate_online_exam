@@ -23,7 +23,7 @@ class EmailAndPasswordForm extends StatelessWidget {
         children: [
           CustomTextFormField(
             controller: context.read<LoginCubit>().emailController,
-            validator:(value) {
+            validator: (value) {
               if (Validations.validateEmail(value) != null) {
                 return Validations.validateEmail(value);
               }
@@ -41,10 +41,10 @@ class EmailAndPasswordForm extends StatelessWidget {
             validator: (value) => Validations.validatePassword(value),
             hintText: LocaleKeys.login_password_hint.tr(),
             hintStyle: Styles.regular(context, 14, color: AppColors.grayA6),
-            
+
             fillColor: AppColors.backgroundLight,
             labelWidget: Text(LocaleKeys.login_password_label.tr()),
-            isObscureText: true,
+            isObscureText: false,
             maxLine: 1,
           ),
         ],
