@@ -2,6 +2,7 @@ class EndPoints {
   static const String baseUrl = "https://exam.elevateegy.com/api/v1";
   // static const String baseImageUrl = "https://exam.elevateegy.com/images/";
   static const String refreshToken = "/auth/refresh-token";
+  static const String signupEndpoint = "/auth/signup";
   // added login endpoint
   static const String login = "/auth/signin";
 }

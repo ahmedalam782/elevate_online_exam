@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_online_exam/features/signup/presentation/view/pages/signup_page.dart';
 import 'package:elevate_online_exam/features/login/presentation/view/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -8,7 +9,7 @@ import 'routes.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 final GoRouter router = GoRouter(
-  initialLocation: Routes.splash,
+  initialLocation: Routes.register,
   navigatorKey: navigatorKey,
   routes: [
     _customAnimatedGoRoute(
@@ -16,8 +17,13 @@ final GoRouter router = GoRouter(
       page: (state, context) =>
           SplashPage(key: ValueKey(context.locale.languageCode.toString())),
     ),
+    _customAnimatedGoRoute(
+      route: Routes.register,
+      page: (state, context) =>
+          SignupPage(key: ValueKey(context.locale.languageCode.toString())),
+    ),
     // TODO: Add more routes here
-    // login route 
+    // login route
     _customAnimatedGoRoute(
       route: Routes.login,
       page: (state, context) =>

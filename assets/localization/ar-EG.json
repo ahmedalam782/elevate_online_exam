@@ -93,6 +93,28 @@
         "check_internet": "تحقق من اتصالك بالإنترنت وحاول مرة أخرى.",
         "test_your_knowledge": "اختبر معرفتك",
         "online_exam": "الامتحان عبر الإنترنت"
+    },
+        "signup":{
+        "sign_up":"تسجيل",
+        "user_name":"إسم المستخدم",
+        "enter_you_user_name":"أدخل إسم المستخدم",
+        "first_name":"الإسم الأول",
+        "enter_first_name":"أدخل الإسم الأول",
+        "last_name":"الإسم الأخير",
+        "enter_last_name":"أدخل الإسم الأخير",
+        "email":"البريد الإلكتروني",
+        "enter_email":"أدخل البريد الإلكتروني",
+        "password":"الرقم السري",
+        "enter_password":"أدخل الرقم السري",
+        "confirm_password":"تأكيد الرقم السري",
+        "phone":"الهاتف",
+        "enter_phone_number":"أدخل رقم الهاتف",
+        "already_have_an_account":"بالفعل تمتلك حساب؟",
+        "login":"تسجيل الدخول",
+        "account_created_successfully":"تم إنشاء الحساب بنجاح"
+
+        
+
     }
     ,
     "login": {
