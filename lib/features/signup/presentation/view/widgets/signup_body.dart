@@ -4,6 +4,7 @@ import 'package:elevate_online_exam/core/config/base_state/base_state.dart';
 import 'package:elevate_online_exam/core/config/di/injectable_config.dart';
 import 'package:elevate_online_exam/core/errors/failures.dart';
 import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
+import 'package:elevate_online_exam/core/routes/routes.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_button.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_text_field.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_toast.dart';
@@ -18,6 +19,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:toastification/toastification.dart';
 
 class SignupBody extends StatefulWidget {
@@ -222,9 +224,6 @@ class _SignupBodyState extends State<SignupBody> {
                       }
                     }
                     if (state.state == StateType.success) {
-                      //  TODO: MOHAMMED
-                      // NAVIGATE TO HOME SCREEN
-
                       CustomToast(
                         context: context,
                         description: LocaleKeys
@@ -238,6 +237,7 @@ class _SignupBodyState extends State<SignupBody> {
                         message: LocaleKeys.signup_account_created_successfully
                             .tr(),
                       );
+                      context.go(Routes.appLayout);
                     }
                   },
                   builder: (context, state) {

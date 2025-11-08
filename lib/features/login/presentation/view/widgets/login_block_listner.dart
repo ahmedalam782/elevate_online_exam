@@ -17,8 +17,7 @@ class LoginBlocListener extends StatelessWidget {
       listener: (context, state) {
         state.loginState.when(
           success: (data) {
-            print("success");
-            context.go(Routes.home);
+            context.go(Routes.appLayout);
           },
           loading: () {
             CircularProgressIndicator();
