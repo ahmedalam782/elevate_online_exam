@@ -30,10 +30,11 @@ class CustomToast {
       style: ToastificationStyle.fillColored,
       alignment: isWeb ? AlignmentDirectional.topEnd : Alignment.topCenter,
       type: type,
+      foregroundColor: AppColors.white,
       closeOnClick: true,
       dragToClose: true,
       showProgressBar: true,
-      showIcon: false,
+      showIcon: true,
       context: context,
       title: Text(
         header ?? "",

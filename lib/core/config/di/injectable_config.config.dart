@@ -19,6 +19,24 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../../features/app_layout/presentation/view_model/cubit/app_layout_cubit.dart'
     as _i334;
+import '../../../features/forget_password/api/api_client/forget_password_api_client.dart'
+    as _i788;
+import '../../../features/forget_password/api/datasources/forget_password_remote_data_source_impl.dart'
+    as _i131;
+import '../../../features/forget_password/data/datasources/forget_password_remote_data_source_contract.dart'
+    as _i938;
+import '../../../features/forget_password/data/repositories/forget_password_repository_impl.dart'
+    as _i893;
+import '../../../features/forget_password/domain/repositories/forget_password_repository.dart'
+    as _i98;
+import '../../../features/forget_password/domain/use_cases/forget_password_use_case.dart'
+    as _i351;
+import '../../../features/forget_password/domain/use_cases/reset_password_use_case.dart'
+    as _i514;
+import '../../../features/forget_password/domain/use_cases/verify_reset_code_use_case.dart'
+    as _i677;
+import '../../../features/forget_password/presentation/view_model/cubit/forget_password_cubit.dart'
+    as _i70;
 import '../../../features/login/api/api_client/login_api_client.dart' as _i865;
 import '../../../features/login/api/datasources/login_local_data_source_impl.dart'
     as _i910;
@@ -89,12 +107,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i865.LoginApiClient>(
       () => _i865.LoginApiClient(gh<_i361.Dio>()),
     );
+    gh.factory<_i788.ForgetPasswordApiClient>(
+      () => _i788.ForgetPasswordApiClient(gh<_i361.Dio>()),
+    );
     gh.factory<_i873.SigupApiClient>(
       () => _i873.SigupApiClient(gh<_i361.Dio>()),
     );
     gh.factory<_i739.SignupRemoteDataSourceContract>(
       () => _i500.SigupRemoteDataSourceImpl(
         homeApiClient: gh<_i873.SigupApiClient>(),
+      ),
+    );
+    gh.factory<_i938.ForgetPasswordRemoteDataSourceContract>(
+      () => _i131.ForgetPasswordRemoteDataSourceImpl(
+        apiClient: gh<_i788.ForgetPasswordApiClient>(),
       ),
     );
     gh.factory<_i229.SignupLocalDataSourceContract>(
@@ -124,6 +150,22 @@ extension GetItInjectableX on _i174.GetIt {
         localDataSource: gh<_i229.SignupLocalDataSourceContract>(),
       ),
     );
+    gh.factory<_i98.ForgetPasswordRepository>(
+      () => _i893.ForgetPasswordRepositoryImpl(
+        remoteDataSource: gh<_i938.ForgetPasswordRemoteDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i351.ForgetPasswordUseCase>(
+      () => _i351.ForgetPasswordUseCase(
+        repository: gh<_i98.ForgetPasswordRepository>(),
+      ),
+    );
+    gh.factory<_i514.ResetPasswordUseCase>(
+      () => _i514.ResetPasswordUseCase(gh<_i98.ForgetPasswordRepository>()),
+    );
+    gh.factory<_i677.VerifyResetCodeUseCase>(
+      () => _i677.VerifyResetCodeUseCase(gh<_i98.ForgetPasswordRepository>()),
+    );
     gh.factory<_i1042.SignupUserUsecase>(
       () =>
           _i1042.SignupUserUsecase(repo: gh<_i1062.SignupRepositoryContract>()),
@@ -132,6 +174,13 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i928.LoginRepositoryImpl(
         remoteDataSource: gh<_i354.LoginRemoteDataSourceContract>(),
         localDataSource: gh<_i224.LoginLocalDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i70.ForgetPasswordCubit>(
+      () => _i70.ForgetPasswordCubit(
+        gh<_i351.ForgetPasswordUseCase>(),
+        gh<_i677.VerifyResetCodeUseCase>(),
+        gh<_i514.ResetPasswordUseCase>(),
       ),
     );
     gh.lazySingleton<_i571.LoginUserUseCase>(

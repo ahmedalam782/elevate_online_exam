@@ -3,7 +3,6 @@ import 'package:elevate_online_exam/core/config/di/injectable_config.dart';
 import 'package:elevate_online_exam/core/languages/lang.dart';
 import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_app_bar.dart';
-import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:elevate_online_exam/features/login/presentation/view/widgets/login_body.dart';
 import 'package:elevate_online_exam/features/login/presentation/view_model/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
