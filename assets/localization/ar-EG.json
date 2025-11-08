@@ -94,39 +94,55 @@
         "test_your_knowledge": "اختبر معرفتك",
         "online_exam": "الامتحان عبر الإنترنت"
     },
-        "signup":{
-        "sign_up":"تسجيل",
-        "user_name":"إسم المستخدم",
-        "enter_you_user_name":"أدخل إسم المستخدم",
-        "first_name":"الإسم الأول",
-        "enter_first_name":"أدخل الإسم الأول",
-        "last_name":"الإسم الأخير",
-        "enter_last_name":"أدخل الإسم الأخير",
-        "email":"البريد الإلكتروني",
-        "enter_email":"أدخل البريد الإلكتروني",
-        "password":"الرقم السري",
-        "enter_password":"أدخل الرقم السري",
-        "confirm_password":"تأكيد الرقم السري",
-        "phone":"الهاتف",
-        "enter_phone_number":"أدخل رقم الهاتف",
-        "already_have_an_account":"بالفعل تمتلك حساب؟",
-        "login":"تسجيل الدخول",
-        "account_created_successfully":"تم إنشاء الحساب بنجاح"
-
-        
-
-    }
-    ,
+    "forget_password": {
+        "title": " كلمة المرور",
+        "message": "يرجى إدخال بريدك الإلكتروني المرتبط بحسابك",
+        "email_hint": "أدخل بريدك الإلكتروني",
+        "email_label": "البريد الإلكتروني",
+        "continue": "متابعة",
+        "email_verification": "التحقق من البريد الإلكتروني",
+        "email_verification_message": "يرجى إدخال الرمز الذي تم إرساله إلى عنوان بريدك الإلكتروني",
+        "did_not_receive_code": "لم تستلم الرمز؟",
+        "resend_code": "إعادة الإرسال",
+        "invalid_code": "رمز غير صالح",
+        "reset_password": "إعادة تعيين كلمة المرور",
+        "password_requirements": "يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير واحد ورقم واحد على الأقل",
+        "new_password": "كلمة مرور جديدة",
+        "enter_your_password": "أدخل كلمة مرورك",
+        "confirm_password": "تأكيد كلمة المرور",
+        "email_sent_message": "تم إرسال رمز التحقق إلى بريدك الإلكتروني بنجاح",
+        "code_correct": "الرمز صحيح ، يرجى إعادة تعيين كلمة المرور",
+        "password_reset_success": "تم إعادة تعيين كلمة المرور بنجاح ، يرجى تسجيل الدخول مرة أخرى"
+    },
+    "signup": {
+        "sign_up": "تسجيل",
+        "user_name": "إسم المستخدم",
+        "enter_you_user_name": "أدخل إسم المستخدم",
+        "first_name": "الإسم الأول",
+        "enter_first_name": "أدخل الإسم الأول",
+        "last_name": "الإسم الأخير",
+        "enter_last_name": "أدخل الإسم الأخير",
+        "email": "البريد الإلكتروني",
+        "enter_email": "أدخل البريد الإلكتروني",
+        "password": "الرقم السري",
+        "enter_password": "أدخل الرقم السري",
+        "confirm_password": "تأكيد الرقم السري",
+        "phone": "الهاتف",
+        "enter_phone_number": "أدخل رقم الهاتف",
+        "already_have_an_account": "بالفعل تمتلك حساب؟",
+        "login": "تسجيل الدخول",
+        "account_created_successfully": "تم إنشاء الحساب بنجاح"
+    },
     "login": {
-    "log_in": "تسجيل الدخول",
-    "email_hint": "أدخل بريدك الإلكتروني",
-    "email_label": "البريد الإلكتروني",
-    "password_label": "كلمة المرور",
-    "password_hint": "أدخل كلمة المرور",
-    "remember_me": "تذكرني",
-    "forgot_password": "نسيت كلمة المرور؟",
-    "log_in_button": "تسجيل الدخول",
-    "no_account": "ليس لديك حساب؟ ",
-    "sign_up": "إنشاء حساب"
-}
+        "log_in": "تسجيل الدخول",
+        "email_hint": "أدخل بريدك الإلكتروني",
+        "email_label": "البريد الإلكتروني",
+        "password_label": "كلمة المرور",
+        "password_hint": "أدخل كلمة المرور",
+        "remember_me": "تذكرني",
+        "forgot_password": "نسيت كلمة المرور؟",
+        "log_in_button": "تسجيل الدخول",
+        "no_account": "ليس لديك حساب؟ ",
+        "sign_up": "إنشاء حساب"
+    }
 }

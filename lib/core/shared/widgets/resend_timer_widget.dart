@@ -61,17 +61,38 @@ class ResendTimerState extends State<ResendTimer> {
               widget.onResend();
             }
           : null,
-      child: Text(
-        _remainingSeconds > 0
-            ? LocaleKeys.custom_widget_resend.tr(
-                args: [_remainingSeconds.toString()],
-              )
-            : LocaleKeys.custom_widget_resend_title.tr(),
-        style: Styles.light(
-          context,
-          14,
-        ).copyWith(color: AppColors.primaryLight),
-      ),
+      child: _remainingSeconds > 0
+          ? Text(
+              _remainingSeconds > 0
+                  ? LocaleKeys.custom_widget_resend.tr(
+                      args: [_remainingSeconds.toString()],
+                    )
+                  : LocaleKeys.custom_widget_resend.tr(),
+              style: Styles.light(context, 14).copyWith(
+                color: _remainingSeconds > 0
+                    ? AppColors.primaryLight
+                    : AppColors.gray53,
+              ),
+            )
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  LocaleKeys.forget_password_did_not_receive_code.tr(),
+                  style: Styles.regular(context, 14, color: AppColors.gray53),
+                ),
+                SizedBox(width: 8),
+                Text(
+                  textAlign: TextAlign.center,
+                  LocaleKeys.forget_password_resend_code.tr(),
+                  style: Styles.regular(
+                    context,
+                    14,
+                    color: AppColors.primaryLight,
+                  ),
+                ),
+              ],
+            ),
     );
   }
 }

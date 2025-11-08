@@ -1,28 +1,18 @@
+import 'package:equatable/equatable.dart';
+
 enum StateType { initial, loading, success, error }
 
 // changed from abstract class to class to make it possible to be initialized
-class BaseState<T> {
-  final StateType state;
+class BaseState<T> extends Equatable {
+  final StateType? state;
   final T? data;
   final Exception? exception;
 
-  // removing the normal constructor
+  const BaseState({this.state = StateType.initial, this.data, this.exception});
 
-  // create custom constructors for each state type to make it more readable and simplify the code inside the cubit
-  /* for example instead of :
-     emit(
-      state.copyWith(
-            exampleState: BaseState<User>(
-              isLoading: false,
-              data: res.data,
-        ),
-      ),
-    );
+  @override
+  List<Object?> get props => [state, data, exception];
 
-    we do this : 
-     emit(state.copyWith(exampleState: BaseState.success(data)));
-
-  */
   const BaseState.initial()
     : state = StateType.initial,
       data = null,
@@ -51,10 +41,10 @@ class BaseState<T> {
     required R Function(Exception exception) error,
     required R Function() initial,
   }) {
-    return switch (state) {
+    return switch (state ?? StateType.initial) {
       StateType.initial => initial(),
       StateType.loading => loading(),
-      StateType.success => success(data!),
+      StateType.success => success(data as T),
       StateType.error => error(exception!),
     };
   }

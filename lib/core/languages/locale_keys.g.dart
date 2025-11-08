@@ -2,24 +2,17 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class LocaleKeys {
-  static const error_api_failure_connectionError =
-      'error_api_failure.connectionError';
-  static const error_api_failure_connectionTimeout =
-      'error_api_failure.connectionTimeout';
+abstract class  LocaleKeys {
+  static const error_api_failure_connectionError = 'error_api_failure.connectionError';
+  static const error_api_failure_connectionTimeout = 'error_api_failure.connectionTimeout';
   static const error_api_failure_cancelled = 'error_api_failure.cancelled';
   static const error_api_failure_unknown = 'error_api_failure.unknown';
-  static const error_api_failure_server_error =
-      'error_api_failure.server_error';
-  static const error_api_failure_receiveTimeout =
-      'error_api_failure.receiveTimeout';
+  static const error_api_failure_server_error = 'error_api_failure.server_error';
+  static const error_api_failure_receiveTimeout = 'error_api_failure.receiveTimeout';
   static const error_api_failure_sendTimeout = 'error_api_failure.sendTimeout';
-  static const error_api_failure_unexpected_error =
-      'error_api_failure.unexpected_error';
-  static const error_api_failure_badCertificate =
-      'error_api_failure.badCertificate';
-  static const error_api_failure_expiredToken =
-      'error_api_failure.expiredToken';
+  static const error_api_failure_unexpected_error = 'error_api_failure.unexpected_error';
+  static const error_api_failure_badCertificate = 'error_api_failure.badCertificate';
+  static const error_api_failure_expiredToken = 'error_api_failure.expiredToken';
   static const error_api_failure = 'error_api_failure';
   static const custom_widget_loading = 'custom_widget.loading';
   static const custom_widget_upload_image = 'custom_widget.upload_image';
@@ -27,16 +20,13 @@ abstract class LocaleKeys {
   static const custom_widget_resend = 'custom_widget.resend';
   static const custom_widget_resend_title = 'custom_widget.resend_title';
   static const custom_widget_try_again = 'custom_widget.try_again';
-  static const custom_widget_unexpected_error =
-      'custom_widget.unexpected_error';
+  static const custom_widget_unexpected_error = 'custom_widget.unexpected_error';
   static const custom_widget_done = 'custom_widget.done';
   static const custom_widget_cancel = 'custom_widget.cancel';
   static const custom_widget_choose_image = 'custom_widget.choose_image';
   static const custom_widget_drag_and_drop = 'custom_widget.drag_and_drop';
-  static const custom_widget_rotateLeftTooltip =
-      'custom_widget.rotateLeftTooltip';
-  static const custom_widget_rotateRightTooltip =
-      'custom_widget.rotateRightTooltip';
+  static const custom_widget_rotateLeftTooltip = 'custom_widget.rotateLeftTooltip';
+  static const custom_widget_rotateRightTooltip = 'custom_widget.rotateRightTooltip';
   static const custom_widget_save = 'custom_widget.save';
   static const custom_widget_search = 'custom_widget.search';
   static const custom_widget_phone_number = 'custom_widget.phone_number';
@@ -61,29 +51,18 @@ abstract class LocaleKeys {
   static const failures_cache_failure = 'failures.cache_failure';
   static const failures = 'failures';
   static const validations_password_required = 'validations.password_required';
-  static const validations_set_password_1_condition =
-      'validations.set_password_1_condition';
-  static const validations_set_password_2_condition =
-      'validations.set_password_2_condition';
-  static const validations_set_password_3_condition =
-      'validations.set_password_3_condition';
-  static const validations_set_password_4_condition =
-      'validations.set_password_4_condition';
-  static const validations_set_password_5_condition =
-      'validations.set_password_5_condition';
-  static const validations_set_password_1_condition_error =
-      'validations.set_password_1_condition_error';
-  static const validations_set_password_2_condition_error =
-      'validations.set_password_2_condition_error';
-  static const validations_set_password_3_condition_error =
-      'validations.set_password_3_condition_error';
-  static const validations_set_password_4_condition_error =
-      'validations.set_password_4_condition_error';
-  static const validations_set_password_5_condition_error =
-      'validations.set_password_5_condition_error';
+  static const validations_set_password_1_condition = 'validations.set_password_1_condition';
+  static const validations_set_password_2_condition = 'validations.set_password_2_condition';
+  static const validations_set_password_3_condition = 'validations.set_password_3_condition';
+  static const validations_set_password_4_condition = 'validations.set_password_4_condition';
+  static const validations_set_password_5_condition = 'validations.set_password_5_condition';
+  static const validations_set_password_1_condition_error = 'validations.set_password_1_condition_error';
+  static const validations_set_password_2_condition_error = 'validations.set_password_2_condition_error';
+  static const validations_set_password_3_condition_error = 'validations.set_password_3_condition_error';
+  static const validations_set_password_4_condition_error = 'validations.set_password_4_condition_error';
+  static const validations_set_password_5_condition_error = 'validations.set_password_5_condition_error';
   static const validations_confirm_password = 'validations.confirm_password';
-  static const validations_confirm_password_invalid =
-      'validations.confirm_password_invalid';
+  static const validations_confirm_password_invalid = 'validations.confirm_password_invalid';
   static const validations_phone_required = 'validations.phone_required';
   static const validations_phone_invalid = 'validations.phone_invalid';
   static const validations_name_required = 'validations.name_required';
@@ -113,6 +92,25 @@ abstract class LocaleKeys {
   static const global_test_your_knowledge = 'global.test_your_knowledge';
   static const global_online_exam = 'global.online_exam';
   static const global = 'global';
+  static const forget_password_title = 'forget_password.title';
+  static const forget_password_message = 'forget_password.message';
+  static const forget_password_email_hint = 'forget_password.email_hint';
+  static const forget_password_email_label = 'forget_password.email_label';
+  static const forget_password_continue = 'forget_password.continue';
+  static const forget_password_email_verification = 'forget_password.email_verification';
+  static const forget_password_email_verification_message = 'forget_password.email_verification_message';
+  static const forget_password_did_not_receive_code = 'forget_password.did_not_receive_code';
+  static const forget_password_resend_code = 'forget_password.resend_code';
+  static const forget_password_invalid_code = 'forget_password.invalid_code';
+  static const forget_password_reset_password = 'forget_password.reset_password';
+  static const forget_password_password_requirements = 'forget_password.password_requirements';
+  static const forget_password_new_password = 'forget_password.new_password';
+  static const forget_password_enter_your_password = 'forget_password.enter_your_password';
+  static const forget_password_confirm_password = 'forget_password.confirm_password';
+  static const forget_password_email_sent_message = 'forget_password.email_sent_message';
+  static const forget_password_code_correct = 'forget_password.code_correct';
+  static const forget_password_password_reset_success = 'forget_password.password_reset_success';
+  static const forget_password = 'forget_password';
   static const signup_sign_up = 'signup.sign_up';
   static const signup_user_name = 'signup.user_name';
   static const signup_enter_you_user_name = 'signup.enter_you_user_name';
@@ -127,11 +125,9 @@ abstract class LocaleKeys {
   static const signup_confirm_password = 'signup.confirm_password';
   static const signup_phone = 'signup.phone';
   static const signup_enter_phone_number = 'signup.enter_phone_number';
-  static const signup_already_have_an_account =
-      'signup.already_have_an_account';
+  static const signup_already_have_an_account = 'signup.already_have_an_account';
   static const signup_login = 'signup.login';
-  static const signup_account_created_successfully =
-      'signup.account_created_successfully';
+  static const signup_account_created_successfully = 'signup.account_created_successfully';
   static const signup = 'signup';
   static const login_log_in = 'login.log_in';
   static const login_email_hint = 'login.email_hint';
@@ -144,4 +140,5 @@ abstract class LocaleKeys {
   static const login_no_account = 'login.no_account';
   static const login_sign_up = 'login.sign_up';
   static const login = 'login';
+
 }
