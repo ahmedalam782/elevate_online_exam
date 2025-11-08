@@ -111,5 +111,16 @@ abstract class  LocaleKeys {
   static const forget_password_code_correct = 'forget_password.code_correct';
   static const forget_password_password_reset_success = 'forget_password.password_reset_success';
   static const forget_password = 'forget_password';
+  static const login_log_in = 'login.log_in';
+  static const login_email_hint = 'login.email_hint';
+  static const login_email_label = 'login.email_label';
+  static const login_password_label = 'login.password_label';
+  static const login_password_hint = 'login.password_hint';
+  static const login_remember_me = 'login.remember_me';
+  static const login_forgot_password = 'login.forgot_password';
+  static const login_log_in_button = 'login.log_in_button';
+  static const login_no_account = 'login.no_account';
+  static const login_sign_up = 'login.sign_up';
+  static const login = 'login';
 
 }

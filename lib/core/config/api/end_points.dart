@@ -7,6 +7,8 @@ class EndPoints {
   static const String forgetPassword = "/auth/forgotPassword";
   static const String verifyEmailCode = "/auth/verifyResetCode";
   static const String resetPassword = "/auth/resetPassword";
+  // added login endpoint
+  static const String login = "/auth/signin";
 }
 
 class Apikeys {
