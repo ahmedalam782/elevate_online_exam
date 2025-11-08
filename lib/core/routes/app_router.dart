@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_online_exam/features/signup/presentation/view/pages/signup_page.dart';
+import 'package:elevate_online_exam/features/login/presentation/view/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,6 +23,12 @@ final GoRouter router = GoRouter(
           SignupPage(key: ValueKey(context.locale.languageCode.toString())),
     ),
     // TODO: Add more routes here
+    // login route
+    _customAnimatedGoRoute(
+      route: Routes.login,
+      page: (state, context) =>
+          LoginPage(key: ValueKey(context.locale.languageCode.toString())),
+    ),
   ],
 );
 
