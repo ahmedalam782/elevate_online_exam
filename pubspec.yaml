@@ -48,7 +48,7 @@ dependencies:
   lottie: ^3.3.2
   pinput: ^5.0.2
   pretty_dio_logger: ^1.4.0
-  retrofit: ^4.8.0
+  retrofit: ^4.9.0
   shared_preferences: ^2.5.3
   shimmer: ^3.0.0
   toastification: ^3.0.3
@@ -97,22 +97,22 @@ flutter:
         - asset: assets/fonts/arabic/Roboto-Bold.ttf
           weight: 700
 #!=======================ANIMATIONS========================
-flutter_assets:
-  assets_path: assets/animations
-  output_path: lib/core/theme
-  filename: app_animations.dart
-  ignore_comments: true
-  field_prefix: null
-  classname: AppAnimations
-
-#!=======================ICONS========================
 # flutter_assets:
-#   assets_path: assets/icons
+#   assets_path: assets/animations
 #   output_path: lib/core/theme
-#   filename: app_icons.dart
+#   filename: app_animations.dart
 #   ignore_comments: true
 #   field_prefix: null
-#   classname: AppIcons
+#   classname: AppAnimations
+
+#!=======================ICONS========================
+flutter_assets:
+  assets_path: assets/icons
+  output_path: lib/core/theme
+  filename: app_icons.dart
+  ignore_comments: true
+  field_prefix: null
+  classname: AppIcons
 #!=======================IMAGES========================
 # flutter_assets:
 #   assets_path: assets/images

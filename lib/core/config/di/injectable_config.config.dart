@@ -17,6 +17,8 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
     as _i161;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
+import '../../../features/app_layout/presentation/view_model/cubit/app_layout_cubit.dart'
+    as _i334;
 import '../../../features/forget_password/api/api_client/forget_password_api_client.dart'
     as _i788;
 import '../../../features/forget_password/api/datasources/forget_password_remote_data_source_impl.dart'
@@ -85,6 +87,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => coreInjectableModule.prefs(),
       preResolve: true,
     );
+    gh.factory<_i334.AppLayoutCubit>(() => _i334.AppLayoutCubit());
     gh.singleton<_i361.Dio>(() => coreInjectableModule.dio());
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => coreInjectableModule.secureStorage(),

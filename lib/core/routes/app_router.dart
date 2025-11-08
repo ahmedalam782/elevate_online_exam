@@ -4,6 +4,7 @@ import 'package:elevate_online_exam/features/login/presentation/view/pages/login
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/app_layout/presentation/view/pages/app_layout_page.dart';
 import '../../features/forget_password/presentation/view/pages/forget_password_page.dart';
 import '../../features/splash/presentation/view/pages/splash_page.dart';
 import 'routes.dart';
@@ -18,12 +19,18 @@ final GoRouter router = GoRouter(
       page: (state, context) =>
           SplashPage(key: ValueKey(context.locale.languageCode.toString())),
     ),
+
     _customAnimatedGoRoute(
       route: Routes.register,
       page: (state, context) =>
           SignupPage(key: ValueKey(context.locale.languageCode.toString())),
     ),
     // TODO: Add more routes here
+    _customAnimatedGoRoute(
+      route: Routes.appLayout,
+      page: (state, context) =>
+          AppLayoutPage(key: ValueKey(context.locale.languageCode.toString())),
+    ),
 
     _customAnimatedGoRoute(route: Routes.forgetPassword, page:(state, context) =>
           ForgetPasswordPage(key: ValueKey(context.locale.languageCode.toString())), ),

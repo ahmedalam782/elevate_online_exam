@@ -94,6 +94,13 @@
         "test_your_knowledge": "اختبر معرفتك",
         "online_exam": "الامتحان عبر الإنترنت"
     },
+    "app_layout": {
+        "explore": "استكشاف",
+        "result": "النتيجة",
+        "profile": "الملف الشخصي",
+        "Survey": "استبيان",
+        "Results": "نتايج"
+    },
     "forget_password": {
         "title": " كلمة المرور",
         "message": "يرجى إدخال بريدك الإلكتروني المرتبط بحسابك",
