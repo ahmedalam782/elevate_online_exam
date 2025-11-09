@@ -152,5 +152,12 @@
         "log_in_button": "Login",
         "no_account": "Don't have an account? ",
         "sign_up": "Sign Up"
+    },
+    "questions":{
+        "exam":"Exam",
+        "back":"Back",
+        "next":"Next",
+        "question":"Question",
+        "of":"of"
     }
 }

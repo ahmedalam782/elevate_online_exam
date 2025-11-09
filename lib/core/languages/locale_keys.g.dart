@@ -146,5 +146,11 @@ abstract class  LocaleKeys {
   static const login_no_account = 'login.no_account';
   static const login_sign_up = 'login.sign_up';
   static const login = 'login';
+  static const questions_exam = 'questions.exam';
+  static const questions_back = 'questions.back';
+  static const questions_next = 'questions.next';
+  static const questions_question = 'questions.question';
+  static const questions_of = 'questions.of';
+  static const questions = 'questions';
 
 }
