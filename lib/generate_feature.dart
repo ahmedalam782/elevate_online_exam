@@ -50,7 +50,9 @@ void main(List<String> args) {
     final widgetDir = Directory('${baseDir.path}/$layer/view/widgets');
     final repositoryDir = Directory('${baseDir.path}/$layer/repositories');
     if (apiClientDir.existsSync()) {
-      File('${apiClientDir.path}/${featureName}_api_client.dart').writeAsStringSync(
+      File(
+        '${apiClientDir.path}/${featureName}_api_client.dart',
+      ).writeAsStringSync(
         '// TODO: $layer ${_capitalize(featureName)}ApiClient\n',
       );
       if (layer == 'api' || layer == 'data') {
@@ -61,27 +63,27 @@ void main(List<String> args) {
     }
     if (datasourcesDir.existsSync()) {
       if (layer == 'api') {
-      File(
-        '${datasourcesDir.path}/${featureName}_local_data_source_impl.dart',
-      ).writeAsStringSync(
-        '// TODO: $layer ${_capitalize(featureName)}LocalDataSourceImpl\n',
-      );
-      File(
-        '${datasourcesDir.path}/${featureName}_remote_data_source_impl.dart',
-      ).writeAsStringSync(
-        '// TODO: $layer ${_capitalize(featureName)}RemoteDataSourceImpl\n',
-      );
+        File(
+          '${datasourcesDir.path}/${featureName}_local_data_source_impl.dart',
+        ).writeAsStringSync(
+          '// TODO: $layer ${_capitalize(featureName)}LocalDataSourceImpl\n',
+        );
+        File(
+          '${datasourcesDir.path}/${featureName}_remote_data_source_impl.dart',
+        ).writeAsStringSync(
+          '// TODO: $layer ${_capitalize(featureName)}RemoteDataSourceImpl\n',
+        );
       } else if (layer == 'data') {
-      File(
-        '${datasourcesDir.path}/${featureName}_local_data_source_contract.dart',
-      ).writeAsStringSync(
-        '// TODO: $layer ${_capitalize(featureName)}LocalDataSourceContract\n',
-      );
-      File(
-        '${datasourcesDir.path}/${featureName}_remote_data_source_contract.dart',
-      ).writeAsStringSync(
-        '// TODO: $layer ${_capitalize(featureName)}RemoteDataSourceContract\n',
-      );
+        File(
+          '${datasourcesDir.path}/${featureName}_local_data_source_contract.dart',
+        ).writeAsStringSync(
+          '// TODO: $layer ${_capitalize(featureName)}LocalDataSourceContract\n',
+        );
+        File(
+          '${datasourcesDir.path}/${featureName}_remote_data_source_contract.dart',
+        ).writeAsStringSync(
+          '// TODO: $layer ${_capitalize(featureName)}RemoteDataSourceContract\n',
+        );
       }
     }
     if (cubitDir.existsSync()) {

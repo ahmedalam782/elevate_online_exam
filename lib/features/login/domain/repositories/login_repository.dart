@@ -5,6 +5,6 @@ import 'package:elevate_online_exam/features/login/domain/entities/login_respons
 abstract class LoginRepository {
   Future<Result<LoginResponseModel>> loginUser({
     required LoginRequestBody body,
-    required bool rememberMe ,
+    required bool rememberMe,
   });
 }

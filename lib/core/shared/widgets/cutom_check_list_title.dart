@@ -18,7 +18,7 @@ class CustomCheckListTitle extends StatelessWidget {
     this.onChanged,
     this.title,
     this.tileColor,
-     this.radius,
+    this.radius,
     required this.titleAlignment,
   });
 
