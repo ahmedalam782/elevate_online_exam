@@ -4,7 +4,9 @@ import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/theme/app_colors.dart';
 import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view/widgets/count_down_timer.dart';
+import 'package:elevate_online_exam/features/questions/presentation/view/widgets/multiple_choice_container.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view/widgets/question_stepper.dart';
+import 'package:elevate_online_exam/features/questions/presentation/view/widgets/singe_choice_container.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view/widgets/time_out_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,13 +47,32 @@ class QuestionsBody extends StatelessWidget {
                     // );
                     print("FINISED");
                   },
-                  totalSeconds: 3,
+                  totalMinutes: 25,
                 ),
               ],
             ),
             SizedBox(height: 8.h),
-            QuestionStepper(currentQuestion: 1, totalQuestions: 20),
+            QuestionStepper(currentQuestion: 5, totalQuestions: 20),
             SizedBox(height: 8.h),
+            Text(
+              "Select the correctly punctuated sentence.",
+              style: Styles.medium(context, 18.sp),
+            ),
+            SizedBox(height: 24.h),
+            ListView.separated(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return SingeChoiCeContainer(
+                  isSelected: index == 0,
+                  text: "Its going to rain today.",
+                );
+              },
+              separatorBuilder: (context, index) {
+                return SizedBox(height: 16.h);
+              },
+              itemCount: 4,
+            ),
           ],
         ),
       ),

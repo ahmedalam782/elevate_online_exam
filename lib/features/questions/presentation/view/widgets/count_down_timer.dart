@@ -1,17 +1,15 @@
 import 'dart:async';
-import 'package:elevate_online_exam/core/theme/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 class CountdownTimer extends StatefulWidget {
-  final int totalSeconds; // total seconds (e.g., 1800 for 30 minutes)
+  final int totalMinutes; // e.g. 30 for 30 minutes
   final VoidCallback onFinished; // callback when time ends
   final TextStyle? textStyle; // optional custom style
 
   const CountdownTimer({
     Key? key,
-    required this.totalSeconds,
+    required this.totalMinutes,
     required this.onFinished,
     this.textStyle,
   }) : super(key: key);
@@ -27,7 +25,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
   @override
   void initState() {
     super.initState();
-    _remainingSeconds = widget.totalSeconds;
+    _remainingSeconds = widget.totalMinutes * 60;
     _startTimer();
   }
 
@@ -50,10 +48,10 @@ class _CountdownTimerState extends State<CountdownTimer> {
   }
 
   Color get _textColor {
-    final half = widget.totalSeconds / 2;
-    return _remainingSeconds >= half
-        ? const Color(0xFF11CE19) // Green
-        : const Color(0xFFCC1010); // Red
+    final halfTimeInSeconds = (widget.totalMinutes * 60) / 2;
+    return _remainingSeconds >= halfTimeInSeconds
+        ? const Color(0xFF11CE19) // Green if above half
+        : const Color(0xFFCC1010); // Red if below half
   }
 
   @override
@@ -64,21 +62,15 @@ class _CountdownTimerState extends State<CountdownTimer> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SvgPicture.asset(AppIcons.iconClock),
-        SizedBox(width: 3.w),
-        Text(
-          _formattedTime,
-          style:
-              widget.textStyle?.copyWith(color: _textColor) ??
-              TextStyle(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w400,
-                color: _textColor,
-              ),
-        ),
-      ],
+    return Text(
+      _formattedTime,
+      style:
+          widget.textStyle?.copyWith(color: _textColor) ??
+          TextStyle(
+            fontSize: 20.sp,
+            fontWeight: FontWeight.w400,
+            color: _textColor,
+          ),
     );
   }
 }
