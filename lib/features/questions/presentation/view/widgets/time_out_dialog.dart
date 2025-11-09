@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_button.dart';
 import 'package:elevate_online_exam/core/theme/app_colors.dart';
+import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,6 +38,11 @@ class TimeOutDialog extends StatelessWidget {
                 child: CustomButton(
                   title: LocaleKeys.questions_view_score.tr(),
                   backGroundColor: AppColors.primaryLight,
+                  titleStyle: Styles.medium(
+                    context,
+                    16.sp,
+                    color: AppColors.white,
+                  ),
                   onTap: () {
                     Navigator.of(context).pop();
                   },

@@ -1,5 +1,8 @@
 import 'dart:async';
+import 'package:elevate_online_exam/core/theme/app_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CountdownTimer extends StatefulWidget {
   final int totalSeconds; // total seconds (e.g., 1800 for 30 minutes)
@@ -61,15 +64,21 @@ class _CountdownTimerState extends State<CountdownTimer> {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      _formattedTime,
-      style:
-          widget.textStyle?.copyWith(color: _textColor) ??
-          TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w400,
-            color: _textColor,
-          ),
+    return Row(
+      children: [
+        SvgPicture.asset(AppIcons.iconClock),
+        SizedBox(width: 3.w),
+        Text(
+          _formattedTime,
+          style:
+              widget.textStyle?.copyWith(color: _textColor) ??
+              TextStyle(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w400,
+                color: _textColor,
+              ),
+        ),
+      ],
     );
   }
 }
