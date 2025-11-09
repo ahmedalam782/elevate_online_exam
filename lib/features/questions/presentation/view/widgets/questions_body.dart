@@ -1,5 +1,6 @@
 // TODO: presentation QuestionsBody
 import 'package:elevate_online_exam/features/questions/presentation/view/widgets/count_down_timer.dart';
+import 'package:elevate_online_exam/features/questions/presentation/view/widgets/time_out_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,9 +18,16 @@ class QuestionsBody extends StatelessWidget {
               Text(""),
               CountdownTimer(
                 onFinished: () {
+                  showDialog(
+                    barrierDismissible: false,
+                    context: context,
+                    builder: (context) {
+                      return TimeOutDialog();
+                    },
+                  );
                   print("FINISED");
                 },
-                totalSeconds: 25,
+                totalSeconds: 3,
               ),
             ],
           ),

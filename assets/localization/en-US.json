@@ -158,6 +158,10 @@
         "back":"Back",
         "next":"Next",
         "question":"Question",
-        "of":"of"
+        "of":"of",
+        "time_out":"Time out!!",
+        "view_score":"View score"
+
+
     }
 }

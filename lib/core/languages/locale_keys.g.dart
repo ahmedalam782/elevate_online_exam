@@ -151,6 +151,8 @@ abstract class  LocaleKeys {
   static const questions_next = 'questions.next';
   static const questions_question = 'questions.question';
   static const questions_of = 'questions.of';
+  static const questions_time_out = 'questions.time_out';
+  static const questions_view_score = 'questions.view_score';
   static const questions = 'questions';
 
 }
