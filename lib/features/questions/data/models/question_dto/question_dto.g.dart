@@ -19,6 +19,7 @@ QuestionDto _$QuestionDtoFromJson(Map<String, dynamic> json) => QuestionDto(
       ? null
       : Exam.fromJson(json['exam'] as Map<String, dynamic>),
   createdAt: json['createdAt'] as String?,
+  answeredQuestion: json['answeredQuestion'] as String?,
 );
 
 Map<String, dynamic> _$QuestionDtoToJson(QuestionDto instance) =>
@@ -31,4 +32,5 @@ Map<String, dynamic> _$QuestionDtoToJson(QuestionDto instance) =>
       'subject': instance.subject,
       'exam': instance.exam,
       'createdAt': instance.createdAt,
+      'answeredQuestion': instance.answeredQuestion,
     };

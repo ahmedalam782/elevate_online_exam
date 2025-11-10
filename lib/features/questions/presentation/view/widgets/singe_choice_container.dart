@@ -29,7 +29,8 @@ class SingeChoiCeContainer extends StatelessWidget {
             ),
             child: isSelected
                 ? Center(
-                    child: Container(
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 300),
                       width: 10.w,
                       height: 10.w,
                       decoration: BoxDecoration(

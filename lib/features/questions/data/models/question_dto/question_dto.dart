@@ -66,6 +66,7 @@ class QuestionDto extends HiveObject {
     dynamic subject,
     Exam? exam,
     String? createdAt,
+    String? answeredQuestion,
   }) => QuestionDto(
     answers: answers ?? this.answers,
     type: type ?? this.type,
@@ -75,6 +76,7 @@ class QuestionDto extends HiveObject {
     subject: subject ?? this.subject,
     exam: exam ?? this.exam,
     createdAt: createdAt ?? this.createdAt,
+    answeredQuestion: answeredQuestion ?? this.answeredQuestion,
   );
 
   factory QuestionDto.fromJson(Map<String, dynamic> json) =>
@@ -94,7 +96,8 @@ class QuestionDto extends HiveObject {
           correct == other.correct &&
           subject == other.subject &&
           exam == other.exam &&
-          createdAt == other.createdAt;
+          createdAt == other.createdAt &&
+          answeredQuestion == other.answeredQuestion;
 
   @override
   int get hashCode => Object.hash(
@@ -106,5 +109,7 @@ class QuestionDto extends HiveObject {
     subject,
     exam,
     createdAt,
+    createdAt,
+    answeredQuestion,
   );
 }

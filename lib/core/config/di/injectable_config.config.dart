@@ -54,6 +54,8 @@ import '../../../features/login/domain/use_cases/login_user_use_case.dart'
     as _i571;
 import '../../../features/login/presentation/view_model/cubit/login_cubit.dart'
     as _i199;
+import '../../../features/questions/presentation/view_model/cubit/questions_cubit.dart'
+    as _i809;
 import '../../../features/signup/api/api_client/sigup_api_client.dart' as _i873;
 import '../../../features/signup/api/datasources/signup_local_data_source_impl.dart'
     as _i471;
@@ -88,6 +90,7 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.factory<_i334.AppLayoutCubit>(() => _i334.AppLayoutCubit());
+    gh.factory<_i809.QuestionsCubit>(() => _i809.QuestionsCubit());
     gh.singleton<_i361.Dio>(() => coreInjectableModule.dio());
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => coreInjectableModule.secureStorage(),
