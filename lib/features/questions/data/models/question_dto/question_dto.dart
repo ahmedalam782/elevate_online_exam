@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:elevate_online_exam/features/questions/domain/entities/exam_entity.dart';
 import 'package:elevate_online_exam/features/questions/domain/entities/questions_entity.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -116,6 +117,7 @@ class QuestionDto extends HiveObject {
 
   QuestionEntity toEntity() {
     return QuestionEntity(
+      exam: exam?.toEntity() ?? ExamEntity(title: "", duration: 0),
       questionTitle: question ?? "",
       id: id ?? "",
       correctAnswer: correct ?? "",

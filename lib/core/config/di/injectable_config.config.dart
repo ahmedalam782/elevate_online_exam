@@ -181,9 +181,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i258.QuestionsRepositoryContract>(
       () => _i60.QuestionsRepositoryImpl(
-        questionsLocalDataSourceImpl: gh<_i719.QuestionsLocalDataSourceImpl>(),
-        questionsRemoteDataSourceImpl:
-            gh<_i121.QuestionsRemoteDataSourceImpl>(),
+        questionsLocalDataSource: gh<_i340.QuestionsLocalDataSourceContract>(),
+        questionsRemoteDataSource:
+            gh<_i810.QuestionsRemoteDataSourceContract>(),
       ),
     );
     gh.factory<_i98.ForgetPasswordRepository>(

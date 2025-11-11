@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import 'package:elevate_online_exam/features/questions/domain/entities/answer_entity.dart';
+import 'package:elevate_online_exam/features/questions/domain/entities/exam_entity.dart';
 
 class QuestionEntity {
   final String questionTitle;
@@ -12,6 +13,7 @@ class QuestionEntity {
   final String type;
   String? answeredQuestion;
   final List<AnswerEntity> answers;
+  final ExamEntity exam;
   QuestionEntity({
     required this.questionTitle,
     required this.id,
@@ -19,6 +21,7 @@ class QuestionEntity {
     required this.type,
     this.answeredQuestion,
     required this.answers,
+    required this.exam,
   });
 
   QuestionEntity copyWith({
@@ -28,6 +31,7 @@ class QuestionEntity {
     String? type,
     String? answeredQuestion,
     List<AnswerEntity>? answers,
+    ExamEntity? exam,
   }) {
     return QuestionEntity(
       questionTitle: questionTitle ?? this.questionTitle,
@@ -36,6 +40,7 @@ class QuestionEntity {
       type: type ?? this.type,
       answeredQuestion: answeredQuestion ?? this.answeredQuestion,
       answers: answers ?? this.answers,
+      exam: exam ?? this.exam,
     );
   }
 
@@ -48,7 +53,8 @@ class QuestionEntity {
         other.correctAnswer == correctAnswer &&
         other.type == type &&
         other.answeredQuestion == answeredQuestion &&
-        listEquals(other.answers, answers);
+        listEquals(other.answers, answers) &&
+        other.exam == exam;
   }
 
   @override
@@ -58,6 +64,7 @@ class QuestionEntity {
         correctAnswer.hashCode ^
         type.hashCode ^
         answeredQuestion.hashCode ^
-        answers.hashCode;
+        answers.hashCode ^
+        exam.hashCode;
   }
 }

@@ -82,9 +82,16 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                       ),
                       CountdownTimer(
                         onFinished: () {
-                          print("FINISHED");
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return TimeOutDialog();
+                            },
+                          );
                         },
-                        totalMinutes: 25,
+                        totalMinutes: viewModel.state.data?.isNotEmpty ?? false
+                            ? viewModel.state.data?.first.exam.duration ?? 0
+                            : 0,
                       ),
                     ],
                   ),
@@ -97,9 +104,7 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                     builder: (context, currentPage) {
                       return QuestionStepper(
                         currentQuestion: currentPage + 1,
-                        totalQuestions:
-                            viewModel.state.data?.length ??
-                            DummyData.getDummyData.length,
+                        totalQuestions: viewModel.state.data?.length ?? 1,
                       );
                     },
                   ),
@@ -126,38 +131,43 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                                 // );
                               },
                               itemBuilder: (context, pageIndex) {
-                                final question = data![pageIndex];
+                                final question = data?[pageIndex];
                                 return Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      question.questionTitle,
+                                      question?.questionTitle ?? "",
                                       style: Styles.medium(context, 18.sp),
                                     ),
                                     SizedBox(height: 24.h),
                                     ListView.separated(
                                       shrinkWrap: true,
                                       physics: NeverScrollableScrollPhysics(),
-                                      itemCount: question.answers?.length ?? 0,
+                                      itemCount: question?.answers?.length ?? 0,
                                       separatorBuilder: (_, __) =>
                                           SizedBox(height: 16.h),
                                       itemBuilder: (_, index) {
-                                        final answer = question.answers[index];
+                                        final answer = question?.answers[index];
                                         return InkWell(
                                           onTap: () {
                                             print("sdsds");
                                             viewModel.doIntent(
                                               AnswerSelectedEvent(
                                                 index: pageIndex,
-                                                selectAnswer: answer.key,
+                                                selectAnswer: answer?.key ?? "",
                                               ),
                                             );
                                           },
                                           child: SingeChoiCeContainer(
                                             isSelected:
-                                                question.answeredQuestion ==
-                                                answer.key,
-                                            answer: answer,
+                                                question?.answeredQuestion ==
+                                                answer?.key,
+                                            answer:
+                                                answer ??
+                                                AnswerEntity(
+                                                  key: "",
+                                                  title: "",
+                                                ),
                                           ),
                                         );
                                       },
@@ -171,67 +181,79 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                   ),
 
                   /// Buttons - static widgets, logic triggers Cubit
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CustomButton(
-                          title: LocaleKeys.questions_next.tr(),
-                          titleStyle: Styles.medium(
-                            context,
-                            16.sp,
-                            color: AppColors.white,
-                          ),
-                          backGroundColor: AppColors.prime,
-                          radius: 10.r,
-                          onTap: () {
-                            final page = viewModel.state.currentPage;
-                            final dataLength =
-                                viewModel.state.data?.length ?? 0;
-                            if (page >= dataLength - 1) return;
+                  BlocSelector<QuestionsCubit, QuestionsState, int>(
+                    selector: (state) => state.currentPage,
 
-                            final nextPage = page + 1;
-                            controller.animateToPage(
-                              nextPage,
-                              curve: Curves.linear,
-                              duration: Duration(milliseconds: 300),
-                            );
-                            viewModel.doIntent(
-                              QuestionChanged(currentPage: nextPage),
-                            );
-                          },
-                          elevation: 0,
-                        ),
-                      ),
-                      SizedBox(width: 16.w),
-                      Expanded(
-                        child: CustomButton(
-                          title: LocaleKeys.questions_back.tr(),
-                          titleStyle: Styles.medium(
-                            context,
-                            16.sp,
-                            color: AppColors.prime,
-                          ),
-                          backGroundColor: AppColors.white,
-                          borderColor: AppColors.prime,
-                          radius: 10.r,
-                          onTap: () {
-                            final page = viewModel.state.currentPage;
-                            if (page == 0) return;
+                    builder: (context, state) {
+                      return Row(
+                        children: [
+                          Expanded(
+                            child: CustomButton(
+                              title: LocaleKeys.questions_next.tr(),
+                              titleStyle: Styles.medium(
+                                context,
+                                16.sp,
+                                color: AppColors.white,
+                              ),
+                              backGroundColor: AppColors.prime,
+                              radius: 10.r,
+                              onTap: () {
+                                final page = viewModel.state.currentPage;
+                                final dataLength =
+                                    viewModel.state.data?.length ?? 0;
+                                if (page >= dataLength - 1) {
+                                  // TODO GO TO SUCCESS SCREEN
+                                  return;
+                                }
 
-                            final prevPage = page - 1;
-                            controller.animateToPage(
-                              prevPage,
-                              curve: Curves.linear,
-                              duration: Duration(milliseconds: 300),
-                            );
-                            viewModel.doIntent(
-                              QuestionChanged(currentPage: prevPage),
-                            );
-                          },
-                          elevation: 0,
-                        ),
-                      ),
-                    ],
+                                final nextPage = page + 1;
+                                controller.animateToPage(
+                                  nextPage,
+                                  curve: Curves.linear,
+                                  duration: Duration(milliseconds: 300),
+                                );
+                                viewModel.doIntent(
+                                  QuestionChanged(currentPage: nextPage),
+                                );
+                              },
+                              elevation: 0,
+                            ),
+                          ),
+                          SizedBox(width: 16.w),
+                          Expanded(
+                            child: Visibility.maintain(
+                              visible: viewModel.state.currentPage != 0,
+                              child: CustomButton(
+                                title: LocaleKeys.questions_back.tr(),
+                                titleStyle: Styles.medium(
+                                  context,
+                                  16.sp,
+                                  color: AppColors.prime,
+                                ),
+                                backGroundColor: AppColors.white,
+                                borderColor: AppColors.prime,
+                                radius: 10.r,
+                                onTap: () {
+                                  final page = viewModel.state.currentPage;
+                                  if (page == 0) return;
+
+                                  final prevPage = page - 1;
+                                  controller.animateToPage(
+                                    prevPage,
+                                    curve: Curves.linear,
+                                    duration: Duration(milliseconds: 300),
+                                  );
+                                  viewModel.doIntent(
+                                    QuestionChanged(currentPage: prevPage),
+                                  );
+                                },
+                                elevation: 0,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                   ),
 
                   SizedBox(height: 150.h),

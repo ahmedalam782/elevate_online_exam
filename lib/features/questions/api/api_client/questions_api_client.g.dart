@@ -31,7 +31,7 @@ class _QuestionsApiClient implements QuestionsApiClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'questions',
+            '/questions',
             queryParameters: queryParameters,
             data: _data,
           )
