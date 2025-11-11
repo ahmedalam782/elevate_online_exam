@@ -1,3 +1,4 @@
+import 'package:elevate_online_exam/features/questions/domain/entities/answer_entity.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -34,4 +35,8 @@ class AnswerDto extends HiveObject {
 
   @override
   int get hashCode => Object.hash(answer, key);
+
+  AnswerEntity toEntity() {
+    return AnswerEntity(title: answer ?? "", key: key ?? "");
+  }
 }

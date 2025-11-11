@@ -9,6 +9,8 @@ import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:elevate_online_exam/features/questions/data/models/answer_dto/answer_dto.dart';
 import 'package:elevate_online_exam/features/questions/data/models/dummy_data.dart';
 import 'package:elevate_online_exam/features/questions/data/models/question_dto/question_dto.dart';
+import 'package:elevate_online_exam/features/questions/domain/entities/answer_entity.dart';
+import 'package:elevate_online_exam/features/questions/domain/entities/questions_entity.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view/widgets/count_down_timer.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view/widgets/multiple_choice_container.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view/widgets/question_stepper.dart';
@@ -35,7 +37,7 @@ class _QuestionsBodyState extends State<QuestionsBody> {
   void initState() {
     super.initState();
     viewModel = getIt<QuestionsCubit>();
-    viewModel.doIntent(GetQuestionsEvent(examId: ""));
+    viewModel.doIntent(GetQuestionsEvent(examId: "670070a830a3c3c1944a9c63"));
     controller = PageController();
   }
 
@@ -110,7 +112,7 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                         BlocSelector<
                           QuestionsCubit,
                           QuestionsState,
-                          List<QuestionDto>?
+                          List<QuestionEntity>?
                         >(
                           selector: (state) => state.data,
                           builder: (context, data) {
@@ -129,7 +131,7 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      question.question ?? "",
+                                      question.questionTitle,
                                       style: Styles.medium(context, 18.sp),
                                     ),
                                     SizedBox(height: 24.h),
@@ -140,16 +142,14 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                                       separatorBuilder: (_, __) =>
                                           SizedBox(height: 16.h),
                                       itemBuilder: (_, index) {
-                                        final answer =
-                                            question.answers?[index] ??
-                                            AnswerDto();
+                                        final answer = question.answers[index];
                                         return InkWell(
                                           onTap: () {
                                             print("sdsds");
                                             viewModel.doIntent(
                                               AnswerSelectedEvent(
                                                 index: pageIndex,
-                                                selectAnswer: answer.key ?? "",
+                                                selectAnswer: answer.key,
                                               ),
                                             );
                                           },

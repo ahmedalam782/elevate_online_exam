@@ -1,1 +1,1 @@
-// TODO: data QuestionsLocalDataSourceContract
+abstract class QuestionsLocalDataSourceContract {}

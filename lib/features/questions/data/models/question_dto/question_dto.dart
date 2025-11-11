@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:elevate_online_exam/features/questions/domain/entities/questions_entity.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import '../answer_dto/answer_dto.dart';
@@ -112,4 +113,19 @@ class QuestionDto extends HiveObject {
     createdAt,
     answeredQuestion,
   );
+
+  QuestionEntity toEntity() {
+    return QuestionEntity(
+      questionTitle: question ?? "",
+      id: id ?? "",
+      correctAnswer: correct ?? "",
+      type: type ?? "",
+      answers:
+          answers?.map((answer) {
+            return answer.toEntity();
+          }).toList() ??
+          [],
+      answeredQuestion: null,
+    );
+  }
 }

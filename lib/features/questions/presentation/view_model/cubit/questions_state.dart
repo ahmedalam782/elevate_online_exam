@@ -1,6 +1,6 @@
 part of 'questions_cubit.dart';
 
-class QuestionsState extends BaseState<List<QuestionDto>> {
+class QuestionsState extends BaseState<List<QuestionEntity>> {
   final int currentPage;
 
   QuestionsState.all({
@@ -12,7 +12,7 @@ class QuestionsState extends BaseState<List<QuestionDto>> {
 
   QuestionsState copyWith({
     StateType? state,
-    List<QuestionDto>? data,
+    List<QuestionEntity>? data,
     Exception? exception,
     int? currentPage,
   }) {
