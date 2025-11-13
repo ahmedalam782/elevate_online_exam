@@ -12,7 +12,7 @@ import 'routes.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 final GoRouter router = GoRouter(
-  initialLocation: Routes.examsTap,
+  initialLocation: Routes.splash,
   navigatorKey: navigatorKey,
   routes: [
     _customAnimatedGoRoute(
@@ -48,8 +48,10 @@ final GoRouter router = GoRouter(
     ),
     _customAnimatedGoRoute(
       route: Routes.examsTap,
-      page: (state, context) =>
-          ExamsTapPage(key: ValueKey(context.locale.languageCode.toString())),
+      page: (state, context) => ExamsTapPage(
+        key: ValueKey(context.locale.languageCode.toString()),
+        subjectId: "670037f6728c92b7fdf434fc" /* state.extra as String? */,
+      ),
     ),
   ],
 );
