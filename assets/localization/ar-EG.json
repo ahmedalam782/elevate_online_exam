@@ -151,5 +151,9 @@
         "log_in_button": "تسجيل الدخول",
         "no_account": "ليس لديك حساب؟ ",
         "sign_up": "إنشاء حساب"
+    },
+    "subjects": {
+        "browse_by_subject": "تصفح حسب الموضوع",
+        "no_subjects_found": "لم يتم العثور على مواضيع"
     }
 }

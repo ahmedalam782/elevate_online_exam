@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart' as ez;
 import 'package:elevate_online_exam/core/config/di/injectable_config.dart';
-import 'package:elevate_online_exam/core/languages/lang.dart';
 import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_app_bar.dart';
 import 'package:elevate_online_exam/features/login/presentation/view/widgets/login_body.dart';

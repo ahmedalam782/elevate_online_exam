@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "Flutter (test/features/explore/presentation/view_model/cubit/explore_cubit_test.dart)",
+            "type": "dart",
+            "request": "launch",
+            "program": "test/features/explore/presentation/view_model/cubit/explore_cubit_test.dart"
+        }
+    ]
+}

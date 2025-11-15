@@ -58,7 +58,6 @@ class ServerFailure extends Failures {
         statusCode == 409 ||
         statusCode == 424 ||
         statusCode == 404) {
-
       return ServerFailure(
         errorMessage:
             response['message'] ?? LocaleKeys.error_api_failure_unknown.tr(),
