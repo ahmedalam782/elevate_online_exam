@@ -59,6 +59,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   injectable_generator: ^2.9.0
+  mockito: ^5.5.1
   json_serializable: ^6.11.1
   retrofit_generator: ^10.0.6
   flutter_launcher_icons: ^0.13.1

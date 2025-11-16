@@ -23,11 +23,11 @@ class ExamDto {
   ExamDto({
     required this.id,
     required this.title,
-    required this.duration,
-    required this.subject,
-    required this.numberOfQuestions,
-    required this.active,
-    required this.createdAt,
+    this.duration,
+    this.subject,
+    this.numberOfQuestions,
+    this.active,
+    this.createdAt,
   });
 
   factory ExamDto.fromJson(Map<String, dynamic> json) =>
