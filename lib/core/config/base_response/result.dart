@@ -1,6 +1,7 @@
 sealed class Result<T> {
   const Result();
- R when<R>({
+
+  R when<R>({
     required R Function(T? data) success,
     required R Function(Exception? exception) error,
   }) {
@@ -11,7 +12,7 @@ sealed class Result<T> {
     } else {
       return error(Exception("Unhandled ApiResult case"));
     }
-   }
+  }
 }
 
 class Success<T> extends Result<T> {

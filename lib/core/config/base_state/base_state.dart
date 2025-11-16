@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-enum StateType { initial, loading, success, error }
+enum StateType { initial, loading, moreLoading, success, error }
 
 // changed from abstract class to class to make it possible to be initialized
 class BaseState<T> extends Equatable {
@@ -38,12 +38,14 @@ class BaseState<T> extends Equatable {
   R when<R>({
     required R Function(T data) success,
     required R Function() loading,
+    R Function()? moreLoading,
     required R Function(Exception exception) error,
     required R Function() initial,
   }) {
     return switch (state ?? StateType.initial) {
       StateType.initial => initial(),
       StateType.loading => loading(),
+      StateType.moreLoading => moreLoading != null ? moreLoading() : loading(),
       StateType.success => success(data as T),
       StateType.error => error(exception!),
     };
