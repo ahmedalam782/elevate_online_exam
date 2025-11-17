@@ -1,17 +1,24 @@
 sealed class ExamsTapEvents {
   const ExamsTapEvents();
 
-   factory ExamsTapEvents.getExamsOnSubjectEvent({
+  factory ExamsTapEvents.getExamsOnSubjectEvent({
     required String subjectId,
     int? page,
   }) = GetExamsOnSubjectEvent;
 
+  factory ExamsTapEvents.loadExamsNextPageEvent({
+    required String subjectId,
+  }) = LoadExamsNextPageEvent;
   void when({
     required void Function(GetExamsOnSubjectEvent) getExamsOnSubjectEvent,
+    required void Function(LoadExamsNextPageEvent) loadExamsNextPageEvent,
   }) {
-    if (this is GetExamsOnSubjectEvent) {
-      getExamsOnSubjectEvent(this as GetExamsOnSubjectEvent);
-    }
+    switch (this) {
+    case GetExamsOnSubjectEvent e:
+      getExamsOnSubjectEvent(e);
+    case LoadExamsNextPageEvent e:
+      loadExamsNextPageEvent(e);
+  }
   }
 }
 
@@ -21,3 +28,7 @@ class GetExamsOnSubjectEvent extends ExamsTapEvents {
   GetExamsOnSubjectEvent({required this.subjectId, this.page = 1});
 }
 
+class LoadExamsNextPageEvent extends ExamsTapEvents {
+  final String subjectId;
+  LoadExamsNextPageEvent({required this.subjectId});
+}

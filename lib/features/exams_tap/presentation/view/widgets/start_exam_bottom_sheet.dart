@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_button.dart';
 import 'package:elevate_online_exam/core/theme/app_colors.dart';
+import 'package:elevate_online_exam/core/theme/app_images.dart';
 import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +28,7 @@ class StartExamBottomSheet extends StatelessWidget {
                   width: 60,
                   height: 60,
                   child: Image.asset(
-                    'assets/images/profit.png',
+                    AppImages.profitImage,
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -52,7 +55,7 @@ class StartExamBottomSheet extends StatelessWidget {
             ),
             SizedBox(height: 16),
             CustomButton(
-              title: 'Start Exam',
+              title: LocaleKeys.exams_tap_start_exam.tr(),
               onTap: () => {Navigator.pop(context)},
             ),
           ],

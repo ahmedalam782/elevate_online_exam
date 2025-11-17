@@ -151,5 +151,11 @@
         "log_in_button": "تسجيل الدخول",
         "no_account": "ليس لديك حساب؟ ",
         "sign_up": "إنشاء حساب"
-    }
+    },
+    "exams_tap": {
+        "no_exams_found": "لا توجد امتحانات",
+        "no_subject_selected": "لم يتم اختيار مادة",
+        "start_exam": "ابدأ الامتحان"
+  }
+
 }

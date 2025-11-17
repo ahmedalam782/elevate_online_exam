@@ -6,4 +6,5 @@ class AppImages {
       "assets/images/connection_error.svg";
 
   static const String imagesError = "assets/images/error.svg";
+  static const String profitImage = "assets/images/profit.png";
 }

@@ -6,7 +6,7 @@ class PaginatedExams {
     required this.currentPage,
     required this.totalPages,
   });
-  final List<ExamEntity> exams;
+   List<ExamEntity> exams;
   final int currentPage;
   final int totalPages;
 }

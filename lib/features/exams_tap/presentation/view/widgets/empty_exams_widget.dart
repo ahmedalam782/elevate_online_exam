@@ -1,4 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/theme/app_colors.dart';
+import 'package:elevate_online_exam/core/theme/app_images.dart';
 import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,13 +18,14 @@ class EmptyExamsWidget extends StatelessWidget {
         SizedBox(
           height: 200.h,
           width: 100.w,
-          child: Image.asset('assets/images/profit.png', fit: BoxFit.contain),
+          child: Image.asset(AppImages.profitImage, fit: BoxFit.contain),
         ),
         SizedBox(height: 20.h),
         Text(
-          'no exams found',
+          LocaleKeys.exams_tap_no_exams_found.tr(),
           style: Styles.regular(context, 20, color: AppColors.gray87),
           textAlign: TextAlign.center,
+          maxLines: 2,
         ),
       ],
     );

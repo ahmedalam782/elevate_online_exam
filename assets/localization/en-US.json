@@ -152,5 +152,10 @@
         "log_in_button": "Login",
         "no_account": "Don't have an account? ",
         "sign_up": "Sign Up"
+    },
+    "exams_tap":{
+        "no_exams_found": "No Exams Found",
+        "no_subject_selected":"No subject selected",
+        "start_exam": "Start Exam"
     }
 }

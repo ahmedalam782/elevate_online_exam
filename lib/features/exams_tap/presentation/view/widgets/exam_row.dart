@@ -1,4 +1,5 @@
 import 'package:elevate_online_exam/core/theme/app_colors.dart';
+import 'package:elevate_online_exam/core/theme/app_images.dart';
 import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
 import 'package:elevate_online_exam/features/exams_tap/presentation/view/widgets/row_span.dart';
@@ -41,10 +42,10 @@ class ExamRow extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(
+             SizedBox(
               width: 60.w,
               height: 71.h,
-              child: Image.asset('assets/images/profit.png', fit: BoxFit.cover),
+              child:   Image.asset(AppImages.profitImage, fit: BoxFit.cover),
             ),
             SizedBox(width: 8.w),
             Expanded(

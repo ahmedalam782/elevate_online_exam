@@ -1,6 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_online_exam/core/errors/handle_errors/handle_errors.dart';
-import 'package:elevate_online_exam/core/languages/lang.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_shimmer_list.dart';
 import 'package:elevate_online_exam/core/shared/widgets/error_page.dart';
 import 'package:elevate_online_exam/features/exams_tap/presentation/view/widgets/empty_exams_widget.dart';
@@ -11,10 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ExamsTapBody extends StatelessWidget {
-  const ExamsTapBody({super.key});
+  const ExamsTapBody({super.key, required this.subjectId});
+  final String subjectId;
   @override
   Widget build(BuildContext context) {
-    context.setLocale(englishLocale);
     return BlocBuilder<ExamsTapCubit, ExamsTapStates>(
       builder: (context, state) {
         return state.examsTapState.when(
@@ -27,7 +25,7 @@ class ExamsTapBody extends StatelessWidget {
           success: (data) {
             return data.exams.isEmpty
                 ? EmptyExamsWidget()
-                : ExamSection(exams: data.exams);
+                : ExamSection(exams: data.exams, subjectId: subjectId);
           },
           error: (exception) {
             return ErrorPage(message: handleError(exception));
