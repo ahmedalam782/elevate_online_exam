@@ -128,15 +128,16 @@ extension GetItInjectableX on _i174.GetIt {
         fss: gh<_i558.FlutterSecureStorage>(),
       ),
     );
+    gh.lazySingleton<_i224.LoginLocalDataSourceContract>(
+      () => _i910.LoginLocalDataSourceImpl(
+        secureStorage: gh<_i558.FlutterSecureStorage>(),
+        sharedPreferences: gh<_i460.SharedPreferences>(),
+      ),
+    );
     gh.singleton<_i449.AppInterceptors>(
       () => _i449.AppInterceptors(
         dio: gh<_i361.Dio>(),
         fss: gh<_i558.FlutterSecureStorage>(),
-      ),
-    );
-    gh.lazySingleton<_i224.LoginLocalDataSourceContract>(
-      () => _i910.LoginLocalDataSourceImpl(
-        secureStorage: gh<_i558.FlutterSecureStorage>(),
       ),
     );
     gh.lazySingleton<_i354.LoginRemoteDataSourceContract>(

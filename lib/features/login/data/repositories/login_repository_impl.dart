@@ -28,13 +28,8 @@ class LoginRepositoryImpl implements LoginRepository {
     switch (result) {
       case Success(data: final data):
         final response = data?.toEntity();
-        if (rememberMe) {
-          //save the token inside the secure storage
-          await localDataSource.saveToken(response?.token ?? "");
-        } else {
-          // save the token inside SessionToken Singleton
-          SessionToken().token = response?.token ?? "";
-        }
+        localDataSource.saveToken(response?.token);
+        localDataSource.saveRememberMe(rememberMe);
         return Success<LoginResponseModel>(data: response);
       case Error(exception: final exception):
         return Error<LoginResponseModel>(exception: exception);
