@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_online_exam/features/questions/presentation/view/pages/questions_page.dart';
 import 'package:elevate_online_exam/features/exams_tap/presentation/view/pages/exams_tap_page.dart';
 import 'package:elevate_online_exam/features/signup/presentation/view/pages/signup_page.dart';
 import 'package:elevate_online_exam/features/login/presentation/view/pages/login_page.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/app_layout/presentation/view/pages/app_layout_page.dart';
+import '../../features/exams_tap/domain/entities/exams_entity.dart';
 import '../../features/forget_password/presentation/view/pages/forget_password_page.dart';
 import '../../features/splash/presentation/view/pages/splash_page.dart';
 import '../../features/explore/domain/entities/subject_entities.dart';
@@ -47,6 +49,18 @@ final GoRouter router = GoRouter(
       page: (state, context) =>
           LoginPage(key: ValueKey(context.locale.languageCode.toString())),
     ),
+    _customAnimatedGoRoute(
+      route: Routes.questions,
+      page: (state, context) {
+        final data = state.extra as Map<String, dynamic>;
+        return QuestionsPage(
+          key: ValueKey(context.locale.languageCode.toString()),
+          examEntity: data["exam"],
+          subject: data["subject"],
+        );
+      },
+    ),
+
     _customAnimatedGoRoute(
       route: Routes.examsTap,
       page: (state, context) {

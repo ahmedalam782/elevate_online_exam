@@ -3,18 +3,15 @@ import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_ent
 import 'package:elevate_online_exam/features/exams_tap/presentation/view/widgets/exam_row.dart';
 import 'package:elevate_online_exam/features/exams_tap/presentation/view_model/cubit/exams_tap_cubit.dart';
 import 'package:elevate_online_exam/features/exams_tap/presentation/view_model/cubit/exams_tap_events.dart';
+import 'package:elevate_online_exam/features/explore/domain/entities/subject_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ExamSection extends StatefulWidget {
-  const ExamSection({
-    super.key,
-    required this.exams,
-    required this.subjectId,
-  });
+  const ExamSection({super.key, required this.exams, required this.subject});
 
   final List<ExamEntity> exams;
-  final String subjectId;
+  final SubjectEntities? subject;
 
   @override
   State<ExamSection> createState() => _ExamSectionState();
@@ -29,7 +26,9 @@ class _ExamSectionState extends State<ExamSection> {
       if (scrollController.position.pixels >=
           scrollController.position.maxScrollExtent - 200) {
         context.read<ExamsTapCubit>().doIntent(
-          ExamsTapEvents.loadExamsNextPageEvent(subjectId: widget.subjectId),
+          ExamsTapEvents.loadExamsNextPageEvent(
+            subjectId: widget.subject?.id ?? "",
+          ),
         );
       }
     });
@@ -52,7 +51,7 @@ class _ExamSectionState extends State<ExamSection> {
                   ? CircularProgressIndicator()
                   : SizedBox.shrink();
             }
-            return ExamRow(exam: widget.exams[index]);
+            return ExamRow(exam: widget.exams[index], subject: widget.subject);
           },
         ),
       ),

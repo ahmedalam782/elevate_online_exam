@@ -3,5 +3,8 @@ import 'package:elevate_online_exam/features/login/data/models/login_request_bod
 import 'package:elevate_online_exam/features/login/data/models/login_response.dart';
 
 abstract class LoginRemoteDataSourceContract {
-  Future<Result<LoginResponse>> loginUser({required LoginRequestBody body,required bool rememberMe});
+  Future<Result<LoginResponse>> loginUser({
+    required LoginRequestBody body,
+    required bool rememberMe,
+  });
 }

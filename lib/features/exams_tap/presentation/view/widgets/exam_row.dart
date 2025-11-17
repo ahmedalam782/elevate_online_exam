@@ -4,12 +4,14 @@ import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
 import 'package:elevate_online_exam/features/exams_tap/presentation/view/widgets/row_span.dart';
 import 'package:elevate_online_exam/features/exams_tap/presentation/view/widgets/start_exam_bottom_sheet.dart';
+import 'package:elevate_online_exam/features/explore/domain/entities/subject_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ExamRow extends StatelessWidget {
-  const ExamRow({super.key, required this.exam});
+  const ExamRow({super.key, required this.exam, required this.subject});
   final ExamEntity exam;
+  final SubjectEntities? subject;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -20,7 +22,8 @@ class ExamRow extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
           ),
-          builder: (context) => StartExamBottomSheet(exam: exam,),
+          builder: (context) =>
+              StartExamBottomSheet(exam: exam, subject: subject),
         );
       },
       child: Container(
@@ -42,10 +45,10 @@ class ExamRow extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-             SizedBox(
+            SizedBox(
               width: 60.w,
               height: 71.h,
-              child:   Image.asset(AppImages.profitImage, fit: BoxFit.cover),
+              child: Image.asset(AppImages.profitImage, fit: BoxFit.cover),
             ),
             SizedBox(width: 8.w),
             Expanded(

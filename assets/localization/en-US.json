@@ -153,6 +153,17 @@
         "no_account": "Don't have an account? ",
         "sign_up": "Sign Up"
     },
+    "questions":{
+        "exam":"Exam",
+        "back":"Back",
+        "next":"Next",
+        "question":"Question",
+        "of":"of",
+        "time_out":"Time out!!",
+        "view_score":"View score"
+
+
+    },
     "subjects": {
         "browse_by_subject": "Browse by Subject",
         "no_subjects_found": "No subjects found"
