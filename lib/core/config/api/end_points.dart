@@ -13,6 +13,7 @@ class EndPoints {
 
   // added logout endpoint
   static const String exams = "/exams";
+  static const String subjects = "/subjects";
 }
 
 class Apikeys {

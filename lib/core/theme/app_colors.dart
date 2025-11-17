@@ -58,6 +58,7 @@ abstract class AppColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
   static const Color black1D = Color(0xFF1D192B);
+  static const Color black2A = Color(0xFF2A2929);
   static const Color transparent = Colors.transparent;
 
   // --- Gradients ---
