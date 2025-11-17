@@ -1,15 +1,17 @@
 sealed class Result<T> {
   const Result();
-  void when({
-    required Function(T? data) success,
-    required Function(Exception? exception) error,
+
+  R when<R>({
+    required R Function(T? data) success,
+    required R Function(Exception? exception) error,
   }) {
     if (this is Success<T>) {
-      success((this as Success<T>).data);
+      return success((this as Success<T>).data);
     } else if (this is Error<T>) {
-      error((this as Error<T>).exception);
+      return error((this as Error<T>).exception);
+    } else {
+      return error(Exception("Unhandled ApiResult case"));
     }
-    throw Exception("Unhandled ApiResult case");
   }
 }
 

@@ -1,6 +1,10 @@
 import 'dart:async';
+import 'package:elevate_online_exam/core/config/api/end_points.dart';
+import 'package:elevate_online_exam/core/config/di/injectable_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../core/routes/routes.dart';
 import '../widgets/splash_body.dart';
@@ -106,12 +110,20 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     _particleController.repeat();
   }
 
-  void _navigateToNextScreen() {
-    Timer(const Duration(milliseconds: 1800), () {
-      if (mounted) {
-        context.go(Routes.login);
-      }
-    });
+void _navigateToNextScreen() async {
+    await Future.delayed(const Duration(milliseconds: 1800));
+    final scc = getIt<FlutterSecureStorage>();
+    final sharedPreferences = getIt<SharedPreferences>();
+    final token = await scc.read(key: Apikeys.accessToken);
+    final isRemeberMe = sharedPreferences.getBool(Apikeys.rememberMe) ?? false;
+    if (!mounted) return;
+    if (token == null) {
+      context.go(Routes.login);
+    } else if (isRemeberMe) {
+      context.go(Routes.appLayout);
+    } else {
+      context.go(Routes.login);
+    }
   }
 
   @override
