@@ -1,6 +1,5 @@
 import 'package:elevate_online_exam/core/config/base_response/result.dart';
 import 'package:elevate_online_exam/core/config/base_state/base_state.dart';
-import 'package:elevate_online_exam/core/errors/failures.dart';
 import 'package:elevate_online_exam/features/signup/domain/models/signup_post_entity.dart';
 import 'package:elevate_online_exam/features/signup/domain/models/user_entity.dart';
 import 'package:elevate_online_exam/features/signup/domain/usecases/signup_user_usecase.dart';

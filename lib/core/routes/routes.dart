@@ -6,4 +6,5 @@ class Routes {
   static const String forgetPassword = "/forget-password";
   static const String appLayout = "/app-layout";
   static const String questions = "/questions";
+  static const String examsTap = "/exams-tap";
 }

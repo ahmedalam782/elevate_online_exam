@@ -161,4 +161,16 @@
         "time_out":"إنتهي الوقت !!",
         "view_score":"عرض الدرجة"
     }
+    },
+    "subjects": {
+        "browse_by_subject": "تصفح حسب الموضوع",
+        "no_subjects_found": "لم يتم العثور على مواضيع"
+    }
+    ,
+    "exams_tap": {
+        "no_exams_found": "لا توجد امتحانات",
+        "no_subject_selected": "لم يتم اختيار مادة",
+        "start_exam": "ابدأ الامتحان"
+  }
+
 }

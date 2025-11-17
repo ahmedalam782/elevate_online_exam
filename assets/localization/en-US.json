@@ -163,5 +163,14 @@
         "view_score":"View score"
 
 
+    },
+    "subjects": {
+        "browse_by_subject": "Browse by Subject",
+        "no_subjects_found": "No subjects found"
+    },
+    "exams_tap":{
+        "no_exams_found": "No Exams Found",
+        "no_subject_selected":"No subject selected",
+        "start_exam": "Start Exam"
     }
 }

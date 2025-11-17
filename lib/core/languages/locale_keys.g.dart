@@ -186,4 +186,11 @@ abstract class LocaleKeys {
   static const questions_time_out = 'questions.time_out';
   static const questions_view_score = 'questions.view_score';
   static const questions = 'questions';
+  static const exams_tap_no_exams_found = 'exams_tap.no_exams_found';
+  static const exams_tap_no_subject_selected = 'exams_tap.no_subject_selected';
+  static const exams_tap_start_exam = 'exams_tap.start_exam';
+  static const exams_tap = 'exams_tap';
+  static const subjects_browse_by_subject = 'subjects.browse_by_subject';
+  static const subjects_no_subjects_found = 'subjects.no_subjects_found';
+  static const subjects = 'subjects';
 }
