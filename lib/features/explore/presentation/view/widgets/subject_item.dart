@@ -1,6 +1,8 @@
+import 'package:elevate_online_exam/core/routes/routes.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_cached_image.dart';
 import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 // import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_colors.dart';
@@ -15,7 +17,7 @@ class SubjectItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         //Todo route to subject details page
-        // context.push("//Todo route to subject details page", extra: subject);
+         context.push(Routes.examsTap, extra: subject);
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),

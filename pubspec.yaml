@@ -62,7 +62,6 @@ dev_dependencies:
   json_serializable: ^6.11.1
   flutter_test:
     sdk: flutter
-  mockito: ^5.5.1
   retrofit_generator: ^10.0.6
 flutter:
   uses-material-design: true

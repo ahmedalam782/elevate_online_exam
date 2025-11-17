@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/app_layout/presentation/view/pages/app_layout_page.dart';
 import '../../features/forget_password/presentation/view/pages/forget_password_page.dart';
 import '../../features/splash/presentation/view/pages/splash_page.dart';
+import '../../features/explore/domain/entities/subject_entities.dart';
 import 'routes.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -48,10 +49,13 @@ final GoRouter router = GoRouter(
     ),
     _customAnimatedGoRoute(
       route: Routes.examsTap,
-      page: (state, context) => ExamsTapPage(
-        key: ValueKey(context.locale.languageCode.toString()),
-        subjectId: "670037f6728c92b7fdf434fc" /* state.extra as String? */,
-      ),
+      page: (state, context) {
+        final subject = state.extra as SubjectEntities;
+        return ExamsTapPage(
+          key: ValueKey(context.locale.languageCode.toString()),
+          subject: subject,
+        );
+      },
     ),
   ],
 );
