@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/app_layout/presentation/view/pages/app_layout_page.dart';
+import '../../features/exams_tap/domain/entities/exams_entity.dart';
 import '../../features/forget_password/presentation/view/pages/forget_password_page.dart';
 import '../../features/splash/presentation/view/pages/splash_page.dart';
 import '../../features/explore/domain/entities/subject_entities.dart';
@@ -14,7 +15,7 @@ import 'routes.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 final GoRouter router = GoRouter(
-  initialLocation: Routes.questions,
+  initialLocation: Routes.splash,
   navigatorKey: navigatorKey,
   routes: [
     _customAnimatedGoRoute(
@@ -50,9 +51,16 @@ final GoRouter router = GoRouter(
     ),
     _customAnimatedGoRoute(
       route: Routes.questions,
-      page: (state, context) =>
-          QuestionsPage(key: ValueKey(context.locale.languageCode.toString())),
+      page: (state, context) {
+        final data = state.extra as Map<String, dynamic>;
+        return QuestionsPage(
+          key: ValueKey(context.locale.languageCode.toString()),
+          examEntity: data["exam"],
+          subject: data["subject"],
+        );
+      },
     ),
+
     _customAnimatedGoRoute(
       route: Routes.examsTap,
       page: (state, context) {

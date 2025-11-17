@@ -6,6 +6,8 @@ import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_button.dart';
 import 'package:elevate_online_exam/core/theme/app_colors.dart';
 import 'package:elevate_online_exam/core/theme/styles.dart';
+import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
+import 'package:elevate_online_exam/features/explore/domain/entities/subject_entities.dart';
 import 'package:elevate_online_exam/features/questions/data/models/answer_dto/answer_dto.dart';
 import 'package:elevate_online_exam/features/questions/data/models/dummy_data.dart';
 import 'package:elevate_online_exam/features/questions/data/models/question_dto/question_dto.dart';
@@ -23,7 +25,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QuestionsBody extends StatefulWidget {
-  const QuestionsBody({super.key});
+  final ExamEntity examEntity;
+  final SubjectEntities subject;
+
+  const QuestionsBody({
+    super.key,
+    required this.examEntity,
+    required this.subject,
+  });
 
   @override
   State<QuestionsBody> createState() => _QuestionsBodyState();
@@ -37,7 +46,7 @@ class _QuestionsBodyState extends State<QuestionsBody> {
   void initState() {
     super.initState();
     viewModel = getIt<QuestionsCubit>();
-    viewModel.doIntent(GetQuestionsEvent(examId: "670070a830a3c3c1944a9c63"));
+    viewModel.doIntent(GetQuestionsEvent(examId: widget.examEntity.id));
     controller = PageController();
   }
 

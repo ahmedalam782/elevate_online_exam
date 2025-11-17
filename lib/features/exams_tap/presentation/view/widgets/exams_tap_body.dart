@@ -5,12 +5,14 @@ import 'package:elevate_online_exam/features/exams_tap/presentation/view/widgets
 import 'package:elevate_online_exam/features/exams_tap/presentation/view/widgets/exam_section.dart';
 import 'package:elevate_online_exam/features/exams_tap/presentation/view_model/cubit/exams_tap_cubit.dart';
 import 'package:elevate_online_exam/features/exams_tap/presentation/view_model/cubit/exams_tap_states.dart';
+import 'package:elevate_online_exam/features/explore/domain/entities/subject_entities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ExamsTapBody extends StatelessWidget {
-  const ExamsTapBody({super.key, required this.subjectId});
-  final String subjectId;
+  const ExamsTapBody({super.key, required this.subject});
+  final SubjectEntities? subject;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ExamsTapCubit, ExamsTapStates>(
@@ -25,7 +27,7 @@ class ExamsTapBody extends StatelessWidget {
           success: (data) {
             return data.exams.isEmpty
                 ? EmptyExamsWidget()
-                : ExamSection(exams: data.exams, subjectId: subjectId);
+                : ExamSection(exams: data.exams, subject: subject);
           },
           error: (exception) {
             return ErrorPage(message: handleError(exception));

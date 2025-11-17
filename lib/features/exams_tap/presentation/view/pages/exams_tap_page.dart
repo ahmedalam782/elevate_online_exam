@@ -16,13 +16,18 @@ class ExamsTapPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: subject?.name ?? "unknown subject", isCenteredTitle: false),
+      appBar: CustomAppBar(
+        title: subject?.name ?? "unknown subject",
+        isCenteredTitle: false,
+      ),
       body: BlocProvider<ExamsTapCubit>(
-        create: (context) => getIt<ExamsTapCubit>()..init(subject?.id ?? ""), 
+        create: (context) => getIt<ExamsTapCubit>()..init(subject?.id ?? ""),
         child: SafeArea(
           child: subject?.id == null || subject!.id.isEmpty
-              ? ErrorPage(message: LocaleKeys.exams_tap_no_subject_selected.tr())
-              : ExamsTapBody(subjectId: subject?.id ?? ''),
+              ? ErrorPage(
+                  message: LocaleKeys.exams_tap_no_subject_selected.tr(),
+                )
+              : ExamsTapBody(subject: subject),
         ),
       ),
     );
