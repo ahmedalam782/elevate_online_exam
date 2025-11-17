@@ -122,9 +122,7 @@ void _navigateToNextScreen() async {
     } else if (isRemeberMe) {
       context.go(Routes.appLayout);
     } else {
-      // should change to login page 
-      // but will fix it when i re-fix the is remeber me in login
-      context.go(Routes.appLayout);
+      context.go(Routes.login);
     }
   }
 

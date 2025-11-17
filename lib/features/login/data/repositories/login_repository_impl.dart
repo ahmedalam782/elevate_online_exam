@@ -1,5 +1,4 @@
 import 'package:elevate_online_exam/core/config/base_response/result.dart';
-import 'package:elevate_online_exam/core/helper/session_token/session_token.dart';
 import 'package:elevate_online_exam/features/login/data/datasources/login_local_data_source_contract.dart';
 import 'package:elevate_online_exam/features/login/data/datasources/login_remote_data_source_contract.dart';
 import 'package:elevate_online_exam/features/login/data/models/login_request_body.dart';
@@ -28,13 +27,8 @@ class LoginRepositoryImpl implements LoginRepository {
     switch (result) {
       case Success(data: final data):
         final response = data?.toEntity();
-        if (rememberMe) {
-          //save the token inside the secure storage
-          await localDataSource.saveToken(response?.token ?? "");
-        } else {
-          // save the token inside SessionToken Singleton
-          SessionToken().token = response?.token ?? "";
-        }
+        localDataSource.saveToken(response?.token);
+        localDataSource.saveRememberMe(rememberMe);
         return Success<LoginResponseModel>(data: response);
       case Error(exception: final exception):
         return Error<LoginResponseModel>(exception: exception);

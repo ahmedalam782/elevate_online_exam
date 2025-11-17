@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-
 import 'app.dart';
 import 'core/config/di/injectable_config.dart';
 import 'core/helper/bloc/bloc_observer.dart';
