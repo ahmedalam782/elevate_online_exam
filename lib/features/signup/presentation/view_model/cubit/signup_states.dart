@@ -2,6 +2,7 @@
 import 'package:elevate_online_exam/core/config/base_state/base_state.dart';
 import 'package:elevate_online_exam/features/signup/domain/models/user_entity.dart';
 
+// ignore: must_be_immutable
 class SignupStates extends BaseState<UserEntity> {
   bool isPasswordVisible;
   bool isConfirmPasswordVisible;

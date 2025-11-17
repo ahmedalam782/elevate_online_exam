@@ -152,5 +152,9 @@
         "log_in_button": "Login",
         "no_account": "Don't have an account? ",
         "sign_up": "Sign Up"
+    },
+    "subjects": {
+        "browse_by_subject": "Browse by Subject",
+        "no_subjects_found": "No subjects found"
     }
 }

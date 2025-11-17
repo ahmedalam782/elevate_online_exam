@@ -1,5 +1,4 @@
 import 'package:elevate_online_exam/core/config/base_response/result.dart';
-import 'package:elevate_online_exam/core/helper/session_token/session_token.dart';
 import 'package:elevate_online_exam/features/login/data/datasources/login_local_data_source_contract.dart';
 import 'package:elevate_online_exam/features/login/data/datasources/login_remote_data_source_contract.dart';
 import 'package:elevate_online_exam/features/login/data/models/login_request_body.dart';

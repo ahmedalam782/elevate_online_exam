@@ -211,13 +211,33 @@ class CustomTextFormField extends StatelessWidget {
                 // use errorBorder instead of enabledBorder
                 errorBorder ??
                 // editing the defult error border to be the same as the design in figma
-                customOutLineBorders(borderColor: AppColors.onErrorLight),
-            disabledBorder: disabledBorder ?? customOutLineBorders(),
-            border: border ?? customOutLineBorders(),
-            enabledBorder: enabledBorder ?? customOutLineBorders(),
+                customOutLineBorders(
+                  borderColor: AppColors.onErrorLight,
+                  borderRadius: borderRadius,
+                  borderWidth: borderWidth,
+                ),
+            disabledBorder:
+                disabledBorder ??
+                customOutLineBorders(
+                  borderRadius: borderRadius,
+                  borderWidth: borderWidth,
+                ),
+            border:
+                border ??
+                customOutLineBorders(
+                  borderRadius: borderRadius,
+                  borderWidth: borderWidth,
+                ),
+            enabledBorder:
+                enabledBorder ??
+                customOutLineBorders(
+                  borderRadius: borderRadius,
+                  borderWidth: borderWidth,
+                ),
             focusedBorder:
                 focusedBorder ??
                 customOutLineBorders(
+                  borderRadius: borderRadius,
                   borderColor: enableFocusBorder
                       ? AppColors.primaryLight
                       : null,
