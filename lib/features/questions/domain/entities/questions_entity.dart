@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:elevate_online_exam/features/questions/domain/entities/answer_entity.dart';

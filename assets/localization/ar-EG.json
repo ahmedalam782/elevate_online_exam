@@ -161,7 +161,7 @@
         "time_out":"إنتهي الوقت !!",
         "view_score":"عرض الدرجة"
     }
-    },
+    ,
     "subjects": {
         "browse_by_subject": "تصفح حسب الموضوع",
         "no_subjects_found": "لم يتم العثور على مواضيع"
@@ -171,6 +171,14 @@
         "no_exams_found": "لا توجد امتحانات",
         "no_subject_selected": "لم يتم اختيار مادة",
         "start_exam": "ابدأ الامتحان"
-  }
+  },
+      "exam_score":{
+        "exam_score":"نتيجة الإمتحا",
+        "your_score":"نتيجة",
+        "correct_answers":"الصواب",
+        "wrong_answers":"الخطأ",
+        "show_results":"أعرض النتائج",
+        "start_again":"إبدأ مجددا"
+    }
 
 }

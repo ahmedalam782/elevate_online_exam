@@ -1,3 +1,4 @@
+import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
 import 'package:elevate_online_exam/features/questions/domain/entities/exam_entity.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -91,6 +92,13 @@ class Exam extends HiveObject {
     createdAt,
   );
   ExamEntity toEntity() {
-    return ExamEntity(title: title ?? "", duration: duration ?? 0);
+    return ExamEntity(
+      title: title ?? "",
+      duration: duration ?? 0,
+      id: id ?? "",
+      subject: subject ?? "",
+      active: active,
+      numberOfQuestions: numberOfQuestions,
+    );
   }
 }
