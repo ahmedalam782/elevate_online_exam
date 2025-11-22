@@ -2,6 +2,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
+import 'package:elevate_online_exam/core/routes/routes.dart';
 import 'package:elevate_online_exam/core/shared/widgets/custom_button.dart';
 import 'package:elevate_online_exam/core/theme/app_colors.dart';
 import 'package:elevate_online_exam/core/theme/styles.dart';
@@ -9,6 +10,7 @@ import 'package:elevate_online_exam/features/exam_score/presentation/view/widget
 import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class ExamScoreBody extends StatefulWidget {
   final ExamEntity exam;
@@ -136,7 +138,9 @@ class _ExamScoreBodyState extends State<ExamScoreBody> {
             ),
             Spacer(),
             CustomButton(
-              onTap: () {},
+              onTap: () {
+                context.push(Routes.answers, extra: widget.exam.questions);
+              },
               backGroundColor: AppColors.prime,
               title: LocaleKeys.exam_score_show_results.tr(),
               titleStyle: Styles.medium(context, 16.sp, color: AppColors.white),
