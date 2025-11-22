@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
+import 'package:elevate_online_exam/features/questions/data/models/question_dto/question_dto.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:elevate_online_exam/features/questions/domain/entities/answer_entity.dart';
@@ -67,5 +68,17 @@ class QuestionEntity {
         answeredQuestion.hashCode ^
         answers.hashCode ^
         exam.hashCode;
+  }
+
+  QuestionDto toDto() {
+    return QuestionDto(
+      answeredQuestion: answeredQuestion,
+      correct: correctAnswer,
+      answers: answers.map((a) => a.toDto()).toList(),
+      exam: exam.toDto(),
+      id: id,
+      question: questionTitle,
+      type: type,
+    );
   }
 }

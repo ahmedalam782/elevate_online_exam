@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:elevate_online_exam/features/exams_tap/data/models/exam_dto.dart';
 import 'package:elevate_online_exam/features/questions/domain/entities/questions_entity.dart';
 
 class ExamEntity {
@@ -69,5 +70,18 @@ class ExamEntity {
         active.hashCode ^
         questions.hashCode ^
         createdAt.hashCode;
+  }
+
+  ExamDto toDto() {
+    return ExamDto(
+      id: id,
+      title: title,
+      active: active,
+      createdAt: createdAt,
+      duration: duration,
+      numberOfQuestions: numberOfQuestions,
+      questions: questions.map((q) => q.toDto()).toList(),
+      subject: subject,
+    );
   }
 }

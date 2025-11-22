@@ -1,5 +1,6 @@
 // TODO: data QuestionsRepositoryImpl
 import 'package:elevate_online_exam/core/config/base_response/result.dart';
+import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
 import 'package:elevate_online_exam/features/questions/api/datasources/questions_local_data_source_impl.dart';
 import 'package:elevate_online_exam/features/questions/api/datasources/questions_remote_data_source_impl.dart';
 import 'package:elevate_online_exam/features/questions/data/datasources/questions_local_data_source_contract.dart';
@@ -33,5 +34,10 @@ class QuestionsRepositoryImpl implements QuestionsRepositoryContract {
       case Error<List<QuestionDto>>():
         return Error<List<QuestionEntity>>(exception: response.exception);
     }
+  }
+
+  @override
+  Future<void> saveExamLocally(ExamEntity examEntity) async {
+    questionsLocalDataSource.saveExam(exam: examEntity.toDto());
   }
 }
