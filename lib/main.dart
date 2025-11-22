@@ -16,6 +16,8 @@ import 'core/routes/url_strategy.dart';
 const bool runLocal = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
+
   // await initHive();
   runApp(
     EasyLocalization(
@@ -30,7 +32,6 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   // Set custom Bloc observer for debugging
   Bloc.observer = MyBlocObserver();
-  await configureDependencies();
   await ScreenUtil.ensureScreenSize();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await EasyLocalization.ensureInitialized();

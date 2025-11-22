@@ -61,7 +61,20 @@ class _QuestionsBodyState extends State<QuestionsBody> {
   Widget build(BuildContext context) {
     return BlocProvider.value(
       value: viewModel,
-      child: BlocBuilder<QuestionsCubit, QuestionsState>(
+      child: BlocConsumer<QuestionsCubit, QuestionsState>(
+        listener: (context, state) async {
+          if (state.isDone == true) {
+            final value = await context.push(
+              Routes.examScore,
+              extra: widget.examEntity,
+            );
+            if (value == "startAgain") {
+              viewModel.doIntent(
+                GetQuestionsEvent(examId: widget.examEntity.id),
+              );
+            }
+          }
+        },
         buildWhen: (prev, current) {
           return prev.state != current.state;
         },
@@ -90,18 +103,34 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                           ),
                         ],
                       ),
-                      CountdownTimer(
-                        onFinished: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return TimeOutDialog();
+                      BlocBuilder<QuestionsCubit, QuestionsState>(
+                        buildWhen: (prevstate, currentState) {
+                          return prevstate.isDone != currentState.isDone;
+                        },
+                        builder: (context, state) {
+                          if (viewModel.state.isDone == true) {
+                            return SizedBox.shrink();
+                          }
+                          print("ISDONE ${viewModel.state.isDone}");
+                          return CountdownTimer(
+                            isDone: viewModel.state.isDone,
+                            onFinished: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return TimeOutDialog(
+                                    examEntity: widget.examEntity,
+                                  );
+                                },
+                              );
                             },
+                            totalMinutes: 1,
+                            // totalMinutes:
+                            //     viewModel.state.data?.isNotEmpty ?? false
+                            //     ? viewModel.state.data?.first.exam.duration ?? 0
+                            //     : 0,
                           );
                         },
-                        totalMinutes: viewModel.state.data?.isNotEmpty ?? false
-                            ? viewModel.state.data?.first.exam.duration ?? 0
-                            : 0,
                       ),
                     ],
                   ),
@@ -161,6 +190,8 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                                         return InkWell(
                                           onTap: () {
                                             print("sdsds");
+                                            if (viewModel.state.isDone == true)
+                                              return;
                                             viewModel.doIntent(
                                               AnswerSelectedEvent(
                                                 index: pageIndex,
@@ -195,11 +226,15 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                     selector: (state) => state.currentPage,
 
                     builder: (context, state) {
+                      final page = viewModel.state.currentPage;
+                      final dataLength = viewModel.state.data?.length ?? 0;
                       return Row(
                         children: [
                           Expanded(
                             child: CustomButton(
-                              title: LocaleKeys.questions_next.tr(),
+                              title: page >= dataLength - 1
+                                  ? LocaleKeys.questions_view_score.tr()
+                                  : LocaleKeys.questions_next.tr(),
                               titleStyle: Styles.medium(
                                 context,
                                 16.sp,
@@ -208,17 +243,11 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                               backGroundColor: AppColors.prime,
                               radius: 10.r,
                               onTap: () {
-                                final page = viewModel.state.currentPage;
-                                final dataLength =
-                                    viewModel.state.data?.length ?? 0;
                                 if (page >= dataLength - 1) {
                                   viewModel.doIntent(
                                     SaveExamEvent(exam: widget.examEntity),
                                   );
-                                  context.push(
-                                    Routes.examScore,
-                                    extra: widget.examEntity,
-                                  );
+
                                   return;
                                 }
 

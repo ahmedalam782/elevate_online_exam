@@ -19,7 +19,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
     required SaveExameUseCase saveExameUseCase,
   }) : _getQuestionsUseCase = questionsUseCase,
        _saveExameUseCase = saveExameUseCase,
-       super(QuestionsState.all(currentPage: 0));
+       super(QuestionsState.all(currentPage: 0, isDone: false));
   Future<void> doIntent(QuestionsEvent event) async => switch (event) {
     AnswerSelectedEvent() => _selectAnswer(event.index, event.selectAnswer),
     GetQuestionsEvent() => _getQuestions(event.examId),
@@ -42,20 +42,22 @@ class QuestionsCubit extends Cubit<QuestionsState> {
   }
 
   void _changeQuestion(int currentPage) {
-    // emit(state.copyWith(state: StateType.loading));
-    // emit(state.copyWith(state: StateType.success, currentPage: currentPage));
-    emit(
-      QuestionsState.all(
-        state: StateType.success,
-        currentPage: currentPage,
-        data: List.from(state.data ?? []), // clone list to force new reference
-        exception: state.exception,
-      ),
-    );
+    emit(state.copyWith(currentPage: currentPage));
+    // emit(
+    //   QuestionsState.all(
+    //     isDone: false,
+    //     state: StateType.success,
+    //     currentPage: currentPage,
+    //     data: List.from(state.data ?? []), // clone list to force new reference
+    //     exception: state.exception,
+    //   ),
+    // );
   }
 
   void _getQuestions(String examId) async {
-    emit(state.copyWith(state: StateType.loading));
+    emit(
+      state.copyWith(state: StateType.loading, isDone: false, currentPage: 0),
+    );
     final response = await _getQuestionsUseCase.call(examId);
     switch (response) {
       case Success<List<QuestionEntity>>():
@@ -69,5 +71,6 @@ class QuestionsCubit extends Cubit<QuestionsState> {
     exam.questions = state.data ?? [];
 
     await _saveExameUseCase.call(exam);
+    emit(state.copyWith(isDone: true));
   }
 }

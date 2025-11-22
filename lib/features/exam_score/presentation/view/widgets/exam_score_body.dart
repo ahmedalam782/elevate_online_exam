@@ -139,6 +139,8 @@ class _ExamScoreBodyState extends State<ExamScoreBody> {
             Spacer(),
             CustomButton(
               onTap: () {
+                context.pop();
+                context.pop();
                 context.push(Routes.answers, extra: widget.exam.questions);
               },
               backGroundColor: AppColors.prime,
@@ -147,11 +149,13 @@ class _ExamScoreBodyState extends State<ExamScoreBody> {
             ),
             SizedBox(height: 24.h),
             CustomButton(
-              onTap: () {},
+              onTap: () {
+                context.pop("startAgain");
+              },
               backGroundColor: Colors.transparent,
               elevation: 0,
               borderColor: AppColors.prime,
-              title: LocaleKeys.exam_score_show_results.tr(),
+              title: LocaleKeys.exam_score_start_again.tr(),
               titleStyle: Styles.medium(context, 16.sp, color: AppColors.prime),
             ),
             Spacer(flex: 2),

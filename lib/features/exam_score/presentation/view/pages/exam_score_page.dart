@@ -10,10 +10,12 @@ class ExamScorePage extends StatelessWidget {
   const ExamScorePage({super.key, required this.exam});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(title: LocaleKeys.exam_score_exam_score.tr()),
-
-      body: ExamScoreBody(exam: exam),
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        // appBar: CustomAppBar(title: LocaleKeys.exam_score_exam_score.tr()),
+        body: ExamScoreBody(exam: exam),
+      ),
     );
   }
 }

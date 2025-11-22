@@ -13,8 +13,7 @@ class ExamsTapCubit extends Cubit<ExamsTapStates> {
   final GetExamsOnSubjectUseCase _getExamsOnSubjectUseCase;
   bool _isLoadingMore = false;
   void init(String subjectId) {
-    // doIntent(ExamsTapEvents.getExamsOnSubjectEvent(subjectId: subjectId));
-    doIntent(ExamsTapEvents.getExamsOnSubjectEvent(subjectId: ""));
+    doIntent(ExamsTapEvents.getExamsOnSubjectEvent(subjectId: subjectId));
   }
 
   void doIntent(ExamsTapEvents event) {
