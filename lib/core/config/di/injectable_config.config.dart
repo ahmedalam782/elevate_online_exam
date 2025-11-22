@@ -12,6 +12,7 @@
 import 'package:dio/dio.dart' as _i361;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
+import 'package:hive_flutter/hive_flutter.dart' as _i986;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart'
     as _i161;
@@ -25,6 +26,7 @@ import '../../../features/exams_tap/api/datasources/exams_tap_remote_data_source
     as _i609;
 import '../../../features/exams_tap/data/datasources/exams_tap_remote_data_source_contract.dart'
     as _i1040;
+import '../../../features/exams_tap/data/models/exam_dto.dart' as _i58;
 import '../../../features/exams_tap/data/repositories/exams_tap_repository_impl.dart'
     as _i1004;
 import '../../../features/exams_tap/domain/repositories/exams_tap_repository.dart'
@@ -92,6 +94,12 @@ import '../../../features/questions/data/datasources/questions_local_data_source
     as _i340;
 import '../../../features/questions/data/datasources/questions_remote_data_source_contract.dart'
     as _i810;
+import '../../../features/questions/data/models/answer_dto/answer_dto.dart'
+    as _i220;
+import '../../../features/questions/data/models/question_dto/question_dto.dart'
+    as _i112;
+import '../../../features/questions/data/models/questions_response/questions_response.dart'
+    as _i844;
 import '../../../features/questions/data/repositories/questions_repository_impl.dart'
     as _i60;
 import '../../../features/questions/domain/repositories/questions_repository.dart'
@@ -119,6 +127,7 @@ import '../../../features/signup/presentation/view_model/cubit/signup_cubit.dart
     as _i662;
 import '../../helper/user_helper/user_helper.dart' as _i23;
 import '../api/app_interceptor.dart' as _i449;
+import '../local/hive_module.dart' as _i383;
 import 'register_module.dart' as _i291;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -129,8 +138,13 @@ extension GetItInjectableX on _i174.GetIt {
   }) async {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final coreInjectableModule = _$CoreInjectableModule();
+    final hiveInjectableModule = _$HiveInjectableModule();
     await gh.factoryAsync<_i460.SharedPreferences>(
       () => coreInjectableModule.prefs(),
+      preResolve: true,
+    );
+    await gh.factoryAsync<_i986.HiveInterface>(
+      () => hiveInjectableModule.hive(),
       preResolve: true,
     );
     gh.factory<_i334.AppLayoutCubit>(() => _i334.AppLayoutCubit());
@@ -186,10 +200,21 @@ extension GetItInjectableX on _i174.GetIt {
         homeApiClient: gh<_i179.QuestionsApiClient>(),
       ),
     );
+    await gh.factoryAsync<_i986.Box<_i58.ExamDto>>(
+      () => hiveInjectableModule.examsBox(gh<_i986.HiveInterface>()),
+      instanceName: 'examsBox',
+      preResolve: true,
+    );
     gh.factory<_i229.SignupLocalDataSourceContract>(
       () => _i471.SignupLocalDataSourceImpl(
         fss: gh<_i558.FlutterSecureStorage>(),
       ),
+    );
+    await gh.factoryAsync<_i986.Box<_i844.QuestionsResponse>>(
+      () =>
+          hiveInjectableModule.questionsResponseBox(gh<_i986.HiveInterface>()),
+      instanceName: 'questionsResponseBox',
+      preResolve: true,
     );
     gh.lazySingleton<_i224.LoginLocalDataSourceContract>(
       () => _i910.LoginLocalDataSourceImpl(
@@ -203,6 +228,11 @@ extension GetItInjectableX on _i174.GetIt {
         fss: gh<_i558.FlutterSecureStorage>(),
       ),
     );
+    await gh.factoryAsync<_i986.Box<_i220.AnswerDto>>(
+      () => hiveInjectableModule.answersBox(gh<_i986.HiveInterface>()),
+      instanceName: 'answersBox',
+      preResolve: true,
+    );
     gh.lazySingleton<_i354.LoginRemoteDataSourceContract>(
       () => _i791.LoginRemoteDataSourceImpl(
         apiClient: gh<_i865.LoginApiClient>(),
@@ -213,6 +243,11 @@ extension GetItInjectableX on _i174.GetIt {
         remoteDataSource: gh<_i739.SignupRemoteDataSourceContract>(),
         localDataSource: gh<_i229.SignupLocalDataSourceContract>(),
       ),
+    );
+    await gh.factoryAsync<_i986.Box<_i112.QuestionDto>>(
+      () => hiveInjectableModule.questionsBox(gh<_i986.HiveInterface>()),
+      instanceName: 'questionsBox',
+      preResolve: true,
     );
     gh.factory<_i258.QuestionsRepositoryContract>(
       () => _i60.QuestionsRepositoryImpl(
@@ -231,13 +266,13 @@ extension GetItInjectableX on _i174.GetIt {
         repo: gh<_i258.QuestionsRepositoryContract>(),
       ),
     );
+    gh.factory<_i568.ExploreRemoteDataSourceContract>(
+      () => _i781.ExploreRemoteDataSourceImpl(gh<_i89.ExploreApiClient>()),
+    );
     gh.lazySingleton<_i1040.ExamsTapRemoteDataSourceContract>(
       () => _i609.ExamsTapRemoteDataSourceImpl(
         apiClient: gh<_i384.ExamsTapApiClient>(),
       ),
-    );
-    gh.factory<_i568.ExploreRemoteDataSourceContract>(
-      () => _i781.ExploreRemoteDataSourceImpl(gh<_i89.ExploreApiClient>()),
     );
     gh.factory<_i351.ForgetPasswordUseCase>(
       () => _i351.ForgetPasswordUseCase(
@@ -270,14 +305,14 @@ extension GetItInjectableX on _i174.GetIt {
         localDataSource: gh<_i224.LoginLocalDataSourceContract>(),
       ),
     );
+    gh.factory<_i307.GetAllSubjectsUseCase>(
+      () => _i307.GetAllSubjectsUseCase(gh<_i1012.ExploreRepository>()),
+    );
     gh.lazySingleton<_i530.ExamsTapRepository>(
       () => _i1004.ExamsTapRepositoryImpl(
         examsTapRemoteDataSourceContract:
             gh<_i1040.ExamsTapRemoteDataSourceContract>(),
       ),
-    );
-    gh.factory<_i307.GetAllSubjectsUseCase>(
-      () => _i307.GetAllSubjectsUseCase(gh<_i1012.ExploreRepository>()),
     );
     gh.factory<_i70.ForgetPasswordCubit>(
       () => _i70.ForgetPasswordCubit(
@@ -309,3 +344,5 @@ extension GetItInjectableX on _i174.GetIt {
 }
 
 class _$CoreInjectableModule extends _i291.CoreInjectableModule {}
+
+class _$HiveInjectableModule extends _i383.HiveInjectableModule {}

@@ -16,7 +16,7 @@ import 'core/routes/url_strategy.dart';
 const bool runLocal = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initHive();
+  // await initHive();
   runApp(
     EasyLocalization(
       supportedLocales: [arabicLocale, englishLocale],
@@ -39,12 +39,12 @@ void main() async {
   setPathUrlStrategy();
 }
 
-Future<void> initHive() async {
-  Hive
-    ..registerAdapter(QuestionsResponseAdapter())
-    ..registerAdapter(QuestionDtoAdapter())
-    ..registerAdapter(AnswerDtoAdapter())
-    ..registerAdapter(ExamDtoAdapter());
+// Future<void> initHive() async {
+//   Hive
+//     ..registerAdapter(QuestionsResponseAdapter())
+//     ..registerAdapter(QuestionDtoAdapter())
+//     ..registerAdapter(AnswerDtoAdapter())
+//     ..registerAdapter(ExamDtoAdapter());
 
-  await Hive.initFlutter();
-}
+//   await Hive.initFlutter();
+// }

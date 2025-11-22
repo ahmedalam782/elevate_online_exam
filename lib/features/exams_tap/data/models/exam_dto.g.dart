@@ -16,6 +16,9 @@ ExamDto _$ExamDtoFromJson(Map<String, dynamic> json) => ExamDto(
   createdAt: json['createdAt'] == null
       ? null
       : DateTime.parse(json['createdAt'] as String),
+  questions: (json['questions'] as List<dynamic>?)
+      ?.map((e) => QuestionDto.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$ExamDtoToJson(ExamDto instance) => <String, dynamic>{
@@ -26,4 +29,5 @@ Map<String, dynamic> _$ExamDtoToJson(ExamDto instance) => <String, dynamic>{
   'numberOfQuestions': instance.numberOfQuestions,
   'active': instance.active,
   'createdAt': instance.createdAt?.toIso8601String(),
+  'questions': instance.questions,
 };
