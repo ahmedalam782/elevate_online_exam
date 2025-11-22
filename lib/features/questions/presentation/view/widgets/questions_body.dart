@@ -212,7 +212,13 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                                 final dataLength =
                                     viewModel.state.data?.length ?? 0;
                                 if (page >= dataLength - 1) {
-                                  context.push(Routes.examScore);
+                                  viewModel.doIntent(
+                                    SaveExamEvent(exam: widget.examEntity),
+                                  );
+                                  context.push(
+                                    Routes.examScore,
+                                    extra: widget.examEntity,
+                                  );
                                   return;
                                 }
 

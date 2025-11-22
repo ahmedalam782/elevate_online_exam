@@ -75,8 +75,8 @@ final GoRouter router = GoRouter(
     _customAnimatedGoRoute(
       route: Routes.examScore,
       page: (state, context) {
-        // final subject = state.extra as SubjectEntities;
-        return ExamScorePage();
+        final exam = state.extra as ExamEntity;
+        return ExamScorePage(exam: exam);
       },
     ),
   ],

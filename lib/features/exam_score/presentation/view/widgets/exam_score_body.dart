@@ -6,11 +6,37 @@ import 'package:elevate_online_exam/core/shared/widgets/custom_button.dart';
 import 'package:elevate_online_exam/core/theme/app_colors.dart';
 import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:elevate_online_exam/features/exam_score/presentation/view/widgets/animated_score_indicator.dart';
+import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ExamScoreBody extends StatelessWidget {
-  const ExamScoreBody({super.key});
+class ExamScoreBody extends StatefulWidget {
+  final ExamEntity exam;
+  const ExamScoreBody({super.key, required this.exam});
+
+  @override
+  State<ExamScoreBody> createState() => _ExamScoreBodyState();
+}
+
+class _ExamScoreBodyState extends State<ExamScoreBody> {
+  int correctAnswers = 0;
+  int wrongAnswers = 0;
+  double correctRatio = 0;
+  @override
+  void initState() {
+    for (var question in widget.exam.questions) {
+      if (question.answeredQuestion == question.correctAnswer) {
+        correctAnswers++;
+      } else {
+        wrongAnswers++;
+      }
+      print("Question ID: ${question.id}");
+    }
+
+    correctRatio = correctAnswers / widget.exam.questions.length;
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +51,7 @@ class ExamScoreBody extends StatelessWidget {
                 SizedBox(
                   width: 130.w,
                   height: 130.w,
-                  child: AnimatedScoreIndicator(correctRatio: 0.8),
+                  child: AnimatedScoreIndicator(correctRatio: correctRatio),
                 ),
                 SizedBox(width: 24.w),
                 Expanded(
@@ -56,7 +82,7 @@ class ExamScoreBody extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                "18",
+                                correctAnswers.toString(),
                                 style: Styles.medium(
                                   context,
                                   12,
@@ -92,7 +118,7 @@ class ExamScoreBody extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                "18",
+                                wrongAnswers.toString(),
                                 style: Styles.medium(
                                   context,
                                   12,

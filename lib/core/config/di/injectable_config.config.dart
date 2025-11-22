@@ -12,6 +12,7 @@
 import 'package:dio/dio.dart' as _i361;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
+import 'package:hive/hive.dart' as _i979;
 import 'package:hive_flutter/hive_flutter.dart' as _i986;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart'
@@ -106,6 +107,8 @@ import '../../../features/questions/domain/repositories/questions_repository.dar
     as _i258;
 import '../../../features/questions/domain/use_cases/get_questions_use_case.dart'
     as _i939;
+import '../../../features/questions/domain/use_cases/save_exame_use_case.dart'
+    as _i25;
 import '../../../features/questions/presentation/view_model/cubit/questions_cubit.dart'
     as _i809;
 import '../../../features/signup/api/api_client/sigup_api_client.dart' as _i873;
@@ -163,9 +166,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i460.SharedPreferences>(),
         gh<_i558.FlutterSecureStorage>(),
       ),
-    );
-    gh.factory<_i340.QuestionsLocalDataSourceContract>(
-      () => _i719.QuestionsLocalDataSourceImpl(),
     );
     gh.lazySingleton<_i384.ExamsTapApiClient>(
       () => _i384.ExamsTapApiClient(gh<_i361.Dio>()),
@@ -249,21 +249,14 @@ extension GetItInjectableX on _i174.GetIt {
       instanceName: 'questionsBox',
       preResolve: true,
     );
-    gh.factory<_i258.QuestionsRepositoryContract>(
-      () => _i60.QuestionsRepositoryImpl(
-        questionsLocalDataSource: gh<_i340.QuestionsLocalDataSourceContract>(),
-        questionsRemoteDataSource:
-            gh<_i810.QuestionsRemoteDataSourceContract>(),
-      ),
-    );
     gh.factory<_i98.ForgetPasswordRepository>(
       () => _i893.ForgetPasswordRepositoryImpl(
         remoteDataSource: gh<_i938.ForgetPasswordRemoteDataSourceContract>(),
       ),
     );
-    gh.factory<_i939.GetQuestionsUseCase>(
-      () => _i939.GetQuestionsUseCase(
-        repo: gh<_i258.QuestionsRepositoryContract>(),
+    gh.factory<_i340.QuestionsLocalDataSourceContract>(
+      () => _i719.QuestionsLocalDataSourceImpl(
+        examsBox: gh<_i979.Box<_i58.ExamDto>>(instanceName: 'examsBox'),
       ),
     );
     gh.factory<_i568.ExploreRemoteDataSourceContract>(
@@ -277,11 +270,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i351.ForgetPasswordUseCase>(
       () => _i351.ForgetPasswordUseCase(
         repository: gh<_i98.ForgetPasswordRepository>(),
-      ),
-    );
-    gh.factory<_i809.QuestionsCubit>(
-      () => _i809.QuestionsCubit(
-        questionsUseCase: gh<_i939.GetQuestionsUseCase>(),
       ),
     );
     gh.factory<_i514.ResetPasswordUseCase>(
@@ -308,6 +296,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i307.GetAllSubjectsUseCase>(
       () => _i307.GetAllSubjectsUseCase(gh<_i1012.ExploreRepository>()),
     );
+    gh.factory<_i258.QuestionsRepositoryContract>(
+      () => _i60.QuestionsRepositoryImpl(
+        questionsLocalDataSource: gh<_i340.QuestionsLocalDataSourceContract>(),
+        questionsRemoteDataSource:
+            gh<_i810.QuestionsRemoteDataSourceContract>(),
+      ),
+    );
     gh.lazySingleton<_i530.ExamsTapRepository>(
       () => _i1004.ExamsTapRepositoryImpl(
         examsTapRemoteDataSourceContract:
@@ -320,6 +315,15 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i677.VerifyResetCodeUseCase>(),
         gh<_i514.ResetPasswordUseCase>(),
       ),
+    );
+    gh.factory<_i939.GetQuestionsUseCase>(
+      () => _i939.GetQuestionsUseCase(
+        repo: gh<_i258.QuestionsRepositoryContract>(),
+      ),
+    );
+    gh.factory<_i25.SaveExameUseCase>(
+      () =>
+          _i25.SaveExameUseCase(repo: gh<_i258.QuestionsRepositoryContract>()),
     );
     gh.lazySingleton<_i571.LoginUserUseCase>(
       () => _i571.LoginUserUseCase(repository: gh<_i1053.LoginRepository>()),
@@ -338,6 +342,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i91.ExamsTapCubit>(
       () => _i91.ExamsTapCubit(gh<_i491.GetExamsOnSubjectUseCase>()),
+    );
+    gh.factory<_i809.QuestionsCubit>(
+      () => _i809.QuestionsCubit(
+        questionsUseCase: gh<_i939.GetQuestionsUseCase>(),
+        saveExameUseCase: gh<_i25.SaveExameUseCase>(),
+      ),
     );
     return this;
   }
