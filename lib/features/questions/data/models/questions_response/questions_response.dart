@@ -7,14 +7,11 @@ part 'questions_response.g.dart';
 
 const _listEquality = DeepCollectionEquality();
 
-@HiveType(typeId: 1)
 @JsonSerializable()
 class QuestionsResponse extends HiveObject {
-  @HiveField(1)
   @JsonKey(name: "message")
   String? message;
 
-  @HiveField(3)
   @JsonKey(name: "questions")
   List<QuestionDto>? questions;
 

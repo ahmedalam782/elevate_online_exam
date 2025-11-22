@@ -9,7 +9,6 @@ import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
 import 'package:elevate_online_exam/features/explore/domain/entities/subject_entities.dart';
 import 'package:elevate_online_exam/features/questions/data/models/answer_dto/answer_dto.dart';
-import 'package:elevate_online_exam/features/questions/data/models/dummy_data.dart';
 import 'package:elevate_online_exam/features/questions/data/models/question_dto/question_dto.dart';
 import 'package:elevate_online_exam/features/questions/domain/entities/answer_entity.dart';
 import 'package:elevate_online_exam/features/questions/domain/entities/questions_entity.dart';

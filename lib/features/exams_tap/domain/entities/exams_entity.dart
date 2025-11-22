@@ -1,8 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:elevate_online_exam/features/questions/domain/entities/questions_entity.dart';
+
 class ExamEntity {
   final String id;
   final String title;
   final String subject;
+  List<QuestionEntity> questions;
 
   final int? duration;
   final int? numberOfQuestions;
@@ -13,6 +16,7 @@ class ExamEntity {
     required this.id,
     required this.title,
     required this.subject,
+    required this.questions,
     this.duration,
     this.numberOfQuestions,
     this.active,
@@ -27,6 +31,7 @@ class ExamEntity {
     int? numberOfQuestions,
     bool? active,
     DateTime? createdAt,
+    List<QuestionEntity>? questions,
   }) {
     return ExamEntity(
       id: id ?? this.id,
@@ -36,6 +41,7 @@ class ExamEntity {
       numberOfQuestions: numberOfQuestions ?? this.numberOfQuestions,
       active: active ?? this.active,
       createdAt: createdAt ?? this.createdAt,
+      questions: questions ?? this.questions,
     );
   }
 
@@ -49,6 +55,7 @@ class ExamEntity {
         other.duration == duration &&
         other.numberOfQuestions == numberOfQuestions &&
         other.active == active &&
+        other.questions == questions &&
         other.createdAt == createdAt;
   }
 
@@ -60,6 +67,7 @@ class ExamEntity {
         duration.hashCode ^
         numberOfQuestions.hashCode ^
         active.hashCode ^
+        questions.hashCode ^
         createdAt.hashCode;
   }
 }

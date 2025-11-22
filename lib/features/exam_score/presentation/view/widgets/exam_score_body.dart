@@ -1,1 +1,133 @@
 // TODO: presentation Exam_scoreBody
+
+import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
+import 'package:elevate_online_exam/core/shared/widgets/custom_button.dart';
+import 'package:elevate_online_exam/core/theme/app_colors.dart';
+import 'package:elevate_online_exam/core/theme/styles.dart';
+import 'package:elevate_online_exam/features/exam_score/presentation/view/widgets/animated_score_indicator.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class ExamScoreBody extends StatelessWidget {
+  const ExamScoreBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      child: SafeArea(
+        child: Column(
+          children: [
+            SizedBox(height: 40.h),
+            Row(
+              children: [
+                SizedBox(
+                  width: 130.w,
+                  height: 130.w,
+                  child: AnimatedScoreIndicator(correctRatio: 0.8),
+                ),
+                SizedBox(width: 24.w),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              LocaleKeys.exam_score_correct_answers.tr(),
+                              style: Styles.medium(
+                                context,
+                                16.sp,
+                                color: AppColors.prime,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 30.w,
+                            height: 30.w,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                width: 1,
+                                color: AppColors.prime,
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "18",
+                                style: Styles.medium(
+                                  context,
+                                  12,
+                                  color: AppColors.prime,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 12.h),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              LocaleKeys.exam_score_wrong_answers.tr(),
+                              style: Styles.medium(
+                                context,
+                                16.sp,
+                                color: AppColors.errorDark,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 30.w,
+                            height: 30.w,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                width: 1,
+                                color: AppColors.errorDark,
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "18",
+                                style: Styles.medium(
+                                  context,
+                                  12,
+                                  color: AppColors.errorDark,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Spacer(),
+            CustomButton(
+              onTap: () {},
+              backGroundColor: AppColors.prime,
+              title: LocaleKeys.exam_score_show_results.tr(),
+              titleStyle: Styles.medium(context, 16.sp, color: AppColors.white),
+            ),
+            SizedBox(height: 24.h),
+            CustomButton(
+              onTap: () {},
+              backGroundColor: Colors.transparent,
+              elevation: 0,
+              borderColor: AppColors.prime,
+              title: LocaleKeys.exam_score_show_results.tr(),
+              titleStyle: Styles.medium(context, 16.sp, color: AppColors.prime),
+            ),
+            Spacer(flex: 2),
+          ],
+        ),
+      ),
+    );
+  }
+}

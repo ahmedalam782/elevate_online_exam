@@ -4,14 +4,11 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'answer_dto.g.dart';
 
-@HiveType(typeId: 3)
 @JsonSerializable()
 class AnswerDto extends HiveObject {
-  @HiveField(1)
   @JsonKey(name: "answer")
   String? answer;
 
-  @HiveField(3)
   @JsonKey(name: "key")
   String? key;
 

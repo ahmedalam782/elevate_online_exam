@@ -44,7 +44,7 @@ Future<void> initHive() async {
     ..registerAdapter(QuestionsResponseAdapter())
     ..registerAdapter(QuestionDtoAdapter())
     ..registerAdapter(AnswerDtoAdapter())
-    ..registerAdapter(ExamAdapter());
+    ..registerAdapter(ExamDtoAdapter());
 
   await Hive.initFlutter();
 }

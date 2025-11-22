@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:elevate_online_exam/core/config/base_response/result.dart';
 import 'package:elevate_online_exam/core/config/base_state/base_state.dart';
-import 'package:elevate_online_exam/features/questions/data/models/dummy_data.dart';
 import 'package:elevate_online_exam/features/questions/data/models/question_dto/question_dto.dart';
 import 'package:elevate_online_exam/features/questions/domain/entities/questions_entity.dart';
 import 'package:elevate_online_exam/features/questions/domain/use_cases/get_questions_use_case.dart';

@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_online_exam/features/exam_score/presentation/view/pages/exam_score_page.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view/pages/questions_page.dart';
 import 'package:elevate_online_exam/features/exams_tap/presentation/view/pages/exams_tap_page.dart';
 import 'package:elevate_online_exam/features/signup/presentation/view/pages/signup_page.dart';
@@ -69,6 +70,13 @@ final GoRouter router = GoRouter(
           key: ValueKey(context.locale.languageCode.toString()),
           subject: subject,
         );
+      },
+    ),
+    _customAnimatedGoRoute(
+      route: Routes.examScore,
+      page: (state, context) {
+        // final subject = state.extra as SubjectEntities;
+        return ExamScorePage();
       },
     ),
   ],
