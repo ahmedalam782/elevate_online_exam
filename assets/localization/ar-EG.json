@@ -28,7 +28,10 @@
         "save": "حفظ",
         "search": "بحث",
         "phone_number": "رقم الهاتف",
-        "select_country": "اختر الدولة"
+        "select_country": "اختر الدولة",
+        "gallery": "المعرض",
+        "camera": "الكاميرا",
+        "crop_image": "قص الصورة"
     },
     "date_time": {
         "from": "منذ",
@@ -92,7 +95,8 @@
         "no_internet": "لا يوجد اتصال بالإنترنت!",
         "check_internet": "تحقق من اتصالك بالإنترنت وحاول مرة أخرى.",
         "test_your_knowledge": "اختبر معرفتك",
-        "online_exam": "الامتحان عبر الإنترنت"
+        "online_exam": "الامتحان عبر الإنترنت",
+        "logout_success": "تم تسجيل الخروج بنجاح"
     },
     "app_layout": {
         "explore": "استكشاف",
@@ -152,25 +156,31 @@
         "no_account": "ليس لديك حساب؟ ",
         "sign_up": "إنشاء حساب"
     },
-      "questions":{
-        "exam":"إمتحان",
-        "back":"الرجوع",
-        "next":"التالي",
-        "question":"سؤال",
-        "of":"من",
-        "time_out":"إنتهي الوقت !!",
-        "view_score":"عرض الدرجة"
-    }
+    "questions": {
+        "exam": "إمتحان",
+        "back": "الرجوع",
+        "next": "التالي",
+        "question": "سؤال",
+        "of": "من",
+        "time_out": "إنتهي الوقت !!",
+        "view_score": "عرض الدرجة"
     },
     "subjects": {
         "browse_by_subject": "تصفح حسب الموضوع",
         "no_subjects_found": "لم يتم العثور على مواضيع"
-    }
-    ,
+    },
     "exams_tap": {
         "no_exams_found": "لا توجد امتحانات",
         "no_subject_selected": "لم يتم اختيار مادة",
         "start_exam": "ابدأ الامتحان"
-  }
-
+    },
+    "profile": {
+        "user_name": "إسم المستخدم",
+        "first_name": "الإسم الأول",
+        "last_name": "الإسم الأخير",
+        "phone_number": "رقم الهاتف",
+        "email": "البريد الإلكتروني",
+        "Change": "تغيير",
+        "Update": "تحديث"
+    }
 }

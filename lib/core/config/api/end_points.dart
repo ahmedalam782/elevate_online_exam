@@ -15,6 +15,11 @@ class EndPoints {
   // added logout endpoint
   static const String exams = "/exams";
   static const String subjects = "/subjects";
+
+  // Profile
+  static const String getProfileData = "/auth/profileData";
+  static const String updateProfile = "/auth/editProfile";
+  static const String logout = "/auth/logout";
 }
 
 class Apikeys {

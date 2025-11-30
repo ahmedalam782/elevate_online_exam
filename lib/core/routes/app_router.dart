@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/app_layout/presentation/view/pages/app_layout_page.dart';
-import '../../features/exams_tap/domain/entities/exams_entity.dart';
 import '../../features/forget_password/presentation/view/pages/forget_password_page.dart';
 import '../../features/splash/presentation/view/pages/splash_page.dart';
 import '../../features/explore/domain/entities/subject_entities.dart';

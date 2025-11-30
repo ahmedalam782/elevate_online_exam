@@ -17,6 +17,18 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
     as _i161;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
+import '../../../features/app_layout/api/api_client/app_layout_api_client.dart'
+    as _i551;
+import '../../../features/app_layout/api/datasources/app_layout_remote_data_source_impl.dart'
+    as _i934;
+import '../../../features/app_layout/data/datasources/app_layout_remote_data_source_contract.dart'
+    as _i817;
+import '../../../features/app_layout/data/repositories/app_layout_repository_impl.dart'
+    as _i275;
+import '../../../features/app_layout/domain/repositories/app_layout_repository.dart'
+    as _i161;
+import '../../../features/app_layout/domain/use_cases/logout_use_case.dart'
+    as _i936;
 import '../../../features/app_layout/presentation/view_model/cubit/app_layout_cubit.dart'
     as _i334;
 import '../../../features/exams_tap/api/api_client/exams_tap_api_client.dart'
@@ -82,6 +94,26 @@ import '../../../features/login/domain/use_cases/login_user_use_case.dart'
     as _i571;
 import '../../../features/login/presentation/view_model/cubit/login_cubit.dart'
     as _i199;
+import '../../../features/profile/api/api_client/profile_api_client.dart'
+    as _i19;
+import '../../../features/profile/api/datasources/profile_local_data_source_impl.dart'
+    as _i790;
+import '../../../features/profile/api/datasources/profile_remote_data_source_impl.dart'
+    as _i394;
+import '../../../features/profile/data/datasources/profile_local_data_source_contract.dart'
+    as _i991;
+import '../../../features/profile/data/datasources/profile_remote_data_source_contract.dart'
+    as _i376;
+import '../../../features/profile/data/repositories/profile_repository_impl.dart'
+    as _i695;
+import '../../../features/profile/domain/repositories/profile_repository.dart'
+    as _i919;
+import '../../../features/profile/domain/use_cases/get_profile_data_use_case.dart'
+    as _i874;
+import '../../../features/profile/domain/use_cases/update_profile_use_case.dart'
+    as _i412;
+import '../../../features/profile/presentation/view_model/cubit/profile_cubit.dart'
+    as _i683;
 import '../../../features/questions/api/api_client/questions_api_client.dart'
     as _i179;
 import '../../../features/questions/api/datasources/questions_local_data_source_impl.dart'
@@ -133,7 +165,6 @@ extension GetItInjectableX on _i174.GetIt {
       () => coreInjectableModule.prefs(),
       preResolve: true,
     );
-    gh.factory<_i334.AppLayoutCubit>(() => _i334.AppLayoutCubit());
     gh.singleton<_i361.Dio>(() => coreInjectableModule.dio());
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => coreInjectableModule.secureStorage(),
@@ -144,7 +175,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i161.InternetConnection>(
       () => coreInjectableModule.internetConnection(),
     );
-    gh.singleton<_i23.UserHelper>(
+    gh.factory<_i23.UserHelper>(
       () => _i23.UserHelper(
         gh<_i460.SharedPreferences>(),
         gh<_i558.FlutterSecureStorage>(),
@@ -162,14 +193,23 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i179.QuestionsApiClient>(
       () => _i179.QuestionsApiClient(gh<_i361.Dio>()),
     );
+    gh.factory<_i551.AppLayoutApiClient>(
+      () => _i551.AppLayoutApiClient(gh<_i361.Dio>()),
+    );
     gh.factory<_i89.ExploreApiClient>(
       () => _i89.ExploreApiClient(gh<_i361.Dio>()),
     );
     gh.factory<_i788.ForgetPasswordApiClient>(
       () => _i788.ForgetPasswordApiClient(gh<_i361.Dio>()),
     );
+    gh.factory<_i19.ProfileApiClient>(
+      () => _i19.ProfileApiClient(gh<_i361.Dio>()),
+    );
     gh.factory<_i873.SigupApiClient>(
       () => _i873.SigupApiClient(gh<_i361.Dio>()),
+    );
+    gh.factory<_i991.ProfileLocalDataSourceContract>(
+      () => _i790.ProfileLocalDataSourceImpl(gh<_i460.SharedPreferences>()),
     );
     gh.factory<_i739.SignupRemoteDataSourceContract>(
       () => _i500.SigupRemoteDataSourceImpl(
@@ -203,6 +243,15 @@ extension GetItInjectableX on _i174.GetIt {
         fss: gh<_i558.FlutterSecureStorage>(),
       ),
     );
+    gh.factory<_i817.AppLayoutRemoteDataSourceContract>(
+      () => _i934.AppLayoutRemoteDataSourceImpl(gh<_i551.AppLayoutApiClient>()),
+    );
+    gh.factory<_i376.ProfileRemoteDataSourceContract>(
+      () => _i394.ProfileRemoteDataSourceImpl(
+        gh<_i19.ProfileApiClient>(),
+        gh<_i991.ProfileLocalDataSourceContract>(),
+      ),
+    );
     gh.lazySingleton<_i354.LoginRemoteDataSourceContract>(
       () => _i791.LoginRemoteDataSourceImpl(
         apiClient: gh<_i865.LoginApiClient>(),
@@ -231,13 +280,13 @@ extension GetItInjectableX on _i174.GetIt {
         repo: gh<_i258.QuestionsRepositoryContract>(),
       ),
     );
+    gh.factory<_i568.ExploreRemoteDataSourceContract>(
+      () => _i781.ExploreRemoteDataSourceImpl(gh<_i89.ExploreApiClient>()),
+    );
     gh.lazySingleton<_i1040.ExamsTapRemoteDataSourceContract>(
       () => _i609.ExamsTapRemoteDataSourceImpl(
         apiClient: gh<_i384.ExamsTapApiClient>(),
       ),
-    );
-    gh.factory<_i568.ExploreRemoteDataSourceContract>(
-      () => _i781.ExploreRemoteDataSourceImpl(gh<_i89.ExploreApiClient>()),
     );
     gh.factory<_i351.ForgetPasswordUseCase>(
       () => _i351.ForgetPasswordUseCase(
@@ -260,9 +309,22 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i568.ExploreRemoteDataSourceContract>(),
       ),
     );
+    gh.factory<_i161.AppLayoutRepository>(
+      () => _i275.AppLayoutRepositoryImpl(
+        remoteDataSource: gh<_i817.AppLayoutRemoteDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i919.ProfileRepository>(
+      () => _i695.ProfileRepositoryImpl(
+        gh<_i376.ProfileRemoteDataSourceContract>(),
+      ),
+    );
     gh.factory<_i1042.SignupUserUsecase>(
       () =>
           _i1042.SignupUserUsecase(repo: gh<_i1062.SignupRepositoryContract>()),
+    );
+    gh.factory<_i874.GetProfileDataUseCase>(
+      () => _i874.GetProfileDataUseCase(gh<_i919.ProfileRepository>()),
     );
     gh.lazySingleton<_i1053.LoginRepository>(
       () => _i928.LoginRepositoryImpl(
@@ -270,14 +332,20 @@ extension GetItInjectableX on _i174.GetIt {
         localDataSource: gh<_i224.LoginLocalDataSourceContract>(),
       ),
     );
+    gh.factory<_i936.LogoutUseCase>(
+      () => _i936.LogoutUseCase(gh<_i161.AppLayoutRepository>()),
+    );
+    gh.factory<_i307.GetAllSubjectsUseCase>(
+      () => _i307.GetAllSubjectsUseCase(gh<_i1012.ExploreRepository>()),
+    );
     gh.lazySingleton<_i530.ExamsTapRepository>(
       () => _i1004.ExamsTapRepositoryImpl(
         examsTapRemoteDataSourceContract:
             gh<_i1040.ExamsTapRemoteDataSourceContract>(),
       ),
     );
-    gh.factory<_i307.GetAllSubjectsUseCase>(
-      () => _i307.GetAllSubjectsUseCase(gh<_i1012.ExploreRepository>()),
+    gh.factory<_i412.UpdateProfileUseCase>(
+      () => _i412.UpdateProfileUseCase(gh<_i919.ProfileRepository>()),
     );
     gh.factory<_i70.ForgetPasswordCubit>(
       () => _i70.ForgetPasswordCubit(
@@ -288,6 +356,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i571.LoginUserUseCase>(
       () => _i571.LoginUserUseCase(repository: gh<_i1053.LoginRepository>()),
+    );
+    gh.factory<_i334.AppLayoutCubit>(
+      () => _i334.AppLayoutCubit(gh<_i936.LogoutUseCase>()),
     );
     gh.factory<_i662.SignupCubit>(
       () => _i662.SignupCubit(signupUserCase: gh<_i1042.SignupUserUsecase>()),
@@ -303,6 +374,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i91.ExamsTapCubit>(
       () => _i91.ExamsTapCubit(gh<_i491.GetExamsOnSubjectUseCase>()),
+    );
+    gh.factory<_i683.ProfileCubit>(
+      () => _i683.ProfileCubit(
+        gh<_i874.GetProfileDataUseCase>(),
+        gh<_i412.UpdateProfileUseCase>(),
+      ),
     );
     return this;
   }

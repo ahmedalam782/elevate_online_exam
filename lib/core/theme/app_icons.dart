@@ -8,6 +8,8 @@ class AppIcons {
 
   static const String iconsCheckmark = "assets/icons/checkmark.svg";
 
+  static const String iconsClock = "assets/icons/clock.svg";
+
   static const String iconsCloseCircle = "assets/icons/close-circle.svg";
 
   static const String iconsCloseEye = "assets/icons/close_eye.svg";
@@ -20,6 +22,8 @@ class AppIcons {
 
   static const String iconsNoImage = "assets/icons/no_image.svg";
 
+  static const String iconsNoProfile = "assets/icons/no_profile.svg";
+
   static const String iconsOpenEye = "assets/icons/open_eye.svg";
 
   static const String iconsPerson = "assets/icons/person.svg";
@@ -29,6 +33,4 @@ class AppIcons {
   static const String iconsResults = "assets/icons/results.svg";
 
   static const String iconsSearch = "assets/icons/search.svg";
-
-  static const String iconClock = "assets/icons/clock.svg";
 }
