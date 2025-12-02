@@ -183,5 +183,13 @@
         "email": "Email",
         "Change": "Change",
         "Update": "Update"
+    },
+    "exam_score": {
+        "exam_score": "Exam Score",
+        "your_score": "Your Score",
+        "correct_answers": "Correct",
+        "wrong_answers": "Incorrect",
+        "show_results": "Show Results",
+        "start_again": "Start Again"
     }
 }

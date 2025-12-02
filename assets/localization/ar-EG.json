@@ -182,5 +182,13 @@
         "email": "البريد الإلكتروني",
         "Change": "تغيير",
         "Update": "تحديث"
+    },
+    "exam_score": {
+        "exam_score": "نتيجة الإمتحا",
+        "your_score": "نتيجة",
+        "correct_answers": "الصواب",
+        "wrong_answers": "الخطأ",
+        "show_results": "أعرض النتائج",
+        "start_again": "إبدأ مجددا"
     }
 }

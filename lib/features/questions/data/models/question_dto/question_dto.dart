@@ -1,4 +1,6 @@
 import 'package:collection/collection.dart';
+import 'package:elevate_online_exam/features/exams_tap/data/models/exam_dto.dart';
+import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
 import 'package:elevate_online_exam/features/questions/domain/entities/exam_entity.dart';
 import 'package:elevate_online_exam/features/questions/domain/entities/questions_entity.dart';
 import 'package:hive/hive.dart';
@@ -10,41 +12,31 @@ part 'question_dto.g.dart';
 
 const _listEquality = DeepCollectionEquality();
 
-@HiveType(typeId: 2)
 @JsonSerializable()
 class QuestionDto extends HiveObject {
-  @HiveField(1)
   @JsonKey(name: "answers")
   List<AnswerDto>? answers;
 
-  @HiveField(3)
   @JsonKey(name: "type")
   String? type;
 
-  @HiveField(5)
   @JsonKey(name: "_id")
   String? id;
 
-  @HiveField(7)
   @JsonKey(name: "question")
   String? question;
 
-  @HiveField(9)
   @JsonKey(name: "correct")
   String? correct;
 
-  @HiveField(11)
   @JsonKey(name: "subject")
   dynamic subject;
 
-  @HiveField(13)
   @JsonKey(name: "exam")
-  Exam? exam;
+  ExamDto? exam;
 
-  @HiveField(15)
   @JsonKey(name: "createdAt")
   String? createdAt;
-  @HiveField(17)
   String? answeredQuestion;
 
   QuestionDto({
@@ -66,7 +58,7 @@ class QuestionDto extends HiveObject {
     String? question,
     String? correct,
     dynamic subject,
-    Exam? exam,
+    ExamDto? exam,
     String? createdAt,
     String? answeredQuestion,
   }) => QuestionDto(
@@ -117,7 +109,15 @@ class QuestionDto extends HiveObject {
 
   QuestionEntity toEntity() {
     return QuestionEntity(
-      exam: exam?.toEntity() ?? ExamEntity(title: "", duration: 0),
+      exam:
+          exam?.toEntity() ??
+          ExamEntity(
+            title: "",
+            duration: 0,
+            id: "",
+            subject: "",
+            questions: [],
+          ),
       questionTitle: question ?? "",
       id: id ?? "",
       correctAnswer: correct ?? "",
@@ -127,7 +127,7 @@ class QuestionDto extends HiveObject {
             return answer.toEntity();
           }).toList() ??
           [],
-      answeredQuestion: null,
+      answeredQuestion: answeredQuestion,
     );
   }
 }

@@ -173,5 +173,12 @@ abstract class  LocaleKeys {
   static const profile_Change = 'profile.Change';
   static const profile_Update = 'profile.Update';
   static const profile = 'profile';
+  static const exam_score_exam_score = 'exam_score.exam_score';
+  static const exam_score_your_score = 'exam_score.your_score';
+  static const exam_score_correct_answers = 'exam_score.correct_answers';
+  static const exam_score_wrong_answers = 'exam_score.wrong_answers';
+  static const exam_score_show_results = 'exam_score.show_results';
+  static const exam_score_start_again = 'exam_score.start_again';
+  static const exam_score = 'exam_score';
 
 }

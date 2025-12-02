@@ -1,4 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_online_exam/features/answers/presentation/view/pages/answers_page.dart';
+import 'package:elevate_online_exam/features/exam_score/presentation/view/pages/exam_score_page.dart';
+import 'package:elevate_online_exam/features/questions/domain/entities/questions_entity.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view/pages/questions_page.dart';
 import 'package:elevate_online_exam/features/exams_tap/presentation/view/pages/exams_tap_page.dart';
 import 'package:elevate_online_exam/features/signup/presentation/view/pages/signup_page.dart';
@@ -7,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/app_layout/presentation/view/pages/app_layout_page.dart';
+import '../../features/exams_tap/domain/entities/exams_entity.dart';
 import '../../features/forget_password/presentation/view/pages/forget_password_page.dart';
 import '../../features/splash/presentation/view/pages/splash_page.dart';
 import '../../features/explore/domain/entities/subject_entities.dart';
@@ -68,6 +72,21 @@ final GoRouter router = GoRouter(
           key: ValueKey(context.locale.languageCode.toString()),
           subject: subject,
         );
+      },
+    ),
+    _customAnimatedGoRoute(
+      route: Routes.examScore,
+      page: (state, context) {
+        final exam = state.extra as ExamEntity;
+        return ExamScorePage(exam: exam);
+      },
+    ),
+
+    _customAnimatedGoRoute(
+      route: Routes.answers,
+      page: (state, context) {
+        final questions = state.extra as List<QuestionEntity>;
+        return AnswersPage(questions: questions);
       },
     ),
   ],

@@ -17,7 +17,7 @@ QuestionDto _$QuestionDtoFromJson(Map<String, dynamic> json) => QuestionDto(
   subject: json['subject'],
   exam: json['exam'] == null
       ? null
-      : Exam.fromJson(json['exam'] as Map<String, dynamic>),
+      : ExamDto.fromJson(json['exam'] as Map<String, dynamic>),
   createdAt: json['createdAt'] as String?,
   answeredQuestion: json['answeredQuestion'] as String?,
 );

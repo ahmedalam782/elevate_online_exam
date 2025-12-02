@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:elevate_online_exam/features/questions/data/models/answer_dto/answer_dto.dart';
+
 class AnswerEntity {
   final String title;
   final String key;
@@ -19,4 +21,8 @@ class AnswerEntity {
 
   @override
   int get hashCode => title.hashCode ^ key.hashCode;
+
+  AnswerDto toDto() {
+    return AnswerDto(answer: title, key: key);
+  }
 }
