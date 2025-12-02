@@ -31,6 +31,9 @@ abstract class  LocaleKeys {
   static const custom_widget_search = 'custom_widget.search';
   static const custom_widget_phone_number = 'custom_widget.phone_number';
   static const custom_widget_select_country = 'custom_widget.select_country';
+  static const custom_widget_gallery = 'custom_widget.gallery';
+  static const custom_widget_camera = 'custom_widget.camera';
+  static const custom_widget_crop_image = 'custom_widget.crop_image';
   static const custom_widget = 'custom_widget';
   static const date_time_from = 'date_time.from';
   static const date_time_hour = 'date_time.hour';
@@ -91,6 +94,7 @@ abstract class  LocaleKeys {
   static const global_check_internet = 'global.check_internet';
   static const global_test_your_knowledge = 'global.test_your_knowledge';
   static const global_online_exam = 'global.online_exam';
+  static const global_logout_success = 'global.logout_success';
   static const global = 'global';
   static const app_layout_explore = 'app_layout.explore';
   static const app_layout_result = 'app_layout.result';
@@ -172,5 +176,20 @@ abstract class  LocaleKeys {
   static const change_password_enter_confirm_password = 'change_password.enter_confirm_password';
   static const change_password_new_passwords_do_not_match = 'change_password.new_passwords_do_not_match';
   static const change_password = 'change_password';
+  static const profile_user_name = 'profile.user_name';
+  static const profile_first_name = 'profile.first_name';
+  static const profile_last_name = 'profile.last_name';
+  static const profile_phone_number = 'profile.phone_number';
+  static const profile_email = 'profile.email';
+  static const profile_Change = 'profile.Change';
+  static const profile_Update = 'profile.Update';
+  static const profile = 'profile';
+  static const exam_score_exam_score = 'exam_score.exam_score';
+  static const exam_score_your_score = 'exam_score.your_score';
+  static const exam_score_correct_answers = 'exam_score.correct_answers';
+  static const exam_score_wrong_answers = 'exam_score.wrong_answers';
+  static const exam_score_show_results = 'exam_score.show_results';
+  static const exam_score_start_again = 'exam_score.start_again';
+  static const exam_score = 'exam_score';
 
 }

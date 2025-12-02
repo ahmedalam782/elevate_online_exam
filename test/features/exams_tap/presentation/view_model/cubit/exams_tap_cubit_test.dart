@@ -36,7 +36,7 @@ void main() {
       "emit loading and success state when getExamsOnSubject is succeed",
       () async {
         PaginatedExams paginatedExams = PaginatedExams(
-          exams: [ExamEntity(id: "1", title: "test", subject: "1")],
+          exams: [ExamEntity(id: "1", title: "test", subject: "1", questions: [])],
           currentPage: 1,
           totalPages: 1,
         );

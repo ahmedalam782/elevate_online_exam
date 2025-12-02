@@ -10,6 +10,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final EdgeInsetsGeometry? padding;
   final bool automaticallyImplyLeading;
   final Color? textColor;
+  final List<Widget>? actions;
   const CustomAppBar({
     super.key,
     required this.title,
@@ -17,6 +18,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.padding,
     this.automaticallyImplyLeading = true,
     this.textColor,
+    this.actions,
   });
 
   @override
@@ -43,6 +45,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: Icon(Icons.chevron_left, size: 38),
               )
             : null,
+        actions: actions,
       ),
     );
   }
