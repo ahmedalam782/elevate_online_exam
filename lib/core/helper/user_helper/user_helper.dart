@@ -7,7 +7,7 @@ import '../../config/api/end_points.dart';
 import '../../routes/app_router.dart';
 import '../../routes/routes.dart';
 
-@singleton
+@injectable
 class UserHelper {
   final SharedPreferences _prefs;
   final FlutterSecureStorage _fss;

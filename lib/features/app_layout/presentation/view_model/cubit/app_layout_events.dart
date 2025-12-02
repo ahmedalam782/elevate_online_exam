@@ -5,3 +5,5 @@ class ChangeIndexEvent extends AppLayoutEvents {
 
   ChangeIndexEvent(this.index);
 }
+
+class LogoutEvent extends AppLayoutEvents {}

@@ -28,7 +28,10 @@
         "save": "Save",
         "search": "Search",
         "phone_number": "Phone Number",
-        "select_country": "Select Country"
+        "select_country": "Select Country",
+        "gallery": "Gallery",
+        "camera": "Camera",
+        "crop_image": "Crop Image"
     },
     "date_time": {
         "from": "From",
@@ -92,7 +95,8 @@
         "no_internet": "No internet connection!",
         "check_internet": "Check your internet connection and try again.",
         "test_your_knowledge": "Test Your Knowledge",
-        "online_exam": "Online Exam"
+        "online_exam": "Online Exam",
+        "logout_success": "Logged out successfully"
     },
     "app_layout": {
         "explore": "Explore",
@@ -153,33 +157,39 @@
         "no_account": "Don't have an account? ",
         "sign_up": "Sign Up"
     },
-    "questions":{
-        "exam":"Exam",
-        "back":"Back",
-        "next":"Next",
-        "question":"Question",
-        "of":"of",
-        "time_out":"Time out!!",
-        "view_score":"View score"
-
-
+    "questions": {
+        "exam": "Exam",
+        "back": "Back",
+        "next": "Next",
+        "question": "Question",
+        "of": "of",
+        "time_out": "Time out!!",
+        "view_score": "View score"
     },
     "subjects": {
         "browse_by_subject": "Browse by Subject",
         "no_subjects_found": "No subjects found"
     },
-    "exams_tap":{
+    "exams_tap": {
         "no_exams_found": "No Exams Found",
-        "no_subject_selected":"No subject selected",
+        "no_subject_selected": "No subject selected",
         "start_exam": "Start Exam"
     },
-    "exam_score":{
-        "exam_score":"Exam Score",
-        "your_score":"Your Score",
-        "correct_answers":"Correct",
-        "wrong_answers":"Incorrect",
-        "show_results":"Show Results",
-        "start_again":"Start Again"
+    "profile": {
+        "user_name": "User Name",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "phone_number": "Phone Number",
+        "email": "Email",
+        "Change": "Change",
+        "Update": "Update"
+    },
+    "exam_score": {
+        "exam_score": "Exam Score",
+        "your_score": "Your Score",
+        "correct_answers": "Correct",
+        "wrong_answers": "Incorrect",
+        "show_results": "Show Results",
+        "start_again": "Start Again"
     }
-
 }

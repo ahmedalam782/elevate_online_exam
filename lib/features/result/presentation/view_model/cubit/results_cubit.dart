@@ -1,9 +1,8 @@
-import 'package:bloc/bloc.dart';
 import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
-import 'package:elevate_online_exam/features/questions/domain/use_cases/get_questions_use_case.dart';
 import 'package:elevate_online_exam/features/result/domain/use_case/get_exams_use_case.dart';
 import 'package:elevate_online_exam/features/result/presentation/view_model/cubit/results_event.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 part 'results_state.dart';
@@ -27,7 +26,7 @@ class ResultsCubit extends Cubit<ResultsState> {
       final result = _getExamsUseCase.call(); // await if returns Future
       final newList = List<ExamEntity>.from(result);
       emit(state.copyWith(exams: newList, isLoading: false));
-    } catch (e, st) {
+    } catch (e) {
       emit(state.copyWith(isLoading: false));
     }
   }
