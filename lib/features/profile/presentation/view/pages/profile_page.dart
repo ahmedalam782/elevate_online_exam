@@ -14,12 +14,11 @@ import '../widgets/profile_image.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
-  final ProfileCubit profileCubit = getIt.get<ProfileCubit>()
-    ..doIntent(GetProfileDataEvent());
+  final ProfileCubit profileCubit = getIt.get<ProfileCubit>();
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ProfileCubit>(
-      create: (context) => profileCubit,
+      create: (context) => profileCubit..doIntent(GetProfileDataEvent()),
       child: BlocBuilder<ProfileCubit, ProfileStates>(
         builder: (context, state) {
           return RefreshIndicator(
