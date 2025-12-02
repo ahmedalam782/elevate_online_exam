@@ -184,10 +184,17 @@ class ChangePasswordCubit extends Cubit<ChangePasswordStates> {
 
   @override
   Future<void> close() {
+    _clearControllers();
     currentPasswordController.dispose();
     newPasswordController.dispose();
     confirmPasswordController.dispose();
-    _clearControllers();
     return super.close();
+  }
+
+  @override
+  void emit(ChangePasswordStates state) {
+    if (!isClosed) {
+      super.emit(state);
+    }
   }
 }

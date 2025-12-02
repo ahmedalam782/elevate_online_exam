@@ -45,7 +45,7 @@ class _ChangePasswordApiClient implements ChangePasswordApiClient {
     try {
       _value = ChangePasswordResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
+      errorLogger?.logError(e, s, _options, _result);
       rethrow;
     }
     return _value;

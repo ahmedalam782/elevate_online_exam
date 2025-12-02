@@ -112,31 +112,36 @@ class ProfileForm extends StatelessWidget {
                             );
                           },
                   ),
-                  CustomTextFormField(
-                    isReadOnly: true,
-                    controller: profileCubit.passwordController,
-                    labelText: LocaleKeys.login_password_label.tr(),
-                    hintText: LocaleKeys.login_password_label.tr(),
-                    isObscureText: true,
-                    suffixWidget: InkWell(
-                      onTap: () {
-                        context.go(Routes.changePassword);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.only(end: 8.0),
-                        child: FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: Text(
-                            LocaleKeys.profile_Change.tr(),
-                            style: Styles.semiBold(
-                              context,
-                              12,
-                              color: AppColors.prime,
+                  Stack(
+                    alignment: AlignmentDirectional.centerEnd,
+                    children: [
+                      CustomTextFormField(
+                        isReadOnly: true,
+                        controller: profileCubit.passwordController,
+                        labelText: LocaleKeys.login_password_label.tr(),
+                        hintText: LocaleKeys.login_password_label.tr(),
+                        isObscureText: true,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          context.push(Routes.changePassword);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.only(end: 8.0),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              LocaleKeys.profile_Change.tr(),
+                              style: Styles.semiBold(
+                                context,
+                                12,
+                                color: AppColors.prime,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
                   CustomTextFormField(
                     maxLength: 11,

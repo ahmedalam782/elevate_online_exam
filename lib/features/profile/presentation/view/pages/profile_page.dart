@@ -22,26 +22,32 @@ class ProfilePage extends StatelessWidget {
       create: (context) => profileCubit,
       child: BlocBuilder<ProfileCubit, ProfileStates>(
         builder: (context, state) {
-          return SingleChildScrollView(
-            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: [
-                const SizedBox(height: 16),
-                ProfileImage(),
-                const SizedBox(height: 16),
-                ProfileForm(),
-                const SizedBox(height: 24),
-                CustomButton(
-                  isLoading: state.updateProfileDataState?.state ==
-                      StateType.loading,
-                  onTap: state.profileDataChangeState?.isChanged == true
-                      ? () =>
-                          profileCubit.doIntent(UpdateProfileDataEvent())
-                      : null,
-                  title: LocaleKeys.profile_Update.tr(),
-                ),
-              ],
+          return RefreshIndicator(
+            onRefresh: () async {
+              profileCubit.doIntent(GetProfileDataEvent());
+            },
+            child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: [
+                  const SizedBox(height: 16),
+                  ProfileImage(),
+                  const SizedBox(height: 16),
+                  ProfileForm(),
+                  const SizedBox(height: 24),
+                  CustomButton(
+                    isLoading:
+                        state.updateProfileDataState?.state ==
+                        StateType.loading,
+                    onTap: state.profileDataChangeState?.isChanged == true
+                        ? () => profileCubit.doIntent(UpdateProfileDataEvent())
+                        : null,
+                    title: LocaleKeys.profile_Update.tr(),
+                  ),
+                ],
+              ),
             ),
           );
         },
