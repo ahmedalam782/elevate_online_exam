@@ -16,7 +16,16 @@ import 'core/routes/url_strategy.dart';
 const bool runLocal = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initHive();
+  await configureDependencies(); // Set custom Bloc observer for debugging
+  Bloc.observer = MyBlocObserver();
+  await ScreenUtil.ensureScreenSize();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  //==================FOR WEB=====================
+  GoRouter.optionURLReflectsImperativeAPIs = true;
+  setPathUrlStrategy();
+  await EasyLocalization.ensureInitialized();
+
+  // await initHive();
   runApp(
     EasyLocalization(
       supportedLocales: [arabicLocale, englishLocale],
@@ -27,24 +36,14 @@ void main() async {
     ),
   );
   // Initialize EasyLocalization
-  await EasyLocalization.ensureInitialized();
-  // Set custom Bloc observer for debugging
-  Bloc.observer = MyBlocObserver();
-  await configureDependencies();
-  await ScreenUtil.ensureScreenSize();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  await EasyLocalization.ensureInitialized();
-  //==================FOR WEB=====================
-  GoRouter.optionURLReflectsImperativeAPIs = true;
-  setPathUrlStrategy();
 }
 
-Future<void> initHive() async {
-  Hive
-    ..registerAdapter(QuestionsResponseAdapter())
-    ..registerAdapter(QuestionDtoAdapter())
-    ..registerAdapter(AnswerDtoAdapter())
-    ..registerAdapter(ExamAdapter());
+// Future<void> initHive() async {
+//   Hive
+//     ..registerAdapter(QuestionsResponseAdapter())
+//     ..registerAdapter(QuestionDtoAdapter())
+//     ..registerAdapter(AnswerDtoAdapter())
+//     ..registerAdapter(ExamDtoAdapter());
 
-  await Hive.initFlutter();
-}
+//   await Hive.initFlutter();
+// }

@@ -172,5 +172,14 @@
         "no_exams_found": "No Exams Found",
         "no_subject_selected":"No subject selected",
         "start_exam": "Start Exam"
+    },
+    "exam_score":{
+        "exam_score":"Exam Score",
+        "your_score":"Your Score",
+        "correct_answers":"Correct",
+        "wrong_answers":"Incorrect",
+        "show_results":"Show Results",
+        "start_again":"Start Again"
     }
+
 }

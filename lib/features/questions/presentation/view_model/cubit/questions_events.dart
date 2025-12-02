@@ -1,3 +1,5 @@
+import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
+
 sealed class QuestionsEvent {}
 
 class AnswerSelectedEvent extends QuestionsEvent {
@@ -17,4 +19,10 @@ class GetQuestionsEvent extends QuestionsEvent {
   final String examId;
 
   GetQuestionsEvent({required this.examId});
+}
+
+class SaveExamEvent extends QuestionsEvent {
+  final ExamEntity exam;
+
+  SaveExamEvent({required this.exam});
 }
