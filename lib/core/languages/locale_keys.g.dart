@@ -165,6 +165,17 @@ abstract class  LocaleKeys {
   static const exams_tap_no_subject_selected = 'exams_tap.no_subject_selected';
   static const exams_tap_start_exam = 'exams_tap.start_exam';
   static const exams_tap = 'exams_tap';
+  static const change_password_title = 'change_password.title';
+  static const change_password_current_password = 'change_password.current_password';
+  static const change_password_new_password = 'change_password.new_password';
+  static const change_password_confirm_password = 'change_password.confirm_password';
+  static const change_password_change_password_button = 'change_password.change_password_button';
+  static const change_password_password_changed_successfully = 'change_password.password_changed_successfully';
+  static const change_password_enter_current_password = 'change_password.enter_current_password';
+  static const change_password_enter_new_password = 'change_password.enter_new_password';
+  static const change_password_enter_confirm_password = 'change_password.enter_confirm_password';
+  static const change_password_new_passwords_do_not_match = 'change_password.new_passwords_do_not_match';
+  static const change_password = 'change_password';
   static const profile_user_name = 'profile.user_name';
   static const profile_first_name = 'profile.first_name';
   static const profile_last_name = 'profile.last_name';

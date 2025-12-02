@@ -41,7 +41,7 @@ class _ExploreApiClient implements ExploreApiClient {
     try {
       _value = SubjectsModel.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, _result);
+      errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;

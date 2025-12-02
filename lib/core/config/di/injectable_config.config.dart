@@ -33,6 +33,26 @@ import '../../../features/app_layout/domain/use_cases/logout_use_case.dart'
     as _i936;
 import '../../../features/app_layout/presentation/view_model/cubit/app_layout_cubit.dart'
     as _i334;
+import '../../../features/change_password/api/api_client/change_password_api_client.dart'
+    as _i265;
+import '../../../features/change_password/api/datasources/change_password_local_data_source_impl.dart'
+    as _i54;
+import '../../../features/change_password/api/datasources/change_password_remote_data_source_impl.dart'
+    as _i213;
+import '../../../features/change_password/data/datasources/change_password_local_data_source_contract.dart'
+    as _i389;
+import '../../../features/change_password/data/datasources/change_password_remote_data_source_contract.dart'
+    as _i719;
+import '../../../features/change_password/data/repositories/change_password_repository_impl.dart'
+    as _i339;
+import '../../../features/change_password/domain/repositories/change_password_repository.dart'
+    as _i1023;
+import '../../../features/change_password/domain/use_cases/change_password_use_case.dart'
+    as _i633;
+import '../../../features/change_password/domain/use_cases/save_new_token_use_case.dart'
+    as _i29;
+import '../../../features/change_password/presentation/view_model/cubit/change_password_cubit.dart'
+    as _i494;
 import '../../../features/exams_tap/api/api_client/exams_tap_api_client.dart'
     as _i384;
 import '../../../features/exams_tap/api/datasources/exams_tap_remote_data_source_impl.dart'
@@ -222,6 +242,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i551.AppLayoutApiClient>(
       () => _i551.AppLayoutApiClient(gh<_i361.Dio>()),
     );
+    gh.factory<_i265.ChangePasswordApiClient>(
+      () => _i265.ChangePasswordApiClient(gh<_i361.Dio>()),
+    );
     gh.factory<_i89.ExploreApiClient>(
       () => _i89.ExploreApiClient(gh<_i361.Dio>()),
     );
@@ -237,9 +260,19 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i991.ProfileLocalDataSourceContract>(
       () => _i790.ProfileLocalDataSourceImpl(gh<_i460.SharedPreferences>()),
     );
+    gh.factory<_i719.ChangePasswordRemoteDataSourceContract>(
+      () => _i213.ChangePasswordRemoteDataSourceImpl(
+        apiClient: gh<_i265.ChangePasswordApiClient>(),
+      ),
+    );
     gh.factory<_i739.SignupRemoteDataSourceContract>(
       () => _i500.SigupRemoteDataSourceImpl(
         homeApiClient: gh<_i873.SigupApiClient>(),
+      ),
+    );
+    gh.factory<_i389.ChangePasswordLocalDataSourceContract>(
+      () => _i54.ChangePasswordLocalDataSourceImpl(
+        secureStorage: gh<_i558.FlutterSecureStorage>(),
       ),
     );
     gh.factory<_i938.ForgetPasswordRemoteDataSourceContract>(
@@ -310,6 +343,12 @@ extension GetItInjectableX on _i174.GetIt {
       instanceName: 'questionsBox',
       preResolve: true,
     );
+    gh.factory<_i1023.ChangePasswordRepository>(
+      () => _i339.ChangePasswordRepositoryImpl(
+        remoteDataSource: gh<_i719.ChangePasswordRemoteDataSourceContract>(),
+        localDataSource: gh<_i389.ChangePasswordLocalDataSourceContract>(),
+      ),
+    );
     gh.factory<_i98.ForgetPasswordRepository>(
       () => _i893.ForgetPasswordRepositoryImpl(
         remoteDataSource: gh<_i938.ForgetPasswordRemoteDataSourceContract>(),
@@ -362,6 +401,16 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i919.ProfileRepository>(
       () => _i695.ProfileRepositoryImpl(
         gh<_i376.ProfileRemoteDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i633.ChangePasswordUseCase>(
+      () => _i633.ChangePasswordUseCase(
+        repository: gh<_i1023.ChangePasswordRepository>(),
+      ),
+    );
+    gh.factory<_i29.SaveNewTokenUseCase>(
+      () => _i29.SaveNewTokenUseCase(
+        repository: gh<_i1023.ChangePasswordRepository>(),
       ),
     );
     gh.factory<_i1042.SignupUserUsecase>(
@@ -432,6 +481,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i491.GetExamsOnSubjectUseCase>(
       () => _i491.GetExamsOnSubjectUseCase(gh<_i530.ExamsTapRepository>()),
+    );
+    gh.factory<_i494.ChangePasswordCubit>(
+      () => _i494.ChangePasswordCubit(
+        gh<_i633.ChangePasswordUseCase>(),
+        gh<_i29.SaveNewTokenUseCase>(),
+      ),
     );
     gh.factory<_i176.ExploreCubit>(
       () => _i176.ExploreCubit(gh<_i307.GetAllSubjectsUseCase>()),

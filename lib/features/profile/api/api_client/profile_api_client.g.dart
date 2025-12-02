@@ -40,7 +40,7 @@ class _ProfileApiClient implements ProfileApiClient {
     try {
       _value = ProfileModel.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, _result);
+      errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
@@ -68,7 +68,7 @@ class _ProfileApiClient implements ProfileApiClient {
     try {
       _value = ProfileModel.fromJson(_result.data!);
     } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, _result);
+      errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;

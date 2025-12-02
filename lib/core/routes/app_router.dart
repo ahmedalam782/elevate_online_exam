@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_online_exam/features/change_password/presentation/view/pages/change_password_page.dart';
 import 'package:elevate_online_exam/features/answers/presentation/view/pages/answers_page.dart';
 import 'package:elevate_online_exam/features/exam_score/presentation/view/pages/exam_score_page.dart';
 import 'package:elevate_online_exam/features/questions/domain/entities/questions_entity.dart';
@@ -88,6 +89,13 @@ final GoRouter router = GoRouter(
         final questions = state.extra as List<QuestionEntity>;
         return AnswersPage(questions: questions);
       },
+    ),
+
+    _customAnimatedGoRoute(
+      route: Routes.changePassword,
+      page: (state, context) => ChangePasswordPage(
+        key: ValueKey(context.locale.languageCode.toString()),
+      ),
     ),
   ],
 );

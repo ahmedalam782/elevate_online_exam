@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_online_exam/core/routes/routes.dart';
 import 'package:elevate_online_exam/core/theme/app_colors.dart';
 import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../../core/config/base_state/base_state.dart';
@@ -117,7 +119,9 @@ class ProfileForm extends StatelessWidget {
                     hintText: LocaleKeys.login_password_label.tr(),
                     isObscureText: true,
                     suffixWidget: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        context.go(Routes.changePassword);
+                      },
                       child: Padding(
                         padding: const EdgeInsetsDirectional.only(end: 8.0),
                         child: FittedBox(
