@@ -9,6 +9,7 @@ class AnswerDto extends HiveObject {
   @JsonKey(name: "answer")
   String? answer;
 
+  @override
   @JsonKey(name: "key")
   String? key;
 

@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
 
 import 'package:elevate_online_exam/features/questions/data/models/answer_dto/answer_dto.dart';
 

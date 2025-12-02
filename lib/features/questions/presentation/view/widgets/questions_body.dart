@@ -9,12 +9,9 @@ import 'package:elevate_online_exam/core/theme/app_colors.dart';
 import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
 import 'package:elevate_online_exam/features/explore/domain/entities/subject_entities.dart';
-import 'package:elevate_online_exam/features/questions/data/models/answer_dto/answer_dto.dart';
-import 'package:elevate_online_exam/features/questions/data/models/question_dto/question_dto.dart';
 import 'package:elevate_online_exam/features/questions/domain/entities/answer_entity.dart';
 import 'package:elevate_online_exam/features/questions/domain/entities/questions_entity.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view/widgets/count_down_timer.dart';
-import 'package:elevate_online_exam/features/questions/presentation/view/widgets/multiple_choice_container.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view/widgets/question_stepper.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view/widgets/singe_choice_container.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view/widgets/time_out_dialog.dart';
@@ -184,7 +181,7 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                                     ListView.separated(
                                       shrinkWrap: true,
                                       physics: NeverScrollableScrollPhysics(),
-                                      itemCount: question?.answers?.length ?? 0,
+                                      itemCount: question?.answers.length ?? 0,
                                       separatorBuilder: (_, __) =>
                                           SizedBox(height: 16.h),
                                       itemBuilder: (_, index) {
@@ -192,8 +189,9 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                                         return InkWell(
                                           onTap: () {
                                             print("sdsds");
-                                            if (viewModel.state.isDone == true)
+                                            if (viewModel.state.isDone == true) {
                                               return;
+                                            }
                                             viewModel.doIntent(
                                               AnswerSelectedEvent(
                                                 index: pageIndex,

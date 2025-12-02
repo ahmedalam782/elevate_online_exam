@@ -1,7 +1,6 @@
 // TODO: api QuestionsLocalDataSourceImpl
 import 'package:elevate_online_exam/features/exams_tap/data/models/exam_dto.dart';
 import 'package:elevate_online_exam/features/questions/data/datasources/questions_local_data_source_contract.dart';
-import 'package:elevate_online_exam/features/questions/data/datasources/questions_remote_data_source_contract.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 

@@ -1,6 +1,5 @@
 import 'package:elevate_online_exam/core/theme/app_colors.dart';
 import 'package:elevate_online_exam/core/theme/styles.dart';
-import 'package:elevate_online_exam/features/questions/data/models/answer_dto/answer_dto.dart';
 import 'package:elevate_online_exam/features/questions/domain/entities/answer_entity.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view/widgets/choice_decorated_container.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +44,7 @@ class SingeChoiCeContainer extends StatelessWidget {
           SizedBox(width: 18.w),
           Expanded(
             child: Text(
-              answer.title ?? "",
+              answer.title,
               style: Styles.regular(context, 14.sp),
             ),
           ),

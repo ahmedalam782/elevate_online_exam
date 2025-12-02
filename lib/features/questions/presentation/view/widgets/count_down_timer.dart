@@ -9,12 +9,12 @@ class CountdownTimer extends StatefulWidget {
   final bool isDone;
 
   const CountdownTimer({
-    Key? key,
+    super.key,
     required this.totalMinutes,
     required this.onFinished,
     this.textStyle,
     required this.isDone,
-  }) : super(key: key);
+  });
 
   @override
   State<CountdownTimer> createState() => _CountdownTimerState();

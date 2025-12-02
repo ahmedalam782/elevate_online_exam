@@ -5,7 +5,6 @@ import 'package:elevate_online_exam/core/shared/widgets/custom_button.dart';
 import 'package:elevate_online_exam/core/theme/app_colors.dart';
 import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
-import 'package:elevate_online_exam/features/questions/presentation/view_model/cubit/questions_events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';

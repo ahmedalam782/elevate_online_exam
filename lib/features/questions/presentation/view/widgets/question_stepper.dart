@@ -3,7 +3,6 @@ import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/theme/app_colors.dart';
 import 'package:elevate_online_exam/core/theme/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QuestionStepper extends StatelessWidget {
@@ -23,7 +22,7 @@ class QuestionStepper extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "${LocaleKeys.questions_question.tr()} ${currentQuestion} ${LocaleKeys.questions_of.tr()} ${totalQuestions}",
+              "${LocaleKeys.questions_question.tr()} $currentQuestion ${LocaleKeys.questions_of.tr()} $totalQuestions",
               style: Styles.medium(context, 14.sp, color: AppColors.gray53),
             ),
           ],

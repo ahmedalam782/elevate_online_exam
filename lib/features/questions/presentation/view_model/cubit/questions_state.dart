@@ -4,7 +4,7 @@ class QuestionsState extends BaseState<List<QuestionEntity>> {
   final int currentPage;
   final bool isDone;
 
-  QuestionsState.all({
+  const QuestionsState.all({
     super.exception,
     super.data,
     super.state = StateType.initial,

@@ -1,9 +1,6 @@
-import 'dart:developer';
 
 import 'package:elevate_online_exam/core/config/di/injectable_config.dart';
 import 'package:elevate_online_exam/core/routes/routes.dart';
-import 'package:elevate_online_exam/core/theme/app_colors.dart';
-import 'package:elevate_online_exam/features/questions/presentation/view_model/cubit/questions_cubit.dart';
 import 'package:elevate_online_exam/features/result/presentation/view/widgets/result_widget.dart';
 import 'package:elevate_online_exam/features/result/presentation/view_model/cubit/results_cubit.dart';
 import 'package:elevate_online_exam/features/result/presentation/view_model/cubit/results_event.dart';
@@ -13,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class ResultPage extends StatefulWidget {
-  ResultPage({super.key});
+  const ResultPage({super.key});
 
   @override
   State<ResultPage> createState() => _ResultPageState();

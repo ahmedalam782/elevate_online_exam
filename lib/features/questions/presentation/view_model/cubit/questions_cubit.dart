@@ -2,12 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:elevate_online_exam/core/config/base_response/result.dart';
 import 'package:elevate_online_exam/core/config/base_state/base_state.dart';
 import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
-import 'package:elevate_online_exam/features/questions/data/models/question_dto/question_dto.dart';
 import 'package:elevate_online_exam/features/questions/domain/entities/questions_entity.dart';
 import 'package:elevate_online_exam/features/questions/domain/use_cases/get_questions_use_case.dart';
 import 'package:elevate_online_exam/features/questions/domain/use_cases/save_exame_use_case.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view_model/cubit/questions_events.dart';
-import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
 part 'questions_state.dart';

@@ -1,12 +1,10 @@
 import 'package:collection/collection.dart';
 import 'package:elevate_online_exam/features/exams_tap/data/models/exam_dto.dart';
 import 'package:elevate_online_exam/features/exams_tap/domain/entities/exams_entity.dart';
-import 'package:elevate_online_exam/features/questions/domain/entities/exam_entity.dart';
 import 'package:elevate_online_exam/features/questions/domain/entities/questions_entity.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import '../answer_dto/answer_dto.dart';
-import '../exam/exam.dart';
 
 part 'question_dto.g.dart';
 

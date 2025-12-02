@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_online_exam/core/languages/locale_keys.g.dart';
 import 'package:elevate_online_exam/core/theme/app_images.dart';
@@ -22,7 +21,7 @@ class ResultWidget extends StatelessWidget {
           BoxShadow(
             offset: Offset(0, 0),
             blurRadius: 8.r,
-            color: Color(0xff2A292940).withAlpha(63),
+            color: Color(0xff2a292940).withAlpha(63),
           ),
         ],
       ),
