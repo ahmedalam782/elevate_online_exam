@@ -161,7 +161,7 @@
         "time_out":"إنتهي الوقت !!",
         "view_score":"عرض الدرجة"
     }
-    },
+    ,
     "subjects": {
         "browse_by_subject": "تصفح حسب الموضوع",
         "no_subjects_found": "لم يتم العثور على مواضيع"
@@ -171,6 +171,19 @@
         "no_exams_found": "لا توجد امتحانات",
         "no_subject_selected": "لم يتم اختيار مادة",
         "start_exam": "ابدأ الامتحان"
-  }
+  },
+  
+  "change_password": {
+    "title": "تغيير كلمة المرور",
+    "current_password": "كلمة المرور الحالية",
+    "new_password": "كلمة المرور الجديدة",
+    "confirm_password": "تأكيد كلمة المرور",
+    "change_password_button": "تغيير كلمة المرور",
+    "password_changed_successfully": "تم تغيير كلمة المرور بنجاح",
+    "enter_current_password": "يرجى إدخال كلمة المرور الحالية",
+    "enter_new_password": "يرجى إدخال كلمة المرور الجديدة",
+    "enter_confirm_password": "يرجى تأكيد كلمة المرور الجديدة",
+    "new_passwords_do_not_match": "كلمة المرور الجديدة وتأكيدها غير متطابقين"
+}
 
 }

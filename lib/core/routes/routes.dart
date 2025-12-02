@@ -7,4 +7,5 @@ class Routes {
   static const String appLayout = "/app-layout";
   static const String questions = "/questions";
   static const String examsTap = "/exams-tap";
+  static const String changePassword = "/change-password";
 }

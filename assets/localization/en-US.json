@@ -173,4 +173,17 @@
         "no_subject_selected":"No subject selected",
         "start_exam": "Start Exam"
     }
+,
+    "change_password": {
+        "title": "Change Password",
+        "current_password": "Current Password",
+        "new_password": "New Password",
+        "confirm_password": "Confirm Password",
+        "change_password_button": "Change Password",
+        "password_changed_successfully": "Your password has been changed successfully",
+        "enter_current_password": "Please enter your current password",
+        "enter_new_password": "Please enter your new password",
+        "enter_confirm_password": "Please confirm your new password",
+        "new_passwords_do_not_match": "New password and confirm password do not match"
+    }
 }

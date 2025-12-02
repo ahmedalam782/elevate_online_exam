@@ -58,6 +58,7 @@ class CustomTextFormField extends StatelessWidget {
     this.errorBorder,
     this.autovalidateMode,
     this.errorMaxlines,
+    this.errorText,
   });
   final int? errorMaxlines;
   final String? labelText;
@@ -106,6 +107,7 @@ class CustomTextFormField extends StatelessWidget {
   final InputBorder? enabledBorder;
   final InputBorder? disabledBorder;
   final TextDirection? textDirection;
+  final String? errorText;
   // added error border if needed
   final InputBorder? errorBorder;
   // adding autovalidate mode only if needed not on every case
@@ -202,6 +204,8 @@ class CustomTextFormField extends StatelessWidget {
                   )
                 : prefixWidget,
             errorMaxLines: errorMaxlines ?? 2,
+            // adding error text
+            errorText: errorText,
             label:
                 labelWidget ??
                 Text(labelText ?? "", style: Styles.regular(context, 14)),
