@@ -25,13 +25,7 @@ class _AppLayoutPageState extends State<AppLayoutPage> {
 
   @override
   void initState() {
-    getData();
     super.initState();
-  }
-
-  Future<void> getData() async {
-    final box = getIt<Box<ExamDto>>(instanceName: "examsBox");
-    log(box.values.first.questions?.first.question.toString() ?? "No question");
   }
 
   @override
@@ -45,6 +39,7 @@ class _AppLayoutPageState extends State<AppLayoutPage> {
               title: cubit.titles[state.changeIndexState?.currentIndex ?? 0],
               textColor: AppColors.primaryLight,
             ),
+            // body: cubit.pages[state.changeIndexState?.currentIndex ?? 0],
             body: IndexedStack(
               index: state.changeIndexState?.currentIndex ?? 0,
               children: cubit.pages,

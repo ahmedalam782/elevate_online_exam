@@ -111,6 +111,18 @@ import '../../../features/questions/domain/use_cases/save_exame_use_case.dart'
     as _i25;
 import '../../../features/questions/presentation/view_model/cubit/questions_cubit.dart'
     as _i809;
+import '../../../features/result/api/datasources/result_local_data_source_impl.dart'
+    as _i339;
+import '../../../features/result/data/datasources/result_local_data_source_contract.dart'
+    as _i264;
+import '../../../features/result/data/repositories/result_repository_impl.dart'
+    as _i18;
+import '../../../features/result/domain/repositories/result_repository.dart'
+    as _i62;
+import '../../../features/result/domain/use_case/get_exams_use_case.dart'
+    as _i109;
+import '../../../features/result/presentation/view_model/cubit/results_cubit.dart'
+    as _i251;
 import '../../../features/signup/api/api_client/sigup_api_client.dart' as _i873;
 import '../../../features/signup/api/datasources/signup_local_data_source_impl.dart'
     as _i471;
@@ -254,6 +266,11 @@ extension GetItInjectableX on _i174.GetIt {
         remoteDataSource: gh<_i938.ForgetPasswordRemoteDataSourceContract>(),
       ),
     );
+    gh.factory<_i264.ResultLocalDataSourceContract>(
+      () => _i339.ResultLocalDataSourceImpl(
+        examsBox: gh<_i979.Box<_i58.ExamDto>>(instanceName: 'examsBox'),
+      ),
+    );
     gh.factory<_i340.QuestionsLocalDataSourceContract>(
       () => _i719.QuestionsLocalDataSourceImpl(
         examsBox: gh<_i979.Box<_i58.ExamDto>>(instanceName: 'examsBox'),
@@ -283,6 +300,11 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i568.ExploreRemoteDataSourceContract>(),
       ),
     );
+    gh.factory<_i62.ResultRepositoryContract>(
+      () => _i18.ResultRepositoryImpl(
+        localDataSourceContract: gh<_i264.ResultLocalDataSourceContract>(),
+      ),
+    );
     gh.factory<_i1042.SignupUserUsecase>(
       () =>
           _i1042.SignupUserUsecase(repo: gh<_i1062.SignupRepositoryContract>()),
@@ -293,8 +315,14 @@ extension GetItInjectableX on _i174.GetIt {
         localDataSource: gh<_i224.LoginLocalDataSourceContract>(),
       ),
     );
+    gh.factory<_i109.GetExamsUseCase>(
+      () => _i109.GetExamsUseCase(repo: gh<_i62.ResultRepositoryContract>()),
+    );
     gh.factory<_i307.GetAllSubjectsUseCase>(
       () => _i307.GetAllSubjectsUseCase(gh<_i1012.ExploreRepository>()),
+    );
+    gh.lazySingleton<_i251.ResultsCubit>(
+      () => _i251.ResultsCubit(getExamsUseCase: gh<_i109.GetExamsUseCase>()),
     );
     gh.factory<_i258.QuestionsRepositoryContract>(
       () => _i60.QuestionsRepositoryImpl(

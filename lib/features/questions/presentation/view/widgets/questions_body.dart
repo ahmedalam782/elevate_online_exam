@@ -20,6 +20,8 @@ import 'package:elevate_online_exam/features/questions/presentation/view/widgets
 import 'package:elevate_online_exam/features/questions/presentation/view/widgets/time_out_dialog.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view_model/cubit/questions_cubit.dart';
 import 'package:elevate_online_exam/features/questions/presentation/view_model/cubit/questions_events.dart';
+import 'package:elevate_online_exam/features/result/presentation/view_model/cubit/results_cubit.dart';
+import 'package:elevate_online_exam/features/result/presentation/view_model/cubit/results_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -124,11 +126,11 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                                 },
                               );
                             },
-                            totalMinutes: 1,
-                            // totalMinutes:
-                            //     viewModel.state.data?.isNotEmpty ?? false
-                            //     ? viewModel.state.data?.first.exam.duration ?? 0
-                            //     : 0,
+                            // totalMinutes: 1,
+                            totalMinutes:
+                                viewModel.state.data?.isNotEmpty ?? false
+                                ? viewModel.state.data?.first.exam.duration ?? 0
+                                : 0,
                           );
                         },
                       ),
@@ -242,10 +244,13 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                               ),
                               backGroundColor: AppColors.prime,
                               radius: 10.r,
-                              onTap: () {
+                              onTap: () async {
                                 if (page >= dataLength - 1) {
-                                  viewModel.doIntent(
+                                  await viewModel.doIntent(
                                     SaveExamEvent(exam: widget.examEntity),
+                                  );
+                                  getIt<ResultsCubit>().doIntent(
+                                    GetResultsEvent(),
                                   );
 
                                   return;

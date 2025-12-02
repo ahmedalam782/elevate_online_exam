@@ -1,4 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_online_exam/core/config/di/injectable_config.dart';
+import 'package:elevate_online_exam/features/result/presentation/view_model/cubit/results_cubit.dart';
+import 'package:elevate_online_exam/features/result/presentation/view_model/cubit/results_event.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';

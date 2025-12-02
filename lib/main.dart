@@ -16,7 +16,14 @@ import 'core/routes/url_strategy.dart';
 const bool runLocal = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await configureDependencies();
+  await configureDependencies(); // Set custom Bloc observer for debugging
+  Bloc.observer = MyBlocObserver();
+  await ScreenUtil.ensureScreenSize();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  //==================FOR WEB=====================
+  GoRouter.optionURLReflectsImperativeAPIs = true;
+  setPathUrlStrategy();
+  await EasyLocalization.ensureInitialized();
 
   // await initHive();
   runApp(
@@ -29,15 +36,6 @@ void main() async {
     ),
   );
   // Initialize EasyLocalization
-  await EasyLocalization.ensureInitialized();
-  // Set custom Bloc observer for debugging
-  Bloc.observer = MyBlocObserver();
-  await ScreenUtil.ensureScreenSize();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  await EasyLocalization.ensureInitialized();
-  //==================FOR WEB=====================
-  GoRouter.optionURLReflectsImperativeAPIs = true;
-  setPathUrlStrategy();
 }
 
 // Future<void> initHive() async {

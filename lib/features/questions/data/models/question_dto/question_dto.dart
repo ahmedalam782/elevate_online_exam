@@ -127,7 +127,7 @@ class QuestionDto extends HiveObject {
             return answer.toEntity();
           }).toList() ??
           [],
-      answeredQuestion: null,
+      answeredQuestion: answeredQuestion,
     );
   }
 }
