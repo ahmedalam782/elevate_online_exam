@@ -19,13 +19,26 @@ import '../../view_model/cubit/app_layout_events.dart';
 import '../../view_model/cubit/app_layout_states.dart';
 import '../widgets/bottom_nav_bar.dart';
 
-class AppLayoutPage extends StatelessWidget {
-  AppLayoutPage({super.key});
-  final AppLayoutCubit cubit = getIt<AppLayoutCubit>();
+class AppLayoutPage extends StatefulWidget {
+  const AppLayoutPage({super.key});
+
+  @override
+  State<AppLayoutPage> createState() => _AppLayoutPageState();
+}
+
+class _AppLayoutPageState extends State<AppLayoutPage> {
+  late final AppLayoutCubit cubit;
+
+  @override
+  void initState() {
+    super.initState();
+    cubit = getIt<AppLayoutCubit>();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => cubit,
+    return BlocProvider.value(
+      value: cubit,
       child: BlocConsumer<AppLayoutCubit, AppLayoutStates>(
         builder: (context, state) {
           return ModalProgressHUD(
