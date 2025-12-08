@@ -19,7 +19,7 @@ void main() {
   final subjectId = "1";
   final page = 1;
 
-  setUpAll(() {
+  setUp(() {
     getExamsOnSubjectUseCase = MockGetExamsOnSubjectUseCase();
     examsTapCubit = ExamsTapCubit(getExamsOnSubjectUseCase);
   });
@@ -36,7 +36,9 @@ void main() {
       "emit loading and success state when getExamsOnSubject is succeed",
       () async {
         PaginatedExams paginatedExams = PaginatedExams(
-          exams: [ExamEntity(id: "1", title: "test", subject: "1", questions: [])],
+          exams: [
+            ExamEntity(id: "1", title: "test", subject: "1", questions: []),
+          ],
           currentPage: 1,
           totalPages: 1,
         );
@@ -98,10 +100,7 @@ void main() {
         expect(emittedStates[0].state, equals(StateType.loading));
         expect(emittedStates[1].state, equals(StateType.error));
         expect(emittedStates[1].data, isA<Null>());
-        expect(
-          (emittedStates[1].exception).toString(),
-          contains(errorMessage),
-        );
+        expect((emittedStates[1].exception).toString(), contains(errorMessage));
       },
     );
   });

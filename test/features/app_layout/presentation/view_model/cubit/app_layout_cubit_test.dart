@@ -150,8 +150,9 @@ void main() {
         // Act
         cubit.doIndented(LogoutEvent());
 
-        // Wait for async operation
+        // Wait for async operation to complete
         await untilCalled(mockLogoutUseCase());
+        await Future.delayed(Duration.zero);
 
         // Assert
         expect(states.length, 2);
@@ -197,9 +198,10 @@ void main() {
       // Act - trigger logout twice
       cubit.doIndented(LogoutEvent());
       await untilCalled(mockLogoutUseCase());
+      await Future.delayed(Duration.zero);
 
       cubit.doIndented(LogoutEvent());
-      await untilCalled(mockLogoutUseCase());
+      await Future.delayed(Duration.zero);
 
       // Assert
       expect(
@@ -231,6 +233,7 @@ void main() {
         // Act
         cubit.doIndented(LogoutEvent());
         await untilCalled(mockLogoutUseCase());
+        await Future.delayed(Duration.zero);
 
         // Assert
         final errorState = states.firstWhere(

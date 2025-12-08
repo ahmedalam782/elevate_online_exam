@@ -38,6 +38,7 @@ class ProfileStates extends Equatable {
     changeProfileImageState,
     profileDataChangeState,
     getProfileDataState,
+    updateProfileDataState
   ];
 }
 

@@ -10,38 +10,61 @@ import '../../view_model/cubit/profile_cubit.dart';
 import '../../view_model/cubit/profile_events.dart';
 import '../../view_model/cubit/profile_states.dart';
 import '../widgets/profile_form.dart';
-import '../widgets/profile_image.dart';
 
-class ProfilePage extends StatelessWidget {
-  ProfilePage({super.key});
-  final ProfileCubit profileCubit = getIt.get<ProfileCubit>()
-    ..doIntent(GetProfileDataEvent());
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  late final ProfileCubit profileCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    profileCubit = getIt.get<ProfileCubit>()..doIntent(GetProfileDataEvent());
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ProfileCubit>(
-      create: (context) => profileCubit,
+    return BlocProvider<ProfileCubit>.value(
+      value: profileCubit,
       child: BlocBuilder<ProfileCubit, ProfileStates>(
         builder: (context, state) {
-          return SingleChildScrollView(
-            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: [
-                const SizedBox(height: 16),
-                ProfileImage(),
-                const SizedBox(height: 16),
-                ProfileForm(),
-                const SizedBox(height: 24),
-                CustomButton(
-                  isLoading: state.updateProfileDataState?.state ==
-                      StateType.loading,
-                  onTap: state.profileDataChangeState?.isChanged == true
-                      ? () =>
-                          profileCubit.doIntent(UpdateProfileDataEvent())
-                      : null,
-                  title: LocaleKeys.profile_Update.tr(),
-                ),
-              ],
+          return RefreshIndicator(
+            onRefresh: () async {
+              profileCubit.doIntent(GetProfileDataEvent());
+            },
+            child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: [
+                  const ProfileForm(),
+                  const SizedBox(height: 16),
+                  CustomButton(
+                    isLoading:
+                        state.updateProfileDataState?.state ==
+                        StateType.loading,
+                    onTap:
+                        state.profileDataChangeState?.isChanged == true &&
+                            state.getProfileDataState?.state ==
+                                StateType.success
+                        ? () {
+                            final formState =
+                                profileCubit.profileFormKey.currentState;
+                            if (formState != null && formState.validate()) {
+                              profileCubit.doIntent(UpdateProfileDataEvent());
+                            }
+                          }
+                        : null,
+                    title: LocaleKeys.profile_Update.tr(),
+                  ),
+                ],
+              ),
             ),
           );
         },
