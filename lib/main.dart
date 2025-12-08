@@ -14,7 +14,7 @@ const bool runLocal = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies(); // Set custom Bloc observer for debugging
-  Bloc.observer = MyBlocObserver();
+  Bloc.observer = MyBlocObserver(); 
   await ScreenUtil.ensureScreenSize();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   //==================FOR WEB=====================

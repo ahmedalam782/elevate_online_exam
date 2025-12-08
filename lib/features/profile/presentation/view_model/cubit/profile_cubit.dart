@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
@@ -30,7 +31,6 @@ class ProfileCubit extends Cubit<ProfileStates> {
       case ChangeProfileImageEvent():
         _changeProfileImage(event.imagePath);
         break;
-
       case ProfileDataChangedEvent():
         _profileDataChanged(event.isChanged);
         break;
@@ -49,6 +49,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
         getProfileDataState: const GetProfileDataState(
           state: StateType.loading,
         ),
+        profileDataChangeState: const ProfileDataChangeState(isChanged: false),
       ),
     );
     final result = await _getProfileDataUseCase();
@@ -82,6 +83,9 @@ class ProfileCubit extends Cubit<ProfileStates> {
                 state: StateType.error,
                 exception: result.exception,
               ),
+              profileDataChangeState: const ProfileDataChangeState(
+                isChanged: false,
+              ),
             ),
           );
         }
@@ -90,9 +94,6 @@ class ProfileCubit extends Cubit<ProfileStates> {
   }
 
   Future<void> _updateProfileData() async {
-    if (!profileFormKey.currentState!.validate()) {
-      return;
-    }
     emit(
       state.copyWith(
         updateProfileDataState: const UpdateProfileDataState(
@@ -153,6 +154,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
     );
   }
 
+  // ! Clear controllers
   void _clearControllers() {
     userNameController.clear();
     firstNameController.clear();
@@ -165,6 +167,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
   // !close cubit
   @override
   Future<void> close() {
+    log('ProfileCubit Closed');
     _clearControllers();
     userNameController.dispose();
     firstNameController.dispose();

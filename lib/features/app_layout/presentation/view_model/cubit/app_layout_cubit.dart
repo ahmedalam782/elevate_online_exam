@@ -54,7 +54,7 @@ class AppLayoutCubit extends Cubit<AppLayoutStates> {
     }
   }
 
-  List<Widget> pages = [ExplorePage(), ResultPage(), ProfilePage()];
+  List<Widget> pages = [ExplorePage(), ResultPage(), const ProfilePage()];
   List<String> titles = [
     LocaleKeys.app_layout_Survey.tr(),
     LocaleKeys.app_layout_Results.tr(),

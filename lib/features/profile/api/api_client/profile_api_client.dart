@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:retrofit/error_logger.dart';
-import 'package:retrofit/http.dart';
+import 'package:retrofit/retrofit.dart';
 import '../../../../core/config/api/end_points.dart';
 import '../../../../core/helper/classes/params.dart';
 import '../../data/models/profile_model/profile_model.dart';
