@@ -59,7 +59,9 @@ class CustomButton extends StatelessWidget {
         disabledBackgroundColor: AppColors.gray87,
         backgroundColor: (isGradient && gradient != null) || (!isFilled)
             ? Colors.transparent
-            : (isFilled ? backGroundColor : AppColors.black1D.withValues(alpha: 0.12)),
+            : (isFilled
+                  ? backGroundColor
+                  : AppColors.black1D.withValues(alpha: 0.12)),
         overlayColor: !isGradient
             ? isFilled && backGroundColor != Colors.transparent
                   ? AppColors.primaryLight

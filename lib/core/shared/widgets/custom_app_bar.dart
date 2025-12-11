@@ -9,12 +9,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool? isCenteredTitle;
   final EdgeInsetsGeometry? padding;
   final bool automaticallyImplyLeading;
+  final Color? textColor;
+  final List<Widget>? actions;
   const CustomAppBar({
     super.key,
     required this.title,
     this.isCenteredTitle = false,
     this.padding,
     this.automaticallyImplyLeading = true,
+    this.textColor,
+    this.actions,
   });
 
   @override
@@ -28,7 +32,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         // added isCenteredTitle usage make the title go left if needed
         centerTitle: isCenteredTitle ?? true,
         automaticallyImplyLeading: automaticallyImplyLeading,
-        title: Text(title, style: Styles.medium(context, 20)),
+        title: Text(
+          title,
+          style: Styles.medium(context, 20, color: textColor ?? Colors.black),
+        ),
         leading: automaticallyImplyLeading && canPop
             ? InkWell(
                 overlayColor: WidgetStateProperty.all(Colors.transparent),
@@ -38,6 +45,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: Icon(Icons.chevron_left, size: 38),
               )
             : null,
+        actions: actions,
       ),
     );
   }

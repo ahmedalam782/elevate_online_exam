@@ -18,7 +18,7 @@ class AppTheme {
       onSecondary: AppColors.onSecondaryLight,
       surface: AppColors.surfaceLight,
       onSurface: AppColors.onSurfaceLight,
-      error: AppColors.errorLight,
+      error: AppColors.onErrorLight,
       onError: AppColors.onErrorLight,
     ),
     textTheme: TextTheme(
@@ -94,6 +94,8 @@ class AppTheme {
         ? LanguageHelper.arabicFontFamily
         : LanguageHelper.englishFontFamily,
     appBarTheme: const AppBarTheme(
+      scrolledUnderElevation: 0,
+
       elevation: 0,
       backgroundColor: AppColors.backgroundLight,
       iconTheme: IconThemeData(color: AppColors.black),
@@ -142,7 +144,7 @@ class AppTheme {
         borderRadius: BorderRadius.circular(8.0),
       ),
       errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.errorLight, width: 1),
+        borderSide: BorderSide(color: AppColors.onErrorLight, width: 1),
         borderRadius: BorderRadius.circular(8.0),
       ),
     ),
@@ -162,6 +164,22 @@ class AppTheme {
     ),
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: AppColors.surfaceLight,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.surfaceLight,
+      selectedItemColor: AppColors.primaryLight,
+      unselectedItemColor: AppColors.primaryLight,
+      elevation: 0,
+      selectedLabelStyle: Styles.medium(
+        context,
+        12,
+        color: AppColors.primaryLight,
+      ),
+      unselectedLabelStyle: Styles.medium(
+        context,
+        12,
+        color: AppColors.primaryLight,
+      ),
     ),
   );
 
@@ -242,6 +260,7 @@ class AppTheme {
         ? LanguageHelper.arabicFontFamily
         : LanguageHelper.englishFontFamily,
     appBarTheme: const AppBarTheme(
+      scrolledUnderElevation: 0,
       elevation: 0,
       backgroundColor: AppColors.backgroundDark,
       iconTheme: IconThemeData(color: AppColors.white),
@@ -258,7 +277,7 @@ class AppTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: AppColors.surfaceDark,
+      fillColor: AppColors.primaryDark,
       contentPadding: const EdgeInsets.all(14.0),
       isDense: true,
       hintStyle: Styles.regular(
@@ -286,7 +305,7 @@ class AppTheme {
         borderSide: BorderSide(color: AppColors.surfaceDark, width: 1.0),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(width: 1, color: AppColors.primaryDark),
+        borderSide: BorderSide(width: 1, color: AppColors.surfaceDark),
         borderRadius: BorderRadius.circular(8.0),
       ),
       errorBorder: OutlineInputBorder(
@@ -310,6 +329,22 @@ class AppTheme {
     ),
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: AppColors.surfaceDark,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.secondaryDark,
+      selectedItemColor: AppColors.primaryDark,
+      unselectedItemColor: AppColors.onSecondaryDark,
+      elevation: 0,
+      selectedLabelStyle: Styles.medium(
+        context,
+        12,
+        color: AppColors.primaryDark,
+      ),
+      unselectedLabelStyle: Styles.medium(
+        context,
+        12,
+        color: AppColors.primaryDark,
+      ),
     ),
   );
 }

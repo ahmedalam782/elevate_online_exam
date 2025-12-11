@@ -55,7 +55,12 @@ class CustomTextFormField extends StatelessWidget {
     this.textCapitalization,
     this.prefixIcon,
     this.labelWidget,
+    this.errorBorder,
+    this.autovalidateMode,
+    this.errorMaxlines,
+    this.errorText,
   });
+  final int? errorMaxlines;
   final String? labelText;
   final Widget? labelWidget;
   final double? borderRadius;
@@ -102,6 +107,11 @@ class CustomTextFormField extends StatelessWidget {
   final InputBorder? enabledBorder;
   final InputBorder? disabledBorder;
   final TextDirection? textDirection;
+  final String? errorText;
+  // added error border if needed
+  final InputBorder? errorBorder;
+  // adding autovalidate mode only if needed not on every case
+  final AutovalidateMode? autovalidateMode;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -122,7 +132,8 @@ class CustomTextFormField extends StatelessWidget {
           textDirection: textDirection,
           obscuringCharacter: "*",
           textCapitalization: textCapitalization ?? TextCapitalization.none,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
+          // changing the autovalidateMode to be disabled by default and enable it if needed
+          autovalidateMode: autovalidateMode ?? AutovalidateMode.disabled,
           onSaved: onSaved,
           onEditingComplete: onEditingComplete,
           onTap: onTap,
@@ -139,7 +150,7 @@ class CustomTextFormField extends StatelessWidget {
           textInputAction: textInputAction,
           initialValue: initialValue,
           controller: controller,
-          maxLines: maxLine,
+          maxLines: maxLine ?? 1,
           textAlign: textAlign ?? TextAlign.start,
           keyboardType: textInputType,
           inputFormatters: textInputType == TextInputType.phone
@@ -174,7 +185,8 @@ class CustomTextFormField extends StatelessWidget {
             errorStyle: Styles.regular(
               context,
               12,
-            ).copyWith(color: AppColors.errorLight),
+              color: AppColors.onErrorLight,
+            ),
             focusColor: focusBorderColor ?? AppColors.primaryLight,
             suffixIcon: suffixWidget,
             suffixText: suffixText,
@@ -191,18 +203,45 @@ class CustomTextFormField extends StatelessWidget {
                     ),
                   )
                 : prefixWidget,
-            label: labelWidget ?? Text(labelText ?? "", style: Styles.regular(context, 14),),
+            errorMaxLines: errorMaxlines ?? 2,
+            // adding error text
+            errorText: errorText,
+            label:
+                labelWidget ??
+                Text(labelText ?? "", style: Styles.regular(context, 14)),
             floatingLabelBehavior:
                 floatingLabelBehavior ?? FloatingLabelBehavior.auto,
             errorBorder:
+                // use errorBorder instead of enabledBorder
+                errorBorder ??
+                // editing the defult error border to be the same as the design in figma
+                customOutLineBorders(
+                  borderColor: AppColors.onErrorLight,
+                  borderRadius: borderRadius,
+                  borderWidth: borderWidth,
+                ),
+            disabledBorder:
+                disabledBorder ??
+                customOutLineBorders(
+                  borderRadius: borderRadius,
+                  borderWidth: borderWidth,
+                ),
+            border:
+                border ??
+                customOutLineBorders(
+                  borderRadius: borderRadius,
+                  borderWidth: borderWidth,
+                ),
+            enabledBorder:
                 enabledBorder ??
-                customOutLineBorders(borderColor: AppColors.errorLight),
-            disabledBorder: disabledBorder ?? customOutLineBorders(),
-            border: border ?? customOutLineBorders(),
-            enabledBorder: enabledBorder ?? customOutLineBorders(),
+                customOutLineBorders(
+                  borderRadius: borderRadius,
+                  borderWidth: borderWidth,
+                ),
             focusedBorder:
                 focusedBorder ??
                 customOutLineBorders(
+                  borderRadius: borderRadius,
                   borderColor: enableFocusBorder
                       ? AppColors.primaryLight
                       : null,

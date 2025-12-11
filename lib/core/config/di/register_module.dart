@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -46,4 +47,7 @@ abstract class CoreInjectableModule {
 
   @lazySingleton
   CancelToken cancelToken() => CancelToken();
+
+  @lazySingleton
+  InternetConnection internetConnection() => InternetConnection();
 }

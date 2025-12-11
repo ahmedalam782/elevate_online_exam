@@ -4,7 +4,6 @@ import 'package:lottie/lottie.dart';
 
 import '../../../../../core/theme/app_animations.dart';
 
-
 class BuildLogoSection extends StatelessWidget {
   const BuildLogoSection({
     super.key,
@@ -27,7 +26,7 @@ class BuildLogoSection extends StatelessWidget {
             opacity: logoOpacityAnimation.value,
             child: Center(
               child: Lottie.asset(
-               AppAnimations.animationsExams,
+                AppAnimations.animationsExams,
                 width: 100.w,
                 height: 100.w,
                 fit: BoxFit.contain,

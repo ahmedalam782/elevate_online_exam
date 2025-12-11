@@ -31,7 +31,9 @@ class CustomCachedImage extends StatelessWidget {
     //  EndPoints.baseImageUrl}$imagePath";
 
     if (imagePath.isEmpty) {
-      return Container(
+      return AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
         width: width,
         height: height,
         padding: errorImage != null && errorImage!.endsWith(".png")
@@ -39,7 +41,7 @@ class CustomCachedImage extends StatelessWidget {
             : const EdgeInsets.all(32),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius ?? 12),
-          color: color ?? AppColors.primaryLight.withValues(alpha: 0.08),
+          color: color ?? AppColors.transparent,
         ),
         child: Center(
           child: errorImage != null && errorImage!.endsWith(".png")
@@ -50,13 +52,10 @@ class CustomCachedImage extends StatelessWidget {
                   fit: fit ?? BoxFit.contain,
                 )
               : SvgPicture.asset(
-                  fit: BoxFit.contain,
-                  width: width?.clamp(100, 120),
-                  height: height?.clamp(100, 120),
-                  errorImage ?? AppIcons.iconsNoImage,
-                  colorFilter:
-                      emptyColorFilter ??
-                      ColorFilter.mode(AppColors.gray5F, BlendMode.srcIn),
+                  fit: BoxFit.scaleDown,
+                  width: 100,
+                  height: 100,
+                  errorImage ?? AppIcons.iconsNoProfile,
                 ),
         ),
       );
@@ -78,7 +77,7 @@ class CustomCachedImage extends StatelessWidget {
         padding: const EdgeInsets.all(32),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius ?? 12),
-          color: AppColors.primaryLight.withOpacity(0.08),
+          color: AppColors.primaryLight.withValues(alpha: 0.08),
         ),
         child: Center(
           child: errorImage != null && errorImage!.endsWith(".png")
@@ -92,7 +91,7 @@ class CustomCachedImage extends StatelessWidget {
                   fit: BoxFit.contain,
                   width: width,
                   height: height,
-                  errorImage ?? AppIcons.iconsNoImage,
+                  errorImage ?? AppIcons.iconsNoProfile,
                   colorFilter:
                       emptyColorFilter ??
                       ColorFilter.mode(AppColors.gray5F, BlendMode.srcIn),
@@ -104,7 +103,7 @@ class CustomCachedImage extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius ?? 12),
-          color: AppColors.primaryLight.withOpacity(0.08),
+          color: AppColors.primaryLight.withValues(alpha: 0.08),
         ),
         child: SizedBox(
           width: 30,

@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-
 import 'app.dart';
 import 'core/config/di/injectable_config.dart';
 import 'core/helper/bloc/bloc_observer.dart';
@@ -14,24 +13,34 @@ import 'core/routes/url_strategy.dart';
 const bool runLocal = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies(); // Set custom Bloc observer for debugging
+  Bloc.observer = MyBlocObserver(); 
+  await ScreenUtil.ensureScreenSize();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  //==================FOR WEB=====================
+  GoRouter.optionURLReflectsImperativeAPIs = true;
+  setPathUrlStrategy();
+  await EasyLocalization.ensureInitialized();
+
+  // await initHive();
   runApp(
     EasyLocalization(
       supportedLocales: [arabicLocale, englishLocale],
-      fallbackLocale: englishLocale,
+      fallbackLocale: arabicLocale,
       startLocale: englishLocale,
       path: assetsLocalization,
       child: const OnlineExam(),
     ),
   );
   // Initialize EasyLocalization
-  await EasyLocalization.ensureInitialized();
-  // Set custom Bloc observer for debugging
-  Bloc.observer = MyBlocObserver();
-  await configureDependencies();
-  await ScreenUtil.ensureScreenSize();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  await EasyLocalization.ensureInitialized();
-  //==================FOR WEB=====================
-  GoRouter.optionURLReflectsImperativeAPIs = true;
-  setPathUrlStrategy();
 }
+
+// Future<void> initHive() async {
+//   Hive
+//     ..registerAdapter(QuestionsResponseAdapter())
+//     ..registerAdapter(QuestionDtoAdapter())
+//     ..registerAdapter(AnswerDtoAdapter())
+//     ..registerAdapter(ExamDtoAdapter());
+
+//   await Hive.initFlutter();
+// }

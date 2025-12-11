@@ -20,7 +20,7 @@ Future<void> configureDependencies() async => getIt.init();
 
 // flutter build appbundle --release
 
-// flutter clean      
+// flutter clean
 // flutter pub get
 // cd ios
 // rm -rf Pods Podfile.lock
@@ -28,5 +28,4 @@ Future<void> configureDependencies() async => getIt.init();
 // pod install
 // cd ..
 
-
-// ./check_elf_alignment.sh build/app/outputs/flutter-apk/app-release.apk                                
+// ./check_elf_alignment.sh build/app/outputs/flutter-apk/app-release.apk
