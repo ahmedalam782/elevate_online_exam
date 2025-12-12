@@ -40,7 +40,7 @@ A comprehensive Flutter-based online examination platform that enables users to 
 ## 🛠 Tech Stack
 
 ### Core
-- **Flutter SDK** ^3.9.2
+- **Flutter SDK** >= 3.9.2
 - **Dart** - Programming language
 
 ### State Management & Architecture
@@ -93,7 +93,7 @@ A comprehensive Flutter-based online examination platform that enables users to 
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
-- [Flutter SDK](https://docs.flutter.dev/get-started/install) (version 3.9.2 or higher)
+- [Flutter SDK](https://docs.flutter.dev/get-started/install) (version >= 3.9.2)
 - [Dart SDK](https://dart.dev/get-dart) (comes with Flutter)
 - [Android Studio](https://developer.android.com/studio) or [VS Code](https://code.visualstudio.com/)
 - [Xcode](https://developer.apple.com/xcode/) (for iOS development on macOS)
@@ -211,8 +211,8 @@ To add a new language:
 - **Icons**: `assets/icons/`
 - **Animations**: `assets/animations/`
 - **Fonts**: `assets/fonts/`
-  - English: Roboto (Light, Regular, Medium, SemiBold, Bold)
-  - Arabic: Roboto (Light, Regular, Medium, SemiBold, Bold)
+  - RobotoEnglish: Roboto (Light, Regular, Medium, SemiBold, Bold)
+  - RobotoArabic: Roboto (Light, Regular, Medium, SemiBold, Bold)
 
 ## 🧪 Testing
 
