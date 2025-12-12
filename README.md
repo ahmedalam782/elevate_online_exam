@@ -37,6 +37,10 @@ A comprehensive Flutter-based online examination platform that enables users to 
   - Screen size adaptation using ScreenUtil
   - Platform-specific themes (Material & Cupertino)
 
+## 📱 Demo
+
+https://github.com/user-attachments/assets/7abf07e1-d269-4f8b-ab1a-ca7c42992587
+
 ## 🛠 Tech Stack
 
 ### Core
