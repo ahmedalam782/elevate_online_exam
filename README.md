@@ -280,10 +280,8 @@ This project is private and not published to pub.dev.
 
 We appreciate all contributions to this project! Thank you to everyone who has helped make this project better.
 
-<!-- Add contributors here -->
-<!-- Example:
-- **[Contributor Name](https://github.com/username)** - Description of contribution
--->
+- **[Ghazi-Mustafa](https://github.com/Ghazi-Mustafa)**
+- **[MohammedGhazaly](https://github.com/MohammedGhazaly)**
 
 ## 📞 Support
 
