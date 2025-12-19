@@ -55,11 +55,6 @@ void main(List<String> args) {
       ).writeAsStringSync(
         '// TODO: $layer ${_capitalize(featureName)}ApiClient\n',
       );
-      if (layer == 'api' || layer == 'data') {
-        File('${apiClientDir.path}/api_client.g.dart').writeAsStringSync(
-          '// TODO: $layer ${_capitalize(featureName)}ApiClient generated\n',
-        );
-      }
     }
     if (datasourcesDir.existsSync()) {
       if (layer == 'api') {
